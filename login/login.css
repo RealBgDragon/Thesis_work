@@ -145,7 +145,7 @@ main h2 {
     outline: none;
 }
 
-.login input[type="submit"] {
+.login button {
     background: linear-gradient(to right, #20c7c0, #1b9dd7);
     margin-left: 0;
     color: #f2f2f2;
@@ -159,11 +159,11 @@ main h2 {
     background-position: 100% 0;
 }
 
-.login input[type="submit"]:hover {
+.login button:hover {
     background-position: 0 0;
 }
 
-.login input[type="submit"]:active {
+.login button:active {
     background: #20c7c0;
 }
 

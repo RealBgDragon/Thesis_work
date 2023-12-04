@@ -1,5 +1,9 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
@@ -10,13 +14,19 @@
     <link rel="icon" type="image/x-icon" href="global-images/icon.png" />
     <link rel="stylesheet" href="login/login.css" />
 </head>
+
 <body>
     <header>
         <img src="global-images/logo.png">
         <h1>Login</h1>
         <div class="auth-links">
-            <a href="login.html" class="user-link">Login</a>
-            <a href="register.html" class="user-link">Register</a>
+            <?php if (isset($_SESSION['username'])):
+                echo "<a href='404.html' class='user-link'>Profile</a>";
+                echo "<a href='404.html' class='user-link'>Logout</a>";
+            else:
+                echo "<a href='login.php' class='user-link'>Login</a>";
+                echo "<a href='register.html' class='user-link'>Register</a>";
+            endif; ?>
         </div>
     </header>
     <nav>
@@ -30,14 +40,14 @@
         <h2>Login</h2>
         <hr>
         <div class="container">
-            <div class="login">
+            <form action="private/login.inc.php" method="post" class="login">
                 <h2>Login</h2>
                 <h3>Username</h3>
-                <input type="text">
+                <input type="text" name="username">
                 <h3>Password</h3>
-                <input type="password">
-                <input type="submit">
-            </div>
+                <input type="password" name="pwd">
+                <button id="submit">Submit</button>
+            </form>
             <div class="register">
                 <h2>Don`t have an account?</h2>
                 <a href="register.html">Register</a>
@@ -59,4 +69,5 @@
         </div>
     </footer>
 </body>
+
 </html>

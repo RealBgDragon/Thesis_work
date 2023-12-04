@@ -11,29 +11,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //? Made with POST for security reas
             $username = $_POST['username'];
         } else {
             $_SESSION['error_message'] = 'Username is required.';
-            header('Location: register.html'); // Adjust the path as needed
+            header('Location: register.html');
             exit;
-        } */
-
-    /*     session_start();
+        }
 
         if (isset($_SESSION['error_message'])) {
             echo "<p style='color:red;'>" . $_SESSION['error_message'] . "</p>";
-            unset($_SESSION['error_message']); // Clear the message after displaying it
-        } */
-
-    $requiredFields = ['username', 'pwd', 'email', 'firstName', 'lastName'];
-    foreach ($requiredFields as $field) {
-        if (empty($_POST[$field])) {
-            die("Error: $field is required.");
+            unset($_SESSION['error_message']);
         }
-    }
+
+        $requiredFields = ['username', 'pwd', 'email', 'firstName', 'lastName'];
+        foreach ($requiredFields as $field) {
+            if (empty($_POST[$field])) {
+                die("Error: $field is required.");
+            }
+        } */
 
 
     $id = rand(1, 99999999999); // made for security reasons (not to be auto incremented by one)
     $username = htmlspecialchars($_POST["username"]); // prevent SQL ingection
-    $pwd = password_hash($_POST['pwd'], PASSWORD_DEFAULT); // hasing the password
-    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL); //TODO add a check in the js
+    $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT); // hasing the password
+    $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL); //TODO add a check in the js
     if (!$email) {
         die('Invalid email.');
     }

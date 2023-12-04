@@ -86,6 +86,5 @@ password.hover(null, function () {
 });
 
 submit.on("click", function (event) {
-    event.preventDefault();
     console.log("button clicked");
 });
