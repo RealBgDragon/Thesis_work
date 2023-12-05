@@ -1,90 +1,105 @@
-// const for password match
-const password = $("#password");
-const rePassword = $("#repassword");
-const passwordError = $("#passwordError");
-const submit = $("#submit");
-// end of const for password match
+// Constants for password match
+const password = document.getElementById("password");
+const rePassword = document.getElementById("repassword");
+const passwordError = document.getElementById("passwordError");
+const submit = document.getElementById("submit");
+const capitalRequirement = document.getElementById("capitalLetter");
+const numberRequirement = document.getElementById("number");
+const letters = document.getElementById("letters");
+const modalBody = document.querySelector(".modal-body");
+// End of constants for password match
 
 function buttonDisable() {
-    submit.prop("disabled", true);
+    submit.disabled = true;
 }
 
 function buttonEnable() {
-    submit.prop("disabled", false);
+    submit.disabled = false;
 }
 
-if (password.val() === "") {
+if (password.value === "") {
     buttonDisable();
 }
 
 function PasswordCheck() {
-    if (/[A-Z]/.test(password.val())) {
-        capitalRequirement.css("color", "green");
+    if (/[A-Z]/.test(password.value)) {
+        capitalRequirement.style.color = "green";
         buttonEnable();
     } else {
-        capitalRequirement.css("color", "red");
+        capitalRequirement.style.color = "red";
         buttonDisable();
     }
 
-    if (/[0-9]/.test(password.val())) {
-        numberRequirement.css("color", "green");
+    if (/[0-9]/.test(password.value)) {
+        numberRequirement.style.color = "green";
         buttonEnable();
     } else {
-        numberRequirement.css("color", "red");
+        numberRequirement.style.color = "red";
         buttonDisable();
     }
 
-    if (password.val().length >= 8) {
-        letters.css("color", "green");
+    if (password.value.length >= 8) {
+        letters.style.color = "green";
         buttonEnable();
     } else {
-        letters.css("color", "red");
+        letters.style.color = "red";
         buttonDisable();
     }
 }
 
-//TODO ADD a function to check for ANY empty fields
-//TODO add a function to check the email for @ and stuff
+password.addEventListener("focus", handleInput);
+password.addEventListener("input", handleInput);
+rePassword.addEventListener("focus", handleInput);
+rePassword.addEventListener("input", handleInput);
 
-$("#password, #repassword").on("focus input", function () {
-    if (password.val() === rePassword.val() && password.val() !== "") {
-        // continue to register
-        passwordError.hide();
+function handleInput() {
+    if (password.value === rePassword.value && password.value !== "") {
+        passwordError.style.display = "none";
         buttonEnable();
     } else {
-        passwordError.text("Passwords do not match!").show();
+        passwordError.textContent = "Passwords do not match!";
+        passwordError.style.display;
+        passwordError.style.display = "block";
         buttonDisable();
     }
     PasswordCheck();
-});
+}
 
-// const for password check
-const capitalRequirement = $("#capitalLetter");
-const numberRequirement = $("#number");
-const modal = $("#myModal");
-const letters = $("#letters");
-const modalBody = $(".modal-body");
-// end of const for password check
+password.addEventListener("focus", showModal);
+password.addEventListener("input", showModal);
+password.addEventListener("blur", hideModal);
+password.addEventListener("mouseout", hideModalOnMouseOut);
 
-password.on("focus input", function () {
-    modalBody.show();
+function showModal() {
+    modalBody.style.display = "block";
     PasswordCheck();
-});
+}
 
-// When losing focus
-password.on("blur", function () {
-    if (!password.is(":hover")) {
-        modalBody.hide();
+function hideModal() {
+    if (!isHover(modalBody)) {
+        modalBody.style.display = "none";
     }
-});
+}
 
-// Hover tooltip stays visible even after the input loses focus
-password.hover(null, function () {
-    if (!password.is(":focus")) {
-        modalBody.hide();
+function hideModalOnMouseOut() {
+    if (!password.matches(":focus")) {
+        modalBody.style.display = "none";
     }
-});
+}
 
-submit.on("click", function (event) {
+function isHover(e) {
+    return e.parentElement.querySelector(":hover") === e;
+}
+
+submit.addEventListener("click", function (event) {
     console.log("button clicked");
 });
+
+// Helper function to add event listeners to multiple events
+function addMultipleListeners(element, events, handler) {
+    events.forEach((event) => element.addEventListener(event, handler));
+}
+
+// Adding event listeners for focus and input
+addMultipleListeners(password, ["focus", "input"], showModal);
+addMultipleListeners(rePassword, ["focus", "input"], handleInput);

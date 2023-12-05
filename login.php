@@ -21,7 +21,7 @@ session_start();
         <h1>Login</h1>
         <div class="auth-links">
             <?php if (isset($_SESSION['username'])):
-                echo "<a href='404.html' class='user-link'>Profile</a>";
+                echo "<a href='user.php' class='user-link'>Profile</a>";
                 echo "<a href='404.html' class='user-link'>Logout</a>";
             else:
                 echo "<a href='login.php' class='user-link'>Login</a>";
