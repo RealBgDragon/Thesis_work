@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //? Made with POST for security reas
 
 
     $id = rand(1, 99999999999); // made for security reasons (not to be auto incremented by one)
+    //TODO make to handle if already taken
     $username = htmlspecialchars($_POST["username"]); // prevent SQL ingection
     $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT); // hasing the password
     $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL); //TODO add a check in the js
