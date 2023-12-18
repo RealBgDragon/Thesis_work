@@ -96,6 +96,7 @@ main {
 }
 
 .list-products {
+    scroll-behavior: smooth;
     overflow-x: auto;
     display: flex;
     gap: 10px;

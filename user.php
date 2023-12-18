@@ -18,14 +18,14 @@
         <h1>Account</h1>
         <div class="auth-links">
             <a href="user.php" class="user-link">Account</a>
-            <a href="404.html" class="user-link">Logout</a>
+            <a href="private/logout.php" class="user-link">Logout</a>
         </div>
     </header>
     <nav>
         <ul>
-            <li><a href="main.html">Main</a></li>
+            <li><a href="main.php">Main</a></li>
             <li><a href="404.html">Products</a></li>
-            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="about-us.php">About Us</a></li>
         </ul>
     </nav>
 

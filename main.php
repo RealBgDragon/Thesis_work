@@ -22,7 +22,7 @@ session_start();
         <div class="auth-links">
             <?php if (isset($_SESSION['username'])):
                 echo "<a href='user.php' class='user-link'>Profile</a>";
-                echo "<a href='404.html' class='user-link'>Logout</a>";
+                echo "<a href='private/logout.php' class='user-link'>Logout</a>";
             else:
                 echo "<a href='login.php' class='user-link'>Login</a>";
                 echo "<a href='register.html' class='user-link'>Register</a>";
@@ -31,9 +31,9 @@ session_start();
     </header>
     <nav>
         <ul>
-            <li><a href="#">Main</a></li>
+            <li><a href="main.php">Main</a></li>
             <li><a href="404.html">Products</a></li>
-            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="about-us.php">About Us</a></li>
         </ul>
     </nav>
     <main>
