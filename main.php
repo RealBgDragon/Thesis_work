@@ -1,5 +1,9 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
@@ -10,13 +14,19 @@
     <link rel="icon" type="image/x-icon" href="global-images/icon.png" />
     <link rel="stylesheet" href="main/main.css" />
 </head>
+
 <body>
     <header>
         <img src="global-images/logo.png">
         <h1>Main</h1>
         <div class="auth-links">
-            <a href="login.php" class="user-link">Login</a>
-            <a href="register.html" class="user-link">Register</a>
+            <?php if (isset($_SESSION['username'])):
+                echo "<a href='user.php' class='user-link'>Profile</a>";
+                echo "<a href='404.html' class='user-link'>Logout</a>";
+            else:
+                echo "<a href='login.php' class='user-link'>Login</a>";
+                echo "<a href='register.html' class='user-link'>Register</a>";
+            endif; ?>
         </div>
     </header>
     <nav>
@@ -84,7 +94,7 @@
                 </a>
             </li>
         </ul>
-    </main>    
+    </main>
     <footer>
         <div class="footer-links">
             <a href="404.html">Privacy Policy</a>
@@ -95,7 +105,8 @@
             <p>Created by Martin Mihaylov</p>
         </div>
     </footer>
-    
+
     <script src="main/main.js"></script>
 </body>
+
 </html>

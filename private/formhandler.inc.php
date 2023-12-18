@@ -27,8 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //? Made with POST for security reas
             }
         } */
 
-
-    $id = rand(1, 99999999999); // made for security reasons (not to be auto incremented by one)
     //TODO make to handle if already taken
     $username = htmlspecialchars($_POST["username"]); // prevent SQL ingection
     $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT); // hasing the password
@@ -43,15 +41,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //? Made with POST for security reas
     try {
         require_once "dbh.inc.php";
 
-        $query = "INSERT INTO users (id, username, pwd, email, account_type, firstName, lastName) 
-        VALUES (:id, :username, :pwd, :email, :account_type, :firstName, :lastName);";
+        $query = "INSERT INTO users (username, pwd, email, account_type, firstName, lastName) 
+        VALUES (:username, :pwd, :email, :account_type, :firstName, :lastName);";
 
         $stmt = $pdo->prepare($query);
 
         $stmt->bindParam(":username", $username);
         $stmt->bindParam(":pwd", $pwd);
         $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":id", $id);
         $stmt->bindParam(":account_type", $account_type);
         $stmt->bindParam(":firstName", $firstName);
         $stmt->bindParam(":lastName", $lastName);

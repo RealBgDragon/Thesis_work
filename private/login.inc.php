@@ -6,7 +6,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $username = $_POST['username'];
     $pwd = $_POST['pwd'];
-    echo $pwd;
 
     try {
         $stmt = $pdo->prepare("SELECT id, username, pwd FROM users WHERE username = :username");
@@ -25,13 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             } else {
                 // Password is not correct
-                /* header("Location: login.php?error=Ivalid password or username"); */
+                header("Location: ../login.php?error=Ivalid password or username");
             }
         } else {
-            /* header("Location: login.php?error=Ivalid password or username"); */
+            header("Location: ../login.php?error=Ivalid password or username");
         }
     } catch (PDOException $e) {
-        /* header("Location: login.php?error=sqlerror"); */
+        header("Location: ../login.php?error=sqlerror");
     }
 
     // Close connection
