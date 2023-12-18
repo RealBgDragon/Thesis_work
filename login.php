@@ -25,7 +25,7 @@ session_start();
                 echo "<a href='private/logout.php' class='user-link'>Logout</a>";
             else:
                 echo "<a href='login.php' class='user-link'>Login</a>";
-                echo "<a href='register.html' class='user-link'>Register</a>";
+                echo "<a href='register.php' class='user-link'>Register</a>";
             endif; ?>
         </div>
     </header>
@@ -56,7 +56,7 @@ session_start();
             </form>
             <div class="register">
                 <h2>Don`t have an account?</h2>
-                <a href="register.html">Register</a>
+                <a href="register.php">Register</a>
                 <h2>Why should I register?</h2>
                 <p>Having an account allows you to more easily check out and pucrchus our products</p>
                 <p>Allows you to have better support</p>

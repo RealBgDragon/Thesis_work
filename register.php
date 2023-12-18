@@ -1,5 +1,9 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
@@ -10,13 +14,19 @@
     <link rel="icon" type="image/x-icon" href="global-images/icon.png" />
     <link rel="stylesheet" href="register/register.css" />
 </head>
+
 <body>
     <header>
         <img src="global-images/logo.png">
         <h1>Register</h1>
         <div class="auth-links">
-            <a href="login.php" class="user-link">Login</a>
-            <a href="register.html" class="user-link">Register</a>
+            <?php if (isset($_SESSION['username'])):
+                echo "<a href='user.php' class='user-link'>Profile</a>";
+                echo "<a href='private/logout.php' class='user-link'>Logout</a>";
+            else:
+                echo "<a href='login.php' class='user-link'>Login</a>";
+                echo "<a href='register.php' class='user-link'>Register</a>";
+            endif; ?>
         </div>
     </header>
     <nav>
@@ -53,6 +63,14 @@
                 <h3>Last Name</h3>
                 <input id="last_name" name="lastName" type="text">
                 <button id="submit">Submit</button>
+
+                <?php
+                if (isset($_GET['error'])) {
+                    $errorMessage = htmlspecialchars($_GET['error']);
+                    echo "<div style='color: red;'>" . $errorMessage . "</div>";
+                }
+                ?>
+
             </form>
             <div class="register">
                 <h2>Already have an account?</h2>
@@ -76,4 +94,5 @@
     </footer>
     <script src="register/register.js"></script>
 </body>
+
 </html>

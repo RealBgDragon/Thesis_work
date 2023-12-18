@@ -25,7 +25,7 @@ session_start();
                 echo "<a href='private/logout.php' class='user-link'>Logout</a>";
             else:
                 echo "<a href='login.php' class='user-link'>Login</a>";
-                echo "<a href='register.html' class='user-link'>Register</a>";
+                echo "<a href='register.php' class='user-link'>Register</a>";
             endif; ?>
         </div>
     </header>

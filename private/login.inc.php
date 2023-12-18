@@ -11,10 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $pdo->prepare("SELECT id, username, pwd FROM users WHERE username = :username");
         $stmt->bindParam(":username", $username);
         $stmt->execute();
-
         if ($stmt->rowCount() > 0) {
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if (password_verify($pwd, $user['pwd'])) {
+            $user = $stmt->fetch(PDO::FETCH_ASSOC); //! error is in the databse make the password longer
+            if (password_verify($pwd, $user["pwd"])) {
                 // Password is correct, start a new session
                 $_SESSION['userId'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
@@ -24,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             } else {
                 // Password is not correct
-                header("Location: ../login.php?error=Ivalid password or username");
+                header("Location: ../login.php?error=Ivalid password");
             }
         } else {
             header("Location: ../login.php?error=Ivalid password or username");

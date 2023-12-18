@@ -5,34 +5,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //? Made with POST for security reas
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
 
-    /*     session_start();
+    session_start();
 
-        if (isset($_POST['username']) && !empty($_POST['username'])) {
-            $username = $_POST['username'];
-        } else {
-            $_SESSION['error_message'] = 'Username is required.';
-            header('Location: register.html');
-            exit;
+    $requiredFields = ['username', 'pwd', 'email', 'firstName', 'lastName'];
+    foreach ($requiredFields as $field) {
+        if (empty($_POST[$field])) {
+            header("Location: ../register.php?error= $field is requered");
+            die();
         }
-
-        if (isset($_SESSION['error_message'])) {
-            echo "<p style='color:red;'>" . $_SESSION['error_message'] . "</p>";
-            unset($_SESSION['error_message']);
-        }
-
-        $requiredFields = ['username', 'pwd', 'email', 'firstName', 'lastName'];
-        foreach ($requiredFields as $field) {
-            if (empty($_POST[$field])) {
-                die("Error: $field is required.");
-            }
-        } */
+    }
 
     //TODO make to handle if already taken
     $username = htmlspecialchars($_POST["username"]); // prevent SQL ingection
     $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT); // hasing the password
     $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL); //TODO add a check in the js
     if (!$email) {
-        die('Invalid email.');
+        header("Location: ../register.php?error=Invalid email");
+        die();
     }
     $firstName = htmlspecialchars($_POST["firstName"]);
     $lastName = htmlspecialchars($_POST["lastName"]);
@@ -58,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //? Made with POST for security reas
         $pdo = null; // done for good practice
         $stmt = null;
 
-        header("Location: ../register.html");
+        header("Location: ../register.php");
 
         die();
     } catch (PDOException $e) {
@@ -66,5 +55,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //? Made with POST for security reas
     }
 
 } else {
-    header("Location: ../register.html");
+    header("Location: ../register.php");
 }
