@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,31 +12,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="global-images/icon.png" />
+    <link rel="stylesheet" href="global.css" />
     <link rel="stylesheet" href="user/user.css" />
 </head>
 
 <body>
-    <header>
-        <img src="global-images/logo.png">
-        <h1>Account</h1>
-        <div class="auth-links">
-            <a href="user.php" class="user-link">Account</a>
-            <a href="private/logout.php" class="user-link">Logout</a>
-        </div>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="main.php">Main</a></li>
-            <li><a href="404.html">Products</a></li>
-            <li><a href="about-us.php">About Us</a></li>
-        </ul>
-    </nav>
+    <?php include 'header.php'; ?>
 
     <div class="user-info-form">
         <h1>Account</h1>
         <hr>
         <?php
-        $userData = include 'private/account_details.inc.php';
+        $userData = include 'private/account-details.inc.php';
         if (!empty($userData)) {
             echo "<form action='dbh.inc.php' method='POST'>";
             echo "<label for='firstName'>First Name:</label>";
@@ -51,17 +41,7 @@
         ?>
     </div>
 
-    <footer>
-        <div class="footer-links">
-            <a href="404.html">Privacy Policy</a>
-            <a href="404.html">Terms of Service</a>
-        </div>
-        <div class="footer-logo">
-            <img src="global-images/Producer.jpg" alt="Firm Logo">
-            <p>Created by Martin Mihaylov</p>
-        </div>
-    </footer>
-
+    <?php include 'footer.php'; ?>
 </body>
 
 </html>

@@ -12,32 +12,14 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="global-images/icon.png" />
+    <link rel="stylesheet" href="global.css" />
     <link rel="stylesheet" href="register/register.css" />
 </head>
 
 <body>
-    <header>
-        <img src="global-images/logo.png">
-        <h1>Register</h1>
-        <div class="auth-links">
-            <?php if (isset($_SESSION['username'])):
-                echo "<a href='user.php' class='user-link'>Profile</a>";
-                echo "<a href='private/logout.php' class='user-link'>Logout</a>";
-            else:
-                echo "<a href='login.php' class='user-link'>Login</a>";
-                echo "<a href='register.php' class='user-link'>Register</a>";
-            endif; ?>
-        </div>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="main.php">Main</a></li>
-            <li><a href="404.html">Products</a></li>
-            <li><a href="about-us.php">About Us</a></li>
-        </ul>
-    </nav>
+    <?php include 'header.php'; ?>
     <main>
-        <h2>Register</h2>
+        <h1>Register</h1>
         <hr>
         <div class="container">
             <form action="private/formhandler.inc.php" method="post" class="login">
@@ -82,16 +64,7 @@ session_start();
             </div>
         </div>
     </main>
-    <footer>
-        <div class="footer-links">
-            <a href="404.html">Privacy Policy</a>
-            <a href="404.html">Terms of Service</a>
-        </div>
-        <div class="footer-logo">
-            <img src="global-images/Producer.jpg" alt="Firm Logo">
-            <p>Created by Martin Mihaylov</p>
-        </div>
-    </footer>
+    <?php include 'footer.php'; ?>
     <script src="register/register.js"></script>
 </body>
 

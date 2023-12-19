@@ -1,6 +1,5 @@
 <?php
-session_start();
-include 'dbh.inc.php'; // Include your database connection
+include 'dbh.inc.php';
 
 $userData = [];
 
