@@ -18,7 +18,10 @@ session_start();
 <body>
     <header>
         <img src="global-images/logo.png">
-        <h1>Main</h1>
+        <form class="search-bar">
+            <input type="text" placeholder="Search for products..." name="search">
+            <button type="submit">Search</button>
+        </form>
         <div class="auth-links">
             <?php if (isset($_SESSION['username'])):
                 echo "<a href='user.php' class='user-link'>Profile</a>";
