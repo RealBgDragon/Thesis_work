@@ -17,7 +17,7 @@
 <nav>
     <ul>
         <li><a href="main.php">Main</a></li>
-        <li><a href="404.html">Products</a></li>
+        <li><a href="global-product.php">Products</a></li>
         <li><a href="about-us.php">About Us</a></li>
     </ul>
 </nav>

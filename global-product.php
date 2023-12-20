@@ -19,12 +19,19 @@ session_start();
 
         <h1>Product Details</h1>
         <hr>
+        <div class="image-container" id="imageDropZone">
+            <?php
+            $productData = include 'private/product-details.inc.php'; // Replace with your actual include path
+            if (!empty($productData)) {
+                $img = $productData['image_url'];
+                echo "<img src='$img' id='productImage' class='img-responsive'>";
+            }
+            ?>
+        </div>
         <form action='update-product-dbh.inc.php' method='POST' class="product-info-container">
             <?php
             $productData = include 'private/product-details.inc.php'; // Replace with your actual include path
             if (!empty($productData)) {
-
-                // Basic product information
                 echo "<label for='name'>Name:</label>";
                 echo "<input type='text' id='name' name='name' value='" . htmlspecialchars($productData["name"]) . "'>";
 
@@ -39,7 +46,7 @@ session_start();
 
                 // ... Add more fields for each specification like power_consumption_cooling, power_output_heating, etc.
             
-                echo "<button type='submit' name='update_product'>Update Product</button>";
+                echo "<button type='submit' id='update_product' name='update_product'>Update Product</button>";
             } else {
                 echo "<p>No product information found.</p>";
             }

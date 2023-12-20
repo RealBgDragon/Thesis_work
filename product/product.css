@@ -1,3 +1,20 @@
+.image-container {
+    text-align: left; /* Center the image */
+    margin-bottom: 20px; /* Add some space below the image */
+}
+
+/* Optional: If you want the image to be responsive and maintain aspect ratio */
+.img-responsive {
+    max-width: 250px;
+    height: auto;
+}
+
+#imageDropZone {
+    border: 2px dashed #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
 .product-info-container {
     display: flex;
     flex-wrap: wrap;
@@ -20,34 +37,53 @@
     margin-bottom: 20px;
 }
 
-.form-group {
+.product-info-container {
     margin-bottom: 15px;
 }
 
-.form-group label {
+.product-info-container label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.form-group input[type="text"] {
-    width: 100%;
+.product-info-container input[type="text"],
+.product-info-container input[type="email"],
+.product-info-container input[type="password"] {
+    font-family: "Roboto", sans-serif; /* Match font */
     padding: 8px;
-    border-radius: 4px;
+    margin: 5px 0 15px; /* Consistent margin */
+    border-radius: 5px;
     border: 1px solid #ccc;
-    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    box-sizing: border-box;
 }
 
-.form-group button {
-    background-color: #20c7c0;
-    color: #fff;
-    border: none;
+.product-info-container button {
+    font-family: "Roboto", sans-serif; /* Match font */
+    background-color: #1b9dd7; /* Consistent color */
+    color: white;
     padding: 10px 15px;
-    border-radius: 4px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.form-group button:hover {
-    background-color: #1b9dd7;
+.product-info-container button:hover {
+    background-color: #1188be; /* Consistent hover effect */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .product-info-form {
+        width: 100%; /* Full width on smaller screens */
+        margin: 10px 0; /* Adjust margin */
+    }
+}
+
+/* Ensure the form container has consistent padding and margin */
+.product-info-container {
+    padding: 20px;
+    margin: 0 auto; /* Center the form */
 }
