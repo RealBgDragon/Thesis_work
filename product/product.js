@@ -17,12 +17,13 @@ document.getElementById("imageDropZone").addEventListener("drop", (event) => {
     }
 });
 
+var uploadedImage = null;
+
 function updateImage(file) {
-    // Assuming the file is an image.
     var reader = new FileReader();
     reader.onload = function (e) {
         document.getElementById("productImage").src = e.target.result;
-        // Here you can also implement the AJAX call to update the server
+        uploadedImage = file; // Store the uploaded image file
     };
     reader.readAsDataURL(file);
 }
