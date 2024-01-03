@@ -1,3 +1,4 @@
+/* Main Container */
 main {
     max-width: 1200px;
     margin: auto;
@@ -7,106 +8,105 @@ main {
     border-radius: 8px;
 }
 
-main hr {
-    width: 95%;
-    border: none;
-    border-top: 1px solid #1b9dd7;
-    margin: 20px auto;
-}
-
+/* Header Style */
 main h1 {
     font-family: "Roboto", sans-serif;
     font-size: 36px;
-    margin-left: 50px;
+    margin-left: 100px;
     color: #1188be;
 }
 
+/* Product Information Section */
 .product-info-div {
     display: flex;
-    align-items: start; /* Align items at the start of the container */
-    justify-content: space-between; /* Distribute space evenly */
-    gap: 10px;
-}
-
-.image-container {
-    flex: 1; /* Flex grow */
-    max-width: 500px; /* Control max width */
-    margin-right: 5px;
-}
-
-.img-responsive {
-    max-width: 250px;
-    height: auto;
-}
-
-#imageDropZone {
-    max-width: 300px;
-    border: 2px dashed #ccc;
-    padding: 10px;
-    text-align: center;
-}
-
-.product-info-form {
-    display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    flex-direction: column;
-    flex: 2; /* Flex grow more than the image container */
-    margin-left: 5px; /* Adjust left margin */
-    padding: 20px;
-    width: calc(100% - 510px);
+    align-items: flex-start; /* Align items to the start for a cleaner look */
+    justify-content: space-between;
 }
 
-.product-info-form h2 {
-    color: #1b9dd7;
-    margin-bottom: 20px;
+/* Image Container */
+.image-container {
+    flex: 0 1 400px; /* Reduced max-width and added flex-grow/shrink */
+    margin-right: 20px; /* Increased margin for spacing */
+    text-align: center; /* Center align the image */
 }
 
-.product-info-form {
-    margin-bottom: 15px;
-}
-
-.product-info-form label {
+/* Responsive Image */
+.img-responsive {
+    max-width: 100%;
+    height: auto;
     display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
+    margin: 0 auto;
 }
 
-.product-info-form input[type="text"],
-.product-info-form input[type="email"],
-.product-info-form input[type="password"] {
-    font-family: "Roboto", sans-serif; /* Match font */
-    padding: 8px;
-    margin: 5px 0 15px; /* Consistent margin */
+/* Price Box */
+.price-box {
+    flex: 0 1 200px; /* Adjusted flex properties */
+    padding: 15px; /* Increased padding */
+    background-color: #f0f8ff;
+    border: 1px solid #1b9dd7;
     border-radius: 5px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+    text-align: center;
+    margin-left: 20px; /* Increased margin for spacing */
 }
 
-.product-info-form button {
-    font-family: "Roboto", sans-serif; /* Match font */
-    background-color: #1b9dd7; /* Consistent color */
+/* Product Details */
+.product-details {
+    padding: 25px; /* Increased padding for more space */
+    margin-top: 20px;
+    border-top: 2px solid #e0e0e0; /* Added a top border for definition */
+}
+
+/* Details Text */
+.product-details p {
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 15px; /* Increased margin for better spacing */
+    line-height: 1.6; /* Increased line height for readability */
+    color: #333; /* Slightly darker color for better readability */
+}
+
+/* Update Product Button Style */
+#update_product {
+    width: 150px;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    background-color: #1b9dd7; /* Blue color to match your theme */
     color: white;
-    padding: 10px 15px;
-    margin-top: 10px;
-    border-radius: 5px;
+    padding: 10px 20px;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    display: block;
+    margin: 20px auto; /* Center the button */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
-.product-info-form button:hover {
-    background-color: #1188be; /* Consistent hover effect */
+#update_product:hover {
+    background-color: #0f7bc1; /* Slightly darker shade on hover */
+}
+
+#update_product:focus {
+    outline: none; /* Remove outline on focus for cleaner look */
 }
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .product-info-div {
-        flex-direction: column; /* Stack them vertically on smaller screens */
+        flex-direction: column;
     }
+
     .image-container,
-    .product-info-form {
-        width: 100%; /* Full width on smaller screens */
-        margin: 0; /* Remove margin */
+    .price-box,
+    .product-details {
+        width: 100%;
+        margin: 10px 0;
+        max-width: none;
+    }
+
+    .price-box {
+        order: -1; /* Move the price box above the image on smaller screens */
     }
 }

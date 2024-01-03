@@ -12,7 +12,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="icon" type="image/x-icon" href="global-images/icon.png" />
     <link rel="stylesheet" href="global.css" />
-    <link rel="stylesheet" href="product/product.css" />
+    <link rel="stylesheet" href="admin-product/admin-product.css" />
 </head>
 
 <body>
@@ -27,14 +27,22 @@ session_start();
                 $productData = include 'private/product-details.inc.php'; // Replace with your actual include path
                 if (!empty($productData)) {
                     $img = $productData['image_url'];
-                    echo "<img src='$img' id='productImage' class='img-responsive'>";
+                    echo "<img src='$img' type='file' name='image' id='productImage' class='img-responsive'>";
                 }
                 ?>
             </div>
-            <form action='update-product-dbh.inc.php' method='POST' class="product-info-form">
+            <form action='private/product-update.inc.php' method='POST' class="product-info-form">
                 <?php
                 $productData = include 'private/product-details.inc.php'; // Replace with your actual include path
                 if (!empty($productData)) {
+
+                    echo "<input type='hidden' name='product_id' value='" . htmlspecialchars($productData["product_id"]) . "'>";
+
+
+                    echo "<div class='form-items'>";
+
+                    echo "<div class='form-half'>";
+
                     // Name
                     echo "<label for='name'>Name:</label>";
                     echo "<input type='text' id='name' name='name' value='" . htmlspecialchars($productData["name"]) . "'>";
@@ -55,10 +63,6 @@ session_start();
                     echo "<label for='stock_quantity'>Stock quantity:</label>";
                     echo "<input type='text' id='stock_quantity' name='stock_quantity' value='" . htmlspecialchars($productData["stock_quantity"]) . "'>";
 
-                    // Description
-                    echo "<label for='description'>Description:</label>";
-                    echo "<input type='text' id='description' name='description' value='" . htmlspecialchars($productData["description"]) . "'>";
-
                     // Power efficiency
                     echo "<label for='power_efficiency'>Power efficiency:</label>";
                     echo "<input type='text' id='power_efficiency' name='power_efficiency' value='" . htmlspecialchars($productData["power_efficiency"]) . "'>";
@@ -78,7 +82,9 @@ session_start();
                     // Power output cooling
                     echo "<label for='power_output_cooling'>Power Output (Cooling):</label>";
                     echo "<input type='text' id='power_output_cooling' name='power_output_cooling' value='" . htmlspecialchars($productData["power_output_cooling"]) . "'>";
+                    echo "</div>";
 
+                    echo "<div class='form-half'>";
                     // Noice inside
                     echo "<label for='noise_inside_unit'>Noice inside:</label>";
                     echo "<input type='text' id='noise_inside_unit' name='noise_inside_unit' value='" . htmlspecialchars($productData["noise_inside_unit"]) . "'>";
@@ -90,16 +96,48 @@ session_start();
                     // Max temp heating
                     echo "<label for='max_temp_heating'>Max temp heating (in C):</label>";
                     echo "<input type='text' id='max_temp_heating' name='max_temp_heating' value='" . htmlspecialchars($productData["max_temp_heating"]) . "'>";
-                    //! Noice outside
-                    echo "<label for='noise_outside_unit'>Noice outside:</label>";
-                    echo "<input type='text' id='noise_outside_unit' name='noise_outside_unit' value='" . htmlspecialchars($productData["noise_outside_unit"]) . "'>";
-                    // Noice outside
-                    echo "<label for='noise_outside_unit'>Noice outside:</label>";
-                    echo "<input type='text' id='noise_outside_unit' name='noise_outside_unit' value='" . htmlspecialchars($productData["noise_outside_unit"]) . "'>";
-                    // Noice outside
-                    echo "<label for='noise_outside_unit'>Noice outside:</label>";
-                    echo "<input type='text' id='noise_outside_unit' name='noise_outside_unit' value='" . htmlspecialchars($productData["noise_outside_unit"]) . "'>";
 
+                    // Min temp heating 
+                    echo "<label for='min_temp_heating'>Min temp heating:</label>";
+                    echo "<input type='text' id='min_temp_heating' name='min_temp_heating' value='" . htmlspecialchars($productData["min_temp_heating"]) . "'>";
+
+                    // Max temp cooling
+                    echo "<label for='max_temp_cooling'>Max temp cooling:</label>";
+                    echo "<input type='text' id='max_temp_cooling' name='max_temp_cooling' value='" . htmlspecialchars($productData["max_temp_cooling"]) . "'>";
+
+                    // Min temp cooling
+                    echo "<label for='min_temp_cooling'>Min temp cooling:</label>";
+                    echo "<input type='text' id='min_temp_cooling' name='min_temp_cooling' value='" . htmlspecialchars($productData["min_temp_cooling"]) . "'>";
+
+                    // Size inside
+                    echo "<label for='size_inside_unit'>Inside size:</label>";
+                    echo "<input type='text' id='size_inside_unit' name='size_inside_unit' value='" . htmlspecialchars($productData["size_inside_unit"]) . "'>";
+
+                    // Size outside
+                    echo "<label for='size_outside_unit'>Outside size:</label>";
+                    echo "<input type='text' id='size_outside_unit' name='size_outside_unit' value='" . htmlspecialchars($productData["size_outside_unit"]) . "'>";
+
+                    // Max size
+                    echo "<label for='recommended_room_size'>Max size of room:</label>";
+                    echo "<input type='text' id='recommended_room_size' name='recommended_room_size' value='" . htmlspecialchars($productData["recommended_room_size"]) . "'>";
+
+                    // Wi-Fi
+                    echo "<label for='wifi'>Wi-Fi (true or false, default false):</label>";
+                    $wifi_status = $productData["wifi"] == 1 ? "True" : "False";
+                    echo "<input type='text' id='wifi' name='wifi' value='" . $wifi_status . "'>";
+
+
+                    echo "</div>";
+                    echo "</div>";
+
+                    // Description
+                    echo "<label for='description'>Description:</label>";
+                    echo "<input type='text' id='description' name='description' value='" . htmlspecialchars($productData["description"]) . "'>";
+
+                    if (isset($_GET['update'])) {
+                        $updateMessage = htmlspecialchars($_GET['update']);
+                        echo "<div style='color: green; text-align: center;'>" . $updateMessage . "</div>";
+                    }
 
                     echo "<button type='submit' id='update_product' name='update_product'>Update Product</button>";
                 } else {
@@ -110,7 +148,7 @@ session_start();
         </div>
     </main>
     <?php include 'footer.php'; ?>
-    <script src="product/product.js"></script>
+    <script src="admin-product/admin-product.js"></script>
 </body>
 
 </html>

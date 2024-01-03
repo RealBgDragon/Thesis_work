@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pwd = $_POST['pwd'];
 
     try {
-        $stmt = $pdo->prepare("SELECT id, username, pwd FROM users WHERE username = :username");
+        $stmt = $pdo->prepare("SELECT id, username, pwd, account_type FROM users WHERE username = :username");
         $stmt->bindParam(":username", $username);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Password is correct, start a new session
                 $_SESSION['userId'] = $user['id'];
                 $_SESSION['username'] = $user['username'];
+                $_SESSION['account_type'] = $user['account_type'];
 
                 // Redirect to a new page (e.g., dashboard)
                 header("Location: ../login.php");

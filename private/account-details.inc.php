@@ -6,7 +6,7 @@ $userData = [];
 if (isset($_SESSION['userId'])) {
     $user_id = $_SESSION['userId'];
 
-    $sql = "SELECT username ,firstName, lastName, created_at FROM users WHERE id = ?";
+    $sql = "SELECT username ,firstName, lastName, email, account_type, created_at FROM users WHERE id = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(1, $user_id, PDO::PARAM_INT);
     $stmt->execute();

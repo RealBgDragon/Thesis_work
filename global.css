@@ -116,6 +116,13 @@ nav a:hover {
     background-position: 0 0;
 }
 
+main hr {
+    width: 95%;
+    border: none;
+    border-top: 1px solid #1b9dd7;
+    margin: 20px auto;
+}
+
 /** Footer css*/
 
 footer {
