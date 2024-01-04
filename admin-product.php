@@ -140,6 +140,9 @@ session_start();
                     }
 
                     echo "<button type='submit' id='update_product' name='update_product'>Update Product</button>";
+
+                    echo "<button onclick='location.href='yourpage.php?newproduct=true''>Create New Product</button>"; //it will create a new empty product and get its info, and then fill it 
+                
                 } else {
                     echo "<p>No product information found.</p>";
                 }
