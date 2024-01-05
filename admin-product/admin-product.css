@@ -23,8 +23,8 @@ main h1 {
 
 .product-info-div {
     display: flex;
-    align-items: start; /* Align items at the start of the container */
-    justify-content: space-between; /* Distribute space evenly */
+    align-items: start;
+    justify-content: space-between;
     gap: 10px;
 }
 
@@ -95,6 +95,13 @@ main h1 {
 }
 
 .product-info-form button {
+    margin-right: auto;
+}
+
+main button {
+    width: 150px;
+    margin-left: auto;
+    display: block;
     font-family: "Roboto", sans-serif; /* Match font */
     background-color: #1b9dd7; /* Consistent color */
     color: white;
@@ -106,6 +113,11 @@ main h1 {
     transition: background-color 0.3s;
 }
 
+.product-create-form button {
+    margin-bottom: 20px;
+    margin-right: 2.5vw;
+}
+
 .product-info-form button:hover {
     background-color: #1188be; /* Consistent hover effect */
 }
@@ -114,6 +126,9 @@ main h1 {
 @media (max-width: 768px) {
     .product-info-div {
         flex-direction: column; /* Stack them vertically on smaller screens */
+    }
+    .form-items {
+        flex-direction: column;
     }
     .image-container,
     .product-info-form {

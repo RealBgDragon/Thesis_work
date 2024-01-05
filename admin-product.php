@@ -20,6 +20,9 @@ session_start();
     <main>
         <h1>Product Details</h1>
         <hr>
+        <form action='private/product-create.inc.php' method='POST' class="product-create-form">
+            <button type="submit" name="create_product">Create New Product</button>
+        </form>
         <div class="product-info-div">
             <div class="image-container" id="imageDropZone">
                 <?php
@@ -141,7 +144,8 @@ session_start();
 
                     echo "<button type='submit' id='update_product' name='update_product'>Update Product</button>";
 
-                    echo "<button onclick='location.href='yourpage.php?newproduct=true''>Create New Product</button>"; //it will create a new empty product and get its info, and then fill it 
+                    // echo "<button onclick='location.href='yourpage.php?newproduct=true''>Create New Product</button>"; 
+                    //? it will create a new empty product and get its info, and then fill it 
                 
                 } else {
                     echo "<p>No product information found.</p>";
@@ -149,6 +153,7 @@ session_start();
                 ?>
             </form>
         </div>
+
     </main>
     <?php include 'footer.php'; ?>
     <script src="admin-product/admin-product.js"></script>
