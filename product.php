@@ -103,7 +103,7 @@ session_start();
 
             echo "</div>";
 
-            if ($_SESSION['account_type'] == "admin") {
+            if (isset($_SESSION['account_type']) && $_SESSION['account_type'] == "admin") {
                 echo "<a href='admin-product.php' id='update_product' name='update_product'>Update Product</a>";
             }
 
