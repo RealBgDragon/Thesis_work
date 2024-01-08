@@ -21,8 +21,10 @@ session_start();
         <?php
         // Image
         $productData = include 'private/product-details.inc.php'; // Replace with your actual include path
-        $img = $productData['image_url'];
-        echo "<h1 id='productName'>" . htmlspecialchars($productData['name']) . "</h1>";
+        if (!empty($productData)) {
+            $img = $productData['image_url'];
+            echo "<h1 id='productName'>" . htmlspecialchars($productData['name']) . "</h1>";
+        }
         ?>
         <hr>
         <?php
@@ -104,7 +106,8 @@ session_start();
             echo "</div>";
 
             if (isset($_SESSION['account_type']) && $_SESSION['account_type'] == "admin") {
-                echo "<a href='admin-product.php' id='update_product' name='update_product'>Update Product</a>";
+                $product_id = htmlspecialchars($_GET["product_id"]);
+                echo "<a href='admin-product.php?product_id=" . $product_id . "' id='update_product' name='update_product'>Update Product</a>";
             }
 
         } else {

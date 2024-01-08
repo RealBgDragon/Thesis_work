@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Execute the statement
     if ($stmt->execute()) {
-        header("Location: ../admin-product.php?update=successful");
+        header("Location: ../admin-product.php?update=successful&product_id=$product_id");
     } else {
         header("Location: ../admin-product.php?update=error:" . $stmt->errorInfo()[2]);
         echo "Error updating record: " . $stmt->errorInfo()[2];

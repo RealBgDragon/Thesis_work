@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //? Made with POST for security reas
         $pdo = null; // done for good practice
         $stmt = null;
 
-        header("Location: ../register.php");
+        header("Location: ../register.php?success=Account successfully created");
 
         die();
     } catch (PDOException $e) {
@@ -52,5 +52,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //? Made with POST for security reas
     }
 
 } else {
-    header("Location: ../register.php");
+    header("Location: ../register.php?error='There was an error'");
 }

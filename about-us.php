@@ -23,6 +23,11 @@ session_start();
 
         <hr>
         <p1></p1>
+        <?php
+        if (isset($_SESSION['account_type']) && $_SESSION['account_type'] = 'admin') {
+            echo "<button>Update</button>"; //! have to add the about us to the db or scrap the idea!
+        }
+        ?>
     </main>
     <?php include 'footer.php'; ?>
 </body>

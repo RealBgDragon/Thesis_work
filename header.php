@@ -1,5 +1,7 @@
 <header>
-    <img src="global-images/logo.png">
+    <a href="main.php">
+        <img src="global-images/logo.png" alt="Logo">
+    </a>
     <form class="search-bar">
         <input type="text" placeholder="Search for products..." name="search">
         <button type="submit">Search</button>

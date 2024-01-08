@@ -21,6 +21,9 @@ session_start();
         <h1>Product Details</h1>
         <hr>
         <form action='private/product-create.inc.php' method='POST' class="product-create-form">
+            <button type="submit" name="create_product">Create New Product</button> <!-- Make it into delete product -->
+        </form>
+        <form action='private/product-create.inc.php' method='POST' class="product-create-form">
             <button type="submit" name="create_product">Create New Product</button>
         </form>
         <div class="product-info-div">

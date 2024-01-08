@@ -50,6 +50,9 @@ session_start();
                 if (isset($_GET['error'])) {
                     $errorMessage = htmlspecialchars($_GET['error']);
                     echo "<div style='color: red;'>" . $errorMessage . "</div>";
+                } else if (isset($_GET['success'])) {
+                    $success = htmlspecialchars($_GET['success']);
+                    echo "<div style='color: green'>" . $success . "</div>";
                 }
                 ?>
 

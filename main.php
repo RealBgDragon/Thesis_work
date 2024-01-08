@@ -21,7 +21,7 @@ session_start();
     <main>
         <ul class="list-products">
             <li class="product">
-                <a href="product.php" class="product-link">
+                <a href="product.php?product_id=1" class="product-link">
                     <img src="https://osaka.bg/sites/default/files/klimatik-OSAKA-DSBL_0.JPG" alt="File not found">
                     <h2>Product Name</h2>
                     <p class="price">$100</p>
@@ -32,7 +32,7 @@ session_start();
                 </a>
             </li>
             <li class="product">
-                <a href="product.php" class="product-link">
+                <a href="product.php?product_id=1" class="product-link">
                     <img src="https://osaka.bg/sites/default/files/klimatik-OSAKA-DSBL_0.JPG" alt="File not found">
                     <h2>Product Name</h2>
                     <p class="price">$100</p>
@@ -43,7 +43,7 @@ session_start();
                 </a>
             </li>
             <li class="product">
-                <a href="product.php" class="product-link">
+                <a href="product.php?product_id=1" class="product-link">
                     <img src="https://osaka.bg/sites/default/files/klimatik-OSAKA-DSBL_0.JPG" alt="File not found">
                     <h2>Product Name</h2>
                     <p class="price">$100</p>
@@ -54,7 +54,7 @@ session_start();
                 </a>
             </li>
             <li class="product">
-                <a href="product.php" class="product-link">
+                <a href="product.php?product_id=1" class="product-link">
                     <img src="https://osaka.bg/sites/default/files/klimatik-OSAKA-DSBL_0.JPG" alt="File not found">
                     <h2>Product Name</h2>
                     <p class="price">$100</p>
@@ -65,7 +65,7 @@ session_start();
                 </a>
             </li>
             <li class="product">
-                <a href="product.php" class="product-link">
+                <a href="product.php?product_id=1" class="product-link">
                     <img src="https://osaka.bg/sites/default/files/klimatik-OSAKA-DSBL_0.JPG" alt="File not found">
                     <h2>Product Name</h2>
                     <p class="price">$100</p>
