@@ -94,10 +94,6 @@ main h1 {
     box-sizing: border-box;
 }
 
-.product-info-form button {
-    margin-right: auto;
-}
-
 main button {
     width: 150px;
     margin-left: auto;
@@ -113,8 +109,12 @@ main button {
     transition: background-color 0.3s;
 }
 
-.product-create-form button {
-    margin-bottom: 20px;
+main button:hover {
+    background-color: #1188be;
+}
+
+.popup-buttons button {
+    flex-direction: row;
     margin-right: 2.5vw;
 }
 
@@ -135,4 +135,39 @@ main button {
         width: 100%; /* Full width on smaller screens */
         margin: 0; /* Remove margin */
     }
+}
+/*TODO test code*/
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+}
+
+/* Popup window style */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    width: 80%;
+    max-width: 450px; /* Adjust as per your requirement */
+}
+
+.popup h2 {
+    margin-top: 0px;
+    margin-bottom: 40px;
+}
+
+#delete-product {
+    background-color: red;
 }

@@ -27,3 +27,47 @@ function updateImage(file) {
     };
     reader.readAsDataURL(file);
 }
+
+// create popup
+document
+    .getElementById("create-product")
+    .addEventListener("click", function () {
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("create-popup").style.display = "block";
+    });
+
+document
+    .getElementById("close-create-popup")
+    .addEventListener("click", function () {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("create-popup").style.display = "none";
+    });
+
+window.onclick = function (event) {
+    if (event.target == document.getElementById("overlay")) {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("create-popup").style.display = "none";
+    }
+};
+
+// delete popup
+document
+    .getElementById("delete-product")
+    .addEventListener("click", function () {
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("delete-popup").style.display = "block";
+    });
+
+document
+    .getElementById("close-delete-popup")
+    .addEventListener("click", function () {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("delete-popup").style.display = "none";
+    });
+
+window.onclick = function (event) {
+    if (event.target == document.getElementById("overlay")) {
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("delete-popup").style.display = "none";
+    }
+};
