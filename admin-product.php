@@ -22,6 +22,7 @@ session_start();
         echo "<a href=main.php style='color:red'>Home</a>";
         die();
     }
+    //TODO add a drop down menu where you can chose between all products
     ?>
     <main>
         <h1>Product Details</h1>
