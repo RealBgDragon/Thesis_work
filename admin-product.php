@@ -33,8 +33,9 @@ session_start();
             <h2>Are you sure you want to delete the current product?</h2>
             <div class="popup-buttons" style="display:flex">
                 <button name="close-windows" id="close-delete-popup">Cancel</button>
-                <form action='private/product-create.inc.php' method='POST' class="product-create-form">
-                    <button type="submit" name="create_product" id="delete-product">Delete the product</button>
+                <form action='private/product-delete.inc.php' method='POST' class="product-create-form">
+                    <button type="submit" name="create_product" style="background-color: red">Delete the
+                        product</button>
                 </form>
             </div>
         </div>

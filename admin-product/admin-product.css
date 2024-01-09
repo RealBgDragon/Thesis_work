@@ -113,30 +113,14 @@ main button:hover {
     background-color: #1188be;
 }
 
-.popup-buttons button {
+.popup-buttons {
     flex-direction: row;
-    margin-right: 2.5vw;
 }
 
 .product-info-form button:hover {
     background-color: #1188be; /* Consistent hover effect */
 }
 
-/* Responsive adjustments for smaller screens */
-@media (max-width: 768px) {
-    .product-info-div {
-        flex-direction: column; /* Stack them vertically on smaller screens */
-    }
-    .form-items {
-        flex-direction: column;
-    }
-    .image-container,
-    .product-info-form {
-        width: 100%; /* Full width on smaller screens */
-        margin: 0; /* Remove margin */
-    }
-}
-/*TODO test code*/
 .overlay {
     display: none;
     position: fixed;
@@ -165,9 +149,21 @@ main button:hover {
 
 .popup h2 {
     margin-top: 0px;
+    margin-left: 35px;
     margin-bottom: 40px;
 }
 
-#delete-product {
-    background-color: red;
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .product-info-div {
+        flex-direction: column; /* Stack them vertically on smaller screens */
+    }
+    .form-items {
+        flex-direction: column;
+    }
+    .image-container,
+    .product-info-form {
+        width: 100%; /* Full width on smaller screens */
+        margin: 0; /* Remove margin */
+    }
 }
