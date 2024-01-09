@@ -12,7 +12,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //? Made with POST for security reas
         }
     }
 
-    //TODO make to handle if already taken
     $username = htmlspecialchars($_POST["username"]); // prevent SQL ingection
     $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT); // hasing the password
     $email = filter_var($_POST["email"], FILTER_VALIDATE_EMAIL); //TODO add a check in the js
@@ -26,6 +25,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //? Made with POST for security reas
 
     try {
         require_once "dbh.inc.php";
+
+        $checkQuery = "SELECT * FROM users WHERE username = :username OR email = :email";
+        $checkStmt = $pdo->prepare($checkQuery);
+        $checkStmt->bindParam(":username", $username);
+        $checkStmt->bindParam(":email", $email);
+        $checkStmt->execute();
+
+        if ($checkStmt->rowCount() > 0) {
+            // Username or email exists
+            header("Location: ../register.php?error=Username or Email already taken");
+            die();
+        }
 
         $query = "INSERT INTO users (username, pwd, email, account_type, firstName, lastName) 
         VALUES (:username, :pwd, :email, :account_type, :firstName, :lastName);";

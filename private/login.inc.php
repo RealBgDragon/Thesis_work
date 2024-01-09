@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(":username", $username);
         $stmt->execute();
         if ($stmt->rowCount() > 0) {
-            $user = $stmt->fetch(PDO::FETCH_ASSOC); //! error is in the databse make the password longer
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
             if (password_verify($pwd, $user["pwd"])) {
                 // Password is correct, start a new session
                 $_SESSION['userId'] = $user['id'];

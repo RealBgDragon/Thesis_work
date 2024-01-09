@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING);
 
     // Prepare SQL statement
-    $sql = "UPDATE products SET 
+    $query = "UPDATE products SET 
                 name = :name, 
                 model = :model, 
                 brand = :brand, 
@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 description = :description 
             WHERE product_id = :product_id"; // Replace product_id with your actual identifier
 
-    $stmt = $pdo->prepare($sql);
+    $stmt = $pdo->prepare($query);
 
     // Bind parameters
     $stmt->bindParam(':name', $name, PDO::PARAM_STR);
@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         header("Location: ../admin-product.php?update=successful&product_id=$product_id");
     } else {
-        header("Location: ../admin-product.php?update=error:" . $stmt->errorInfo()[2]);
+        header("Location: ../admin-product.php?update=error" . $stmt->errorInfo()[2] . "&product_id=$product_id");
         echo "Error updating record: " . $stmt->errorInfo()[2];
     }
 
