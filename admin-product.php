@@ -34,7 +34,8 @@ session_start();
             <div class="popup-buttons" style="display:flex">
                 <button name="close-windows" id="close-delete-popup">Cancel</button>
                 <form action='private/product-delete.inc.php' method='POST' class="product-create-form">
-                    <button type="submit" name="create_product" style="background-color: red">Delete the
+                    <input type='hidden' name='product_id' value='<?php echo htmlspecialchars($_GET["product_id"]); ?>'>
+                    <button type="submit" name="delete_product" style="background-color: red">Delete the
                         product</button>
                 </form>
             </div>
