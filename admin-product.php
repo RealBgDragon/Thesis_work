@@ -53,6 +53,23 @@ session_start();
             </div>
         </div>
 
+        <div class="dropdown">
+            <label for="productSelect">Select Air Conditioner:</label>
+            <select id="productSelect" name="productSelect">
+                <?php
+                try {
+                    $productNames = include 'private/product-name-id.inc.php';
+                    echo $productNames["product_id"]; //fix this, unknow issue 
+                    foreach ($productNames as $product) {
+                        echo "<option value='{$product['product_id']}'>{$product['name']}</option>";
+                    }
+                } catch (Exception $e) {
+                    echo $e->getMessage();
+                }
+                ?>
+            </select>
+        </div>
+
         <button id="delete-product" name="delete_product" style="background-color:red">Delete Product</button>
 
         <button id="create-product" name="create_product">Create New Product</button>
@@ -61,7 +78,7 @@ session_start();
             <div class="image-container" id="imageDropZone">
                 <?php
                 // Image
-                $productData = include 'private/product-details.inc.php'; // Replace with your actual include path
+                $productData = include 'private/product-details.inc.php';
                 if (!empty($productData)) {
                     $img = $productData['image_url'];
                     echo "<img src='$img' type='file' name='image' id='productImage' class='img-responsive'>";
