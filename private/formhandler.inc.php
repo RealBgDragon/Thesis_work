@@ -26,18 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //? Made with POST for security reas
     try {
         require_once "dbh.inc.php";
 
-        $checkQuery = "SELECT * FROM users WHERE username = :username OR email = :email";
-        $checkStmt = $pdo->prepare($checkQuery);
-        $checkStmt->bindParam(":username", $username);
-        $checkStmt->bindParam(":email", $email);
-        $checkStmt->execute();
-
-        if ($checkStmt->rowCount() > 0) {
-            // Username or email exists
-            header("Location: ../register.php?error=Username or Email already taken");
-            die();
-        }
-
         $query = "INSERT INTO users (username, pwd, email, account_type, firstName, lastName) 
         VALUES (:username, :pwd, :email, :account_type, :firstName, :lastName);";
 
@@ -59,7 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") { //? Made with POST for security reas
 
         die();
     } catch (PDOException $e) {
-        die("Query failed: " . $e->getMessage());
+        if ($e->getCode() == 23000) { // Code for integrity constraint violation (includes unique constraint)
+            header("Location: ../register.php?error=Username or Email already taken");
+        } else {
+            header("Location: ../register.php?error=An unexpected error occurred");
+        }
     }
 
 } else {
