@@ -103,3 +103,5 @@ function addMultipleListeners(element, events, handler) {
 // Adding event listeners for focus and input
 addMultipleListeners(password, ["focus", "input"], showModal);
 addMultipleListeners(rePassword, ["focus", "input"], handleInput);
+
+//TODO Email check

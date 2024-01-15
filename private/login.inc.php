@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../login.php?error=Ivalid password or username");
         }
     } catch (PDOException $e) {
-        header("Location: ../login.php?error=sqlerror");
+        header("Location: ../login.php?error=Connection issue, Please try again");
     }
 
     // Close connection

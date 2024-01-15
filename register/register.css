@@ -11,13 +11,6 @@
     padding: 50px;
 }
 
-main h1 {
-    font-family: "Roboto", sans-serif;
-    font-size: 36px;
-    margin-left: 100px;
-    color: #1188be;
-}
-
 main hr {
     width: 95%;
     border: none;

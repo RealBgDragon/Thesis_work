@@ -116,6 +116,13 @@ nav a:hover {
     background-position: 0 0;
 }
 
+main h1 {
+    font-family: "Roboto", sans-serif;
+    font-size: 36px;
+    margin-left: 100px;
+    color: #1188be;
+}
+
 main hr {
     width: 95%;
     border: none;

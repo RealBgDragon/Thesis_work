@@ -8,14 +8,6 @@ main {
     border-radius: 8px;
 }
 
-/* Header Style */
-main h1 {
-    font-family: "Roboto", sans-serif;
-    font-size: 36px;
-    margin-left: 100px;
-    color: #1188be;
-}
-
 /* Product Information Section */
 .product-info-div {
     display: flex;
