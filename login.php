@@ -23,7 +23,6 @@ session_start();
         <hr>
         <div class="container">
             <form action="private/login.inc.php" method="post" class="login">
-                <h2>Login</h2>
                 <h3>Username</h3>
                 <input type="text" name="username">
                 <h3>Password</h3>
@@ -40,8 +39,8 @@ session_start();
                 <h2>Don`t have an account?</h2>
                 <a href="register.php">Register</a>
                 <h2>Why should I register?</h2>
-                <p>Having an account allows you to more easily check out and pucrchus our products</p>
-                <p>Allows you to have better support</p>
+                <p>Having an account allows you to more easily check out and purchase our products!</p>
+                <p>We can provide you with better support!</p>
                 <p>And much more! Come to find out!</p>
             </div>
         </div>

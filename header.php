@@ -3,7 +3,7 @@
         <img src="global-images/logo.png" alt="Logo">
     </a>
     <form class="search-bar">
-        <input type="text" placeholder="Search for products..." name="search">
+        <input type="search" placeholder="Search for products..." name="search">
         <button type="submit">Search</button>
     </form>
     <div class="auth-links">

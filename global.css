@@ -1,14 +1,17 @@
 body {
     font-family: "Roboto", sans-serif;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     background-color: #f5f8fa;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
+/** Header css start*/
+
 header {
-    font-family: "Roboto", sans-serif;
     background: linear-gradient(to right, #20c7c0, #1b9dd7);
     color: #f2f2f2;
     position: relative;
@@ -25,7 +28,7 @@ header {
     align-items: center;
 }
 
-.search-bar input[type="text"] {
+.search-bar input[type="search"] {
     padding: 5px;
     margin-right: 5px;
     border-radius: 5px;
@@ -44,7 +47,7 @@ header {
 .search-bar button:hover {
     background-color: #1188be;
 }
-/*!new stuff ends here*/
+
 header img {
     position: relative;
     left: 10px;
@@ -116,10 +119,27 @@ nav a:hover {
     background-position: 0 0;
 }
 
+/** Header css finish*/
+
+/** Main css start*/
+
+main {
+    width: 50vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: white;
+    box-shadow: 0px 4px 12px rgba(27, 157, 215, 0.1);
+    border-radius: 8px;
+    padding: 50px;
+    flex: 1;
+}
+
 main h1 {
     font-family: "Roboto", sans-serif;
     font-size: 36px;
-    margin-left: 100px;
+    margin-left: 5vw;
     color: #1188be;
 }
 
@@ -136,12 +156,14 @@ h2 {
     color: #1188be;
 }
 
-/** Footer css*/
+/** Main css end*/
+
+/** Footer css start*/
 
 footer {
-    height: auto;
+    position: relative;
+    height: 80px;
     width: 100vw;
-    margin-top: 20px;
     background-color: rgb(0, 0, 60);
     padding: 20px 0;
     text-align: center;
@@ -182,7 +204,16 @@ footer {
     color: #f2f2f2;
 }
 
-@media screen and (max-width: 600px) {
+/** footer css end*/
+
+/** Media start*/
+
+@media screen and (max-width: 1000px) {
+    main {
+        width: 75vw;
+        padding: 40px;
+    }
+
     header {
         flex-direction: column;
         align-items: flex-start; /* Align items to the start */

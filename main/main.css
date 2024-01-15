@@ -1,11 +1,13 @@
 main {
     width: auto;
-    height: 100vh; /*! Place holder till I fill the site */
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 0;
 }
 
 .list-products {
     scroll-behavior: smooth;
-    overflow-x: auto;
+    overflow-x: scroll;
     display: flex;
     gap: 10px;
     list-style-type: none;
@@ -63,7 +65,7 @@ main {
     padding: 0;
 }
 
-/*scroll bar*/
+/**scroll bar*/
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(to right, #20c7c0, #1b9dd7);
     border-radius: 10px;

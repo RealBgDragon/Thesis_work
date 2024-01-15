@@ -53,11 +53,12 @@ session_start();
             </div>
         </div>
 
-        <div class="dropdown">
+        <!-- <div class="dropdown">
             <label for="productSelect">Select Air Conditioner:</label>
             <select id="productSelect" name="productSelect">
                 <?php
-                try {
+                //! REMEMBER TO FIX
+                /* try {
                     $productNames = include 'private/product-name-id.inc.php';
                     echo $productNames["product_id"]; //fix this, unknow issue 
                     foreach ($productNames as $product) {
@@ -65,10 +66,10 @@ session_start();
                     }
                 } catch (Exception $e) {
                     echo $e->getMessage();
-                }
+                } */
                 ?>
             </select>
-        </div>
+        </div> -->
 
         <button id="delete-product" name="delete_product" style="background-color:red">Delete Product</button>
 

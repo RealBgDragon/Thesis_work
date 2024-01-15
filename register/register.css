@@ -1,30 +1,15 @@
 .container {
-    width: 50vw;
-    margin-left: auto;
-    margin-right: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: white;
-    box-shadow: 0px 4px 12px rgba(27, 157, 215, 0.1);
-    border-radius: 8px;
-    padding: 50px;
-}
-
-main hr {
-    width: 95%;
-    border: none;
-    border-top: 1px solid #1b9dd7;
-    margin: 20px auto;
 }
 
 .login {
-    height: auto;
     position: relative;
-    margin-right: 5vw;
     text-align: center;
     border-right: 1px solid #1b9dd7;
     padding-right: 12vw;
+    margin-left: 3vw;
 }
 
 .login h2 {
@@ -91,10 +76,6 @@ main hr {
     text-align: center;
 }
 
-.register h2 {
-    margin-left: -1%;
-}
-
 .register a {
     display: inline-block;
     text-decoration: none;
@@ -140,14 +121,10 @@ main hr {
     display: block;
 }
 
-@media screen and (max-width: 600px) {
-    header img {
-        height: auto;
-        width: 200px;
-    }
+@media screen and (max-width: 1616px) {
     .login {
-        margin-right: 0;
-        padding-right: 0;
+        margin: 0;
+        padding: 0;
         text-align: center;
         border: none;
     }
