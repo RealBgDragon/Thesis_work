@@ -73,7 +73,7 @@ window.onclick = function (event) {
 };
 
 // Selecting product
-var currentProductId = "<?php echo $_GET['product_id']; ?>";
+var currentProductId = document.getElementById("current_product_id").value;
 
 document.addEventListener("DOMContentLoaded", function () {
     var selectElement = document.getElementById("productSelect");

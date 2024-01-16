@@ -5,6 +5,15 @@
     gap: 10px;
 }
 
+.dropdown {
+    display: flex;
+    flex-direction: column;
+}
+
+#productSelect {
+    max-width: 180px;
+}
+
 .image-container {
     flex: 1;
     max-width: 500px;
