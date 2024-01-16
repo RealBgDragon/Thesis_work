@@ -19,6 +19,7 @@ session_start();
 <body>
     <?php include 'header.php'; ?>
     <main>
+
         <ul class="list-products">
             <li class="product">
                 <a href="product.php?product_id=1" class="product-link">

@@ -216,7 +216,8 @@ footer {
 
     header {
         flex-direction: column;
-        align-items: flex-start; /* Align items to the start */
+        align-items: flex-start;
+        height: 120px;
     }
 
     header img {

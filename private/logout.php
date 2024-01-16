@@ -3,7 +3,7 @@ session_start();
 session_unset();
 session_destroy();
 
-$redirect = 'login.php';
+$redirect = '../login.php';
 if (!empty($_SERVER['HTTP_REFERER'])) {
     $redirect = $_SERVER['HTTP_REFERER'];
 }

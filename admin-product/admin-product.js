@@ -71,3 +71,16 @@ window.onclick = function (event) {
         document.getElementById("delete-popup").style.display = "none";
     }
 };
+
+// Selecting product
+var currentProductId = "<?php echo $_GET['product_id']; ?>";
+
+document.addEventListener("DOMContentLoaded", function () {
+    var selectElement = document.getElementById("productSelect");
+    selectElement.value = currentProductId; // Set the default selected option
+
+    selectElement.addEventListener("change", function () {
+        var productId = this.value;
+        window.location.href = "admin-product.php?product_id=" + productId;
+    });
+});
