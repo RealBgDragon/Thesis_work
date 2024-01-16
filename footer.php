@@ -6,5 +6,6 @@
     <div class="footer-logo">
         <img src="global-images/Producer.jpg" alt="Firm Logo">
         <p>Created by Martin Mihaylov</p>
+        <p>Created by Human with love</p>
     </div>
 </footer>

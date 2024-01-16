@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'dbh.inc.php'; // Replace with your actual database connection file
 
     // Sanitize and validate input
-    $image_url = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_STRING);
+    /* $image_url = filter_input(INPUT_POST, 'image', FILTER_SANITIZE_STRING); */
 
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
     $model = filter_input(INPUT_POST, 'model', FILTER_SANITIZE_STRING);
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Prepare SQL statement
     $query = "UPDATE products SET 
                 name = :name, 
-                image_url = :image_url
+                /* image_url = :image_url */
                 model = :model, 
                 brand = :brand, 
                 price = :price, 
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $pdo->prepare($query);
 
     // Bind parameters
-    $stmt->bindParam(':image_url', $image_url, PDO::PARAM_STR);
+    /* $stmt->bindParam(':image_url', $image_url, PDO::PARAM_STR); */
 
     $stmt->bindParam(':name', $name, PDO::PARAM_STR);
     $stmt->bindParam(':model', $model, PDO::PARAM_STR);
