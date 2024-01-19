@@ -46,6 +46,9 @@ session_start();
                 <button id="submit">Submit</button>
 
                 <?php
+                checkSignupErrors();
+
+
                 if (isset($_GET['error'])) {
                     $errorMessage = htmlspecialchars($_GET['error']);
                     echo "<div style='color: red;'>" . $errorMessage . "</div>";
