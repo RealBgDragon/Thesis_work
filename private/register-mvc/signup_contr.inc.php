@@ -19,3 +19,8 @@ function isEmailInvalid($email)
         return false;
     }
 }
+
+function createUser(object $pdo, $username, $pwd, $email, $firstName, $lastName)
+{
+    setUser($pdo, $username, $pwd, $email, $firstName, $lastName);
+}

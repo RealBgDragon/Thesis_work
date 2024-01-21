@@ -1,5 +1,6 @@
 <?php
-session_start();
+include 'private/MVC/config_session.inc.php';
+include 'private/MVC/signup_view.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +23,7 @@ session_start();
         <h1>Register</h1>
         <hr>
         <div class="container">
-            <form action="private/formhandler.inc.php" method="post" class="login">
+            <form action="private/register-mvc/signup.inc.php" method="post" class="login">
                 <h3>Username</h3>
                 <input id="username" name="username" type="text">
                 <h3>Email</h3>
@@ -48,14 +49,6 @@ session_start();
                 <?php
                 checkSignupErrors();
 
-
-                if (isset($_GET['error'])) {
-                    $errorMessage = htmlspecialchars($_GET['error']);
-                    echo "<div style='color: red;'>" . $errorMessage . "</div>";
-                } else if (isset($_GET['success'])) {
-                    $success = htmlspecialchars($_GET['success']);
-                    echo "<div style='color: green'>" . $success . "</div>";
-                }
                 ?>
 
             </form>
