@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $errors['invalidEmail'] = 'The email is invalid!';
         }
 
-        require_once 'config_session.inc.php';
+        require_once '../config_session.inc.php';
 
         if ($errors) {
             $_SESSION['errorSignup'] = $errors;
