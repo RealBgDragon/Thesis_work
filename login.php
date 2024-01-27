@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once 'private/config_session.inc.php';
+require_once 'private/login-mvc/login_view.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,18 +23,17 @@ session_start();
         <h1>Login</h1>
         <hr>
         <div class="container">
-            <form action="private/login.inc.php" method="post" class="login">
+            <form action="private/login-mvc/login.inc.php" method="post" class="login">
                 <h3>Username</h3>
                 <input type="text" name="username">
                 <h3>Password</h3>
                 <input type="password" name="pwd">
                 <button id="submit">Submit</button>
+
                 <?php
-                if (isset($_GET['error'])) {
-                    $errorMessage = htmlspecialchars($_GET['error']);
-                    echo "<div style='color: red;'>" . $errorMessage . "</div>";
-                }
+                checkLoginErrors();
                 ?>
+
             </form>
             <div class="register">
                 <h2>Don`t have an account?</h2>

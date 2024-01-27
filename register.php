@@ -1,6 +1,6 @@
 <?php
-include 'private/MVC/config_session.inc.php';
-include 'private/MVC/signup_view.inc.php';
+require_once 'private/config_session.inc.php';
+require_once 'private/register-mvc/signup_view.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

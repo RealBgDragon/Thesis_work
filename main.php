@@ -1,5 +1,6 @@
 <?php
-session_start();
+require_once 'private/config_session.inc.php';
+require_once 'private/login-mvc/login_view.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +18,9 @@ session_start();
 </head>
 
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'header.php';
+    checkLoginErrors(); ?>
+
     <main>
 
         <ul class="list-products">
