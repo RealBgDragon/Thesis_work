@@ -21,15 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $errors["login_incorrect"] = "Wrong username or password";
         }
 
-        if (isUsernameWrong($result) && isPasswordWrong($pwd, $result["pwd"])) {
+        if (!isUsernameWrong($result) && isPasswordWrong($pwd, $result["pwd"])) {
             $errors["login_incorrect"] = "Wrong username or password";
         }
 
         require_once '../config_session.inc.php';
 
         if ($errors) {
-            $_SESSION["errors_login"] = $errors;
-
+            $_SESSION["errorsLogin"] = $errors;
             header("Location: ../../login.php");
             die();
         }
@@ -39,7 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         session_id($sessionId);
 
         $_SESSION["userId"] = $result["id"];
-        $_SESSION["username"] = htmlspecialchars($result["username"]); //did if I try to output the username in the website
+        $_SESSION["username"] = htmlspecialchars($result["username"]);
+        $_SESSION["account_type"] = $result["account_type"];
 
         $_SESSION["last_regeneration"] = time();
         header("Location: ../../main.php?login=success");

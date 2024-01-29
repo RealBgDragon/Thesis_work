@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 function checkLoginErrors()
 {
-    if (isset($_SESSION['errorLogin'])) {
-        $errors = $_SESSION['errorLogin'];
+    if (isset($_SESSION['errorsLogin'])) {
+        $errors = $_SESSION['errorsLogin'];
 
         echo '<br>';
 
@@ -13,8 +13,8 @@ function checkLoginErrors()
             echo "<p style='color: red;'>" . $error . "</p>";
         }
 
-        unset($_SESSION['errorLogin']); //! important to clean the session
-    } else if (isset($_GET['login']) && $_GET['login'] == 'success') {
-        echo "<p style='color: green;'>Login success!</p>";
+        unset($_SESSION['errorsLogin']); // important to clean the session
+    } elseif (isset($_GET['login']) && $_GET['login'] == 'success') {
+        echo "<div class='login-success'>Login success!</div>";
     }
 }

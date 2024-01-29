@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'private/config_session.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -18,3 +18,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Start the interval
     setInterval(scrollProducts, 10000); // Adjust the interval as needed
 });
+
+//? JS for the login success dissapearing
+document.addEventListener("DOMContentLoaded", (event) => {
+    if (document.querySelector(".login-success")) {
+        setTimeout(function () {
+            document.querySelector(".login-success").style.display = "none";
+            document.body.classList.remove("body-with-success");
+        }, 5000);
+        document.body.classList.add("body-with-success");
+    }
+});
