@@ -5,9 +5,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $pwd = $_POST['pwd'];
 
     try {
-        require_once('../dbh.inc.php');
-        require_once('login_model.inc.php');
-        require_once('login_contr.inc.php');
+        require_once '../dbh.inc.php';
+        require_once 'login_model.inc.php';
+        require_once 'login_contr.inc.php';
 
         $errors = [];
 

@@ -1,10 +1,12 @@
 <?php
 
-function isUserLoggedIn()
+function displayUser($pdo, $userId)
 {
-    if (isset($_SESSION["userId"])) {
-        return true;
-    } else {
-        return false;
-    }
+    $userData = getUser($pdo, $userId);
+    outputUserInfo($userData);
+}
+
+function handleErrors($errors)
+{
+    outputUserInfo($errors);
 }
