@@ -1,12 +1,20 @@
 <?php
 
-function displayUser($pdo, $userId)
+function isInputEmpty($username, $email, $firstName, $lastName)
 {
-    $userData = getUser($pdo, $userId);
-    outputUserInfo($userData);
+    return empty($username) || empty($email) || empty($firstName) || empty($lastName);
 }
 
-function handleErrors($errors)
+function isNewPasswordSet($pwd)
 {
-    outputUserInfo($errors);
+    return !empty($pwd);
+}
+
+function isEmailInvalid($email)
+{
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return true;
+    } else {
+        return false;
+    }
 }

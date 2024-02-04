@@ -1,11 +1,6 @@
 <?php
 require_once 'private/config_session.inc.php';
-require_once 'private/dbh.inc.php';
-require_once 'private/account-details/account_details_model.inc.php';
-require_once 'private/account-details/account_details_contr.inc.php';
 require_once 'private/account-details/account_details_view.inc.php';
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,14 +25,17 @@ require_once 'private/account-details/account_details_view.inc.php';
             <?php
             $userId = $_SESSION['userId'] ?? null;
             if ($userId) {
-                displayUser($pdo, $userId);
-            } else {
+                outputUserInfo();
                 checkAccountErrors();
+            } else {
+                echo "<p style='color:red'>User is not logged in! Plase log in to continue!</p>";
             }
             ?>
         </div>
     </main>
     <?php include 'footer.php'; ?>
+
+    <script src="user/user.js"></script>
 </body>
 
 </html>

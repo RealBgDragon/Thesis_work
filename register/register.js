@@ -91,10 +91,6 @@ function isHover(e) {
     return e.parentElement.querySelector(":hover") === e;
 }
 
-submit.addEventListener("click", function (event) {
-    console.log("button clicked");
-});
-
 // Helper function to add event listeners to multiple events
 function addMultipleListeners(element, events, handler) {
     events.forEach((event) => element.addEventListener(event, handler));

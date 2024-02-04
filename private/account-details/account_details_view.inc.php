@@ -1,6 +1,8 @@
 <?php
 
-declare(strict_types=1);
+
+require_once 'private/account-details/account_details_model.inc.php';
+require_once 'private/account-details/account_details_contr.inc.php';
 
 function checkAccountErrors()
 {
@@ -17,9 +19,17 @@ function checkAccountErrors()
     }
 }
 
-function outputUserInfo($userData)
+function outputUserInfo()
 {
-    echo "<form action='dbh.inc.php' method='POST'>";
+
+    require_once 'private/config_session.inc.php';
+    require_once 'private/dbh.inc.php';
+
+
+    $userId = $_SESSION['userId'];
+
+    $userData = getUser($pdo, $userId);
+    echo "<form action='private/account-details/account_details.inc.php' method='POST'>";
     // First Name
     echo "<label for='firstName'>First Name:</label>";
     echo "<input type='text' id='firstName' name='firstName' value='" . htmlspecialchars($userData["firstName"]) . "'>";
@@ -39,5 +49,15 @@ function outputUserInfo($userData)
     echo "<label for='account_type'>Account type:</label>";
     echo "<input type='text' id='account_type' name='account_type' value='" . htmlspecialchars($userData["account_type"]) . "' readonly>";
 
+    echo "<label for='newPassword'>New password:</label>";
+    echo "<input type='password' id='newPassword' name='newPassword' value=''>";
+
+    echo "<label for='reNewPassword'>Repeat password:</label>";
+    echo "<input type='password' id='reNewPassword' name='reNewPassword' value=''>";
+
+    echo "<button id='submit'>Update</button>";
+
     echo "</form>";
+    if (isset($_GET['update']) && $_GET['update'] == 'success')
+        echo "<p style='color: green'>Update is successful</p>";
 }

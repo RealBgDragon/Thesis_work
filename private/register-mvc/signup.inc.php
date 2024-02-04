@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
             $_SESSION['errorSignup'] = $errors;
             header("Location: ../../register.php");
         } else {
-            $errors['connectionError'] = 'Connection error! Please try again later';
+            $errors['connectionError'] = 'Connection error! Please try again later!';
             $_SESSION['errorSignup'] = $errors;
             header("Location: ../../register.php");
         }
