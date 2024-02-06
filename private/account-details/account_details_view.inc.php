@@ -1,9 +1,5 @@
 <?php
 
-
-require_once 'private/account-details/account_details_model.inc.php';
-require_once 'private/account-details/account_details_contr.inc.php';
-
 function checkAccountErrors()
 {
     if (isset($_SESSION['errorsAccount'])) {
@@ -19,11 +15,10 @@ function checkAccountErrors()
     }
 }
 
-function outputUserInfo()
+function outputUserInfo($userData, $userId)
 {
 
-    require_once 'private/config_session.inc.php';
-    require_once 'private/dbh.inc.php';
+
 
 
     $userId = $_SESSION['userId'];
