@@ -23,7 +23,7 @@ function getProducts(object $pdo, int $product_id)
 
 }
 
-function createProduct()
+function createProduct(object $pdo)
 {
     $query = "INSERT INTO products (name, model, brand, price, stock_quantity) VALUES('Place holder', 'Place holder', 'Place holder', '0.0', '0');";
     $stmt = $pdo->prepare($query);
