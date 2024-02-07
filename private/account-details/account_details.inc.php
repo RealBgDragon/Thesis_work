@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $userId = $_SESSION['userId'];
 
 
-        if (!isset($userId)) {
+        if (isNotUserLoggedIn($userId)) {
             $errors['userNotLoggedIn'] = 'Please log into an account!';
         }
 
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     } catch (Exception $e) {
         if ($e->getCode() == 23000) { // Code for integrity constraint violation (includes unique constraint)
-            $errors['takenEmail'] = 'The email is taken!';
+            $errors['takenEmail'] = 'The email or username is taken!';
             $_SESSION['errorsAccount'] = $errors;
             header("Location: ../../user.php");
         } else {

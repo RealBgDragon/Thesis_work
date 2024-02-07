@@ -15,15 +15,9 @@ function checkAccountErrors()
     }
 }
 
-function outputUserInfo($userData, $userId)
+function outputUserInfo($userData)
 {
 
-
-
-
-    $userId = $_SESSION['userId'];
-
-    $userData = getUser($pdo, $userId);
     echo "<form action='private/account-details/account_details.inc.php' method='POST'>";
     // First Name
     echo "<label for='firstName'>First Name:</label>";

@@ -18,3 +18,8 @@ function isEmailInvalid($email)
         return false;
     }
 }
+
+function isNotUserLoggedIn($userId)
+{
+    return !isset($userId);
+}

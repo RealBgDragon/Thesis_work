@@ -24,12 +24,12 @@ require_once 'private/account-details/account_details_view.inc.php';
             <hr>
             <?php
             $userId = $_SESSION['userId'] ?? null;
-            if ($userId) {
-                outputUserInfo();
-                checkAccountErrors();
-            } else {
+            /* if ($userId) { */
+            require_once 'private/account-details/account_details_get.inc.php';
+            checkAccountErrors();
+            /* } else {
                 echo "<p style='color:red'>User is not logged in! Plase log in to continue!</p>";
-            }
+            } */
             ?>
         </div>
     </main>
