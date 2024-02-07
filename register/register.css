@@ -63,6 +63,10 @@
     background: #20c7c0;
 }
 
+.pass {
+    color: green;
+}
+
 .error-message {
     display: none;
     color: #d32f2f;
@@ -102,15 +106,15 @@
     text-align: left;
     margin-left: 10%;
 }
-/*TODO try to make it look like an arrow*/
+
 .modal-body {
     display: none;
     position: absolute;
     left: 0;
-    top: 140px;
+    top: 100px;
     border: 1px solid #ccc;
     background-color: #f5f8fa;
-    padding: 10px;
+    padding: 10px 15px;
     border-radius: 5px;
     width: 350px;
     z-index: 10;
@@ -129,7 +133,8 @@
         border: none;
     }
     .login input[type="text"],
-    .login input[type="password"] {
+    .login input[type="password"],
+    .modal-body {
         width: 300px;
     }
 

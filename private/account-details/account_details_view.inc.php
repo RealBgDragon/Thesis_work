@@ -41,6 +41,15 @@ function outputUserInfo($userData)
     echo "<label for='newPassword'>New password:</label>";
     echo "<input type='password' id='newPassword' name='newPassword' value=''>";
 
+    //TODO fix
+    /* echo "<div class='modal-body'>";
+    echo    "<ul>";
+    echo        "<li id='capitalLetter'>Contains a capital letter</li>";
+    echo        "<li id='number'>Contains a number</li>";
+    echo        "<li id='letters'>At least 8 letters</li>";
+    echo    "</ul>";
+    echo "</div>"; */
+
     echo "<label for='reNewPassword'>Repeat password:</label>";
     echo "<input type='password' id='reNewPassword' name='reNewPassword' value=''>";
 

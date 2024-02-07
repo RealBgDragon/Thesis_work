@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = null;
         header('Location: ../admin-product.php?update=successfuly created new product&product_id=' . $newProductId);
     } catch (PDOException $e) {
-        header("Location: ../admin-product.php?update=error with the creation of the new product" . $stmt->errorInfo()[2] . "&product_id=$newProductId");
+        /* header("Location: ../admin-product.php?update=error with the creation of the new product" . $stmt->errorInfo()[2] . "&product_id=$newProductId"); */
         die("Error updating record: " . $e->getMessage());
     }
 

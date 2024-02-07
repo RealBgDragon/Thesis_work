@@ -1,103 +1,70 @@
-// Constants for password match
-const password = document.getElementById("password");
-const rePassword = document.getElementById("repassword");
-const passwordError = document.getElementById("passwordError");
-const submit = document.getElementById("submit");
-const capitalRequirement = document.getElementById("capitalLetter");
-const numberRequirement = document.getElementById("number");
-const letters = document.getElementById("letters");
-const modalBody = document.querySelector(".modal-body");
-// End of constants for password match
+// Cache DOM elements
+const formElements = {
+    password: document.getElementById("newPassword"),
+    rePassword: document.getElementById("reNewPassword"),
+    passwordError: document.getElementById("passwordError"),
+    submit: document.getElementById("submit"),
+    requirements: {
+        capitalLetter: document.getElementById("capitalLetter"),
+        number: document.getElementById("number"),
+        letters: document.getElementById("letters"),
+    },
+    modalBody: document.querySelector(".modal-body"),
+};
 
-function buttonDisable() {
-    submit.disabled = true;
+// Function to check password complexity
+function checkPasswordComplexity(password) {
+    const rules = [
+        { test: /[A-Z]/, element: formElements.requirements.capitalLetter },
+        { test: /[0-9]/, element: formElements.requirements.number },
+        { test: /.{8,}/, element: formElements.requirements.letters },
+    ];
+
+    let passed = true;
+    rules.forEach((rule) => {
+        if (rule.test.test(password)) {
+            rule.element.classList.add("pass");
+        } else {
+            rule.element.classList.remove("pass");
+            passed = false;
+        }
+    });
+
+    return passed;
 }
 
-function buttonEnable() {
-    submit.disabled = false;
-}
-
-if (password.value === "") {
-    buttonDisable();
-}
-
-function PasswordCheck() {
-    if (/[A-Z]/.test(password.value)) {
-        capitalRequirement.style.color = "green";
-        buttonEnable();
-    } else {
-        capitalRequirement.style.color = "red";
-        buttonDisable();
-    }
-
-    if (/[0-9]/.test(password.value)) {
-        numberRequirement.style.color = "green";
-        buttonEnable();
-    } else {
-        numberRequirement.style.color = "red";
-        buttonDisable();
-    }
-
-    if (password.value.length >= 8) {
-        letters.style.color = "green";
-        buttonEnable();
-    } else {
-        letters.style.color = "red";
-        buttonDisable();
-    }
-}
-
-password.addEventListener("focus", handleInput);
-password.addEventListener("input", handleInput);
-rePassword.addEventListener("focus", handleInput);
-rePassword.addEventListener("input", handleInput);
-
+// Unified input handler
 function handleInput() {
-    if (password.value === rePassword.value && password.value !== "") {
-        passwordError.style.display = "none";
-        buttonEnable();
+    const passwordMatch =
+        formElements.password.value === formElements.rePassword.value;
+    const complexityPassed = checkPasswordComplexity(
+        formElements.password.value
+    );
+
+    // Display password mismatch error
+    if (!passwordMatch) {
+        formElements.passwordError.textContent = "Passwords do not match!";
+        formElements.passwordError.style.display = "block";
     } else {
-        passwordError.textContent = "Passwords do not match!";
-        passwordError.style.display;
-        passwordError.style.display = "block";
-        buttonDisable();
+        formElements.passwordError.style.display = "none";
     }
-    PasswordCheck();
+
+    // Enable or disable the submit button based on conditions
+    formElements.submit.disabled = !(passwordMatch && complexityPassed);
 }
 
-password.addEventListener("focus", showModal);
-password.addEventListener("input", showModal);
-password.addEventListener("blur", hideModal);
-password.addEventListener("mouseout", hideModalOnMouseOut);
+// Attach event listeners
+["input", "focus"].forEach((event) => {
+    formElements.password.addEventListener(event, handleInput);
+    formElements.rePassword.addEventListener(event, handleInput);
+});
 
-function showModal() {
-    modalBody.style.display = "block";
-    PasswordCheck();
-}
-
-function hideModal() {
-    if (!isHover(modalBody)) {
-        modalBody.style.display = "none";
-    }
-}
-
-function hideModalOnMouseOut() {
-    if (!password.matches(":focus")) {
-        modalBody.style.display = "none";
-    }
-}
-
-function isHover(e) {
-    return e.parentElement.querySelector(":hover") === e;
-}
-
-// Helper function to add event listeners to multiple events
-function addMultipleListeners(element, events, handler) {
-    events.forEach((event) => element.addEventListener(event, handler));
-}
-
-// Adding event listeners for focus and input
-addMultipleListeners(password, ["focus", "input"], showModal);
-addMultipleListeners(rePassword, ["focus", "input"], handleInput);
-
-//TODO Email check
+// Show and hide modal on focus and blur
+formElements.password.addEventListener(
+    "focus",
+    () => (formElements.modalBody.style.display = "block")
+);
+formElements.password.addEventListener(
+    "blur",
+    () => (formElements.modalBody.style.display = "none")
+);

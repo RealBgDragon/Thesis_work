@@ -139,7 +139,6 @@ main {
 main h1 {
     font-family: "Roboto", sans-serif;
     font-size: 36px;
-    margin-left: 5vw;
     color: #1188be;
 }
 
@@ -147,7 +146,7 @@ main hr {
     width: 95%;
     border: none;
     border-top: 1px solid #1b9dd7;
-    margin: 20px auto;
+    margin: 0 20px 10px 20px;
 }
 
 h2 {
@@ -210,8 +209,13 @@ footer {
 
 @media screen and (max-width: 1000px) {
     main {
-        width: 75vw;
-        padding: 40px;
+        width: 100vw;
+        padding: 0;
+        margin: 0;
+    }
+
+    main h1 {
+        margin-left: 50px;
     }
 
     header {
