@@ -4,7 +4,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         require_once '../dbh.inc.php';
         require_once 'product_model.inc.php';
-        //require_once 'product_view.inc.php';
         require_once 'product_contr.inc.php';
 
         $newProductId = productCreate($pdo);
@@ -12,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $errors = [];
 
         if ($errors) {
-            $_SESSION['errorsLogin'] = $errors;
+            $_SESSION['errorsProduct'] = $errors;
             header('Location: ../../admin-product.php?product_id=1');
             die();
         }
@@ -27,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch (Exception $e) {
         $errors['connectionError'] = 'Connection error! Please try again later!';
         $errors['connectionError'] = $e->getCode();
-        $_SESSION['errorsAccount'] = $errors;
+        $_SESSION['errorsProduct'] = $errors;
         header("Location: ../../admin-product.php?product_id=1");
     }
 } else {

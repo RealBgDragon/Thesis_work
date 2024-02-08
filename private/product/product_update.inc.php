@@ -10,7 +10,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt = null; // Close the statement
     } catch (Exception $e) {
-
+        $errors['connectionError'] = 'Connection error! Please try again later!';
+        $errors['connectionError'] = $e->getCode();
+        $_SESSION['errorsProduct'] = $errors;
+        header("Location: ../../admin-product.php?product_id=1");
     }
 
 } else {

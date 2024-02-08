@@ -1,11 +1,10 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
     try {
-        require_once '../dbh.inc.php';
-        require_once 'product_model.inc.php';
-        //require_once 'product_view.inc.php';
-        require_once 'product_contr.inc.php';
+        require_once 'private/dbh.inc.php';
+        require_once 'private/product/product_model.inc.php';
+        require_once 'private/product/product_contr.inc.php';
 
         $productId = htmlspecialchars($_GET['product_id']);
 
@@ -14,17 +13,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $productData = productGet($pdo, $productId);
 
         if (!$productData) {
-            $errors['idNotFound'] = 'Id is not found';
+            $errors['idNotFound'] = 'Product not found!';
         }
+
+        require_once 'private/config_session.inc.php';
 
         if ($errors) {
-            $_SESSION['errorsLogin'] = $errors;
-            header('Location: ../../admin-product.php?product_id=1');
+            $_SESSION['errorsProduct'] = $errors;
+            header('Location: product.php?product_id=1');
             die();
         }
-        header("Location: ../../admin-product.php?product_id=" . $productData['product_id']);
+        /* header("Location: product.php?product_id=" . $productData['product_id']); */
 
-        /* require_once '../config_session.inc.php'; */
+        productDisplay($productData);
 
         $pdo = null;
         $stmt = null;
@@ -32,10 +33,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch (Exception $e) {
         $errors['connectionError'] = 'Connection error! Please try again later!';
         $errors['connectionError'] = $e->getCode();
-        $_SESSION['errorsAccount'] = $errors;
-        header("Location: ../../admin-product.php?product_id=1");
+        $_SESSION['errorsProduct'] = $errors;
+        header("Location: product.php?product_id=1");
     }
 } else {
-    header('Location: ../../admin-product.php?product_id=1');
+    header('Location: product.php?product_id=1');
     die();
 }
