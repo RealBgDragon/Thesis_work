@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = null;
         header('Location: ../admin-product.php?update=deleted successfully&product_id=1');
     } catch (PDOException $e) {
-        header("Location: ../admin-product.php?update=error with the creation of the new product" . $stmt->errorInfo()[2] . "&product_id=1");
+        header("Location: ../admin-product.php?update=error with the creation of the new product&product_id=1");
         die("Error updating record: " . $e->getMessage());
     }
     exit();

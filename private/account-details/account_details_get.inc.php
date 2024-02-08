@@ -28,6 +28,9 @@ try {
 
     outputUserInfo($userData);
 
+    $pdo = null;
+    $stmt = null;
+
 } catch (Exception $e) {
     $errors['connectionError'] = 'Connection error! Please try again later!';
     $errors['connectionError'] = $e->getCode();

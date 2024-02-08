@@ -1,6 +1,6 @@
 <?php
 
-function getProducts(object $pdo, int $product_id)
+function productGet(object $pdo, int $product_id)
 {
     /* $product_id = isset($_GET['product_id']) ? $product_id = htmlspecialchars($_GET["product_id"]) : "";  */
 
@@ -12,18 +12,14 @@ function getProducts(object $pdo, int $product_id)
     $stmt->execute();
 
     $productData = [];
-    if ($stmt->rowCount() > 0) {
 
-        $productData = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch data
-
-    }
-    /* $stmt = null; */
+    $productData = $stmt->fetch(PDO::FETCH_ASSOC);
 
     return $productData;
 
 }
 
-function createProduct(object $pdo)
+function productCreate(object $pdo)
 {
     $query = "INSERT INTO products (name, model, brand, price, stock_quantity) VALUES('Place holder', 'Place holder', 'Place holder', '0.0', '0');";
     $stmt = $pdo->prepare($query);
@@ -31,9 +27,11 @@ function createProduct(object $pdo)
     $stmt->execute();
 
     $newProductId = $pdo->lastInsertId();
+
+    return $newProductId;
 }
 
-function updateProduct(
+function productUpdate(
     object $pdo,
     int $product_id,
     string $name,
@@ -113,13 +111,10 @@ WHERE product_id = :product_id"; // Replace product_id with your actual identifi
     $wifi = $wifi == "True" ? 1 : 0;
     $stmt->bindParam(':wifi', $wifi);
 
-
-
-
     $stmt->execute();
 }
 
-function deleteProduct(object $pdo, int $product_id)
+function productDelete(object $pdo, int $product_id)
 {
     $query = "DELETE FROM products WHERE product_id = :product_id;";
     $stmt = $pdo->prepare($query);
@@ -128,3 +123,4 @@ function deleteProduct(object $pdo, int $product_id)
 
     $stmt->execute();
 }
+

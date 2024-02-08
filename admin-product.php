@@ -57,7 +57,7 @@ require_once 'private/config_session.inc.php';
             <label for="productSelect">Select Air Conditioner:</label>
             <select id="productSelect" name="productSelect">
                 <?php
-                //TODO make better
+                //TODO make this work better
                 try {
                     $productNames = include 'private/product-name-id.inc.php';
                     foreach ($productNames as $product) {
