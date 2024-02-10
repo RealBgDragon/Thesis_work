@@ -29,10 +29,7 @@ require_once 'private/product/product_view.inc.php';
 
         require_once 'private/product/product_get.inc.php';
 
-        if (isset($_SESSION['account_type']) && $_SESSION['account_type'] == "admin") {
-            $product_id = htmlspecialchars($_GET["product_id"]);
-            echo "<a href='admin-product.php?product_id=" . $product_id . "' id='update_product' name='update_product'>Update Product</a>";
-        }
+
 
 
         ?>

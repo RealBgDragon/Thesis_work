@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 function productGet(object $pdo, int $product_id)
 {
     /* $product_id = isset($_GET['product_id']) ? $product_id = htmlspecialchars($_GET["product_id"]) : "";  */

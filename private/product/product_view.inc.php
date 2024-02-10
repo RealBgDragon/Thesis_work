@@ -1,6 +1,7 @@
 <?php
 
 require_once 'product_info_template.php';
+require_once 'product_admin_info_template.php';
 
 function checkProductErrors()
 {
@@ -17,13 +18,16 @@ function checkProductErrors()
     }
 }
 
-function productDisplay($productData)
+function productDisplay($productData, $admin)
 {
-    //! check it
-    /* if (!empty($productData)) {
-        $img = $productData['image_url'];
-        echo "<h1 id='productName'>" . htmlspecialchars($productData['name']) . "</h1>";
-    } */
-    productTemplate($productData);
+
+    /* $img = $productData['image_url']; */
+    echo "<h1 id='productName'>" . htmlspecialchars($productData['name']) . "</h1>";
+
+    productTemplate($productData, $admin);
 }
 
+function adminProductDisplay($productData)
+{
+    productAdminTemplate($productData);
+}

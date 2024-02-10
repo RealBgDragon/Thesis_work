@@ -11,8 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
         $errors = [];
 
-        $admin = false;
-
         $productData = productGet($pdo, $productId);
 
         if (!$productData) {
@@ -29,10 +27,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         /* header("Location: product.php?product_id=" . $productData['product_id']); */
 
         if (isUserAdmin()) {
-            $admin = true;
+            productAdminTemplate($productData);
         }
 
-        productDisplay($productData, $admin);
+
 
         $pdo = null;
         $stmt = null;

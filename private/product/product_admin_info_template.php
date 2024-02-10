@@ -1,5 +1,5 @@
 <?php
-function productAdminTemplate($productData, $admin)
+function productAdminTemplate($productData)
 {
     echo "<input type='hidden' name='product_id' value='" . htmlspecialchars($productData["product_id"]) . "'>";
 
@@ -101,7 +101,5 @@ function productAdminTemplate($productData, $admin)
     echo "<label for='description'>Description:</label>";
     echo "<input type='text' id='description' name='description' value='" . htmlspecialchars($productData["description"]) . "'>";
 
-    if ($admin) {
 
-    }
 }

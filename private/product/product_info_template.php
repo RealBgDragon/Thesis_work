@@ -1,5 +1,5 @@
 <?php
-function productTemplate($productData)
+function productTemplate($productData, $admin)
 {
     echo
         "<div class='product-info-div'>",
@@ -76,4 +76,9 @@ function productTemplate($productData)
     echo "<p><strong>Wi-Fi:</strong> " . $wifi_status . "</p>";
 
     echo "</div>";
+
+    if ($admin) {
+        $product_id = htmlspecialchars($_GET["product_id"]);
+        echo "<a href='admin-product.php?product_id=" . $product_id . "' id='update_product' name='update_product'>Update Product</a>";
+    }
 }
