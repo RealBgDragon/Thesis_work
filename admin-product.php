@@ -1,6 +1,7 @@
 <?php
 require_once 'private/config_session.inc.php';
-?>
+require_once 'private/product/product_view.inc.php'
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +23,6 @@ require_once 'private/config_session.inc.php';
         echo "<a href=main.php style='color:red'>Home</a>";
         die();
     }
-    //TODO add a drop down menu where you can chose between all products
     ?>
     <main>
         <h1>Product Details</h1>
@@ -53,22 +53,7 @@ require_once 'private/config_session.inc.php';
             </div>
         </div>
 
-        <div class="dropdown">
-            <label for="productSelect">Select Air Conditioner:</label>
-            <select id="productSelect" name="productSelect">
-                <?php
-                //TODO make this work better
-                try {
-                    $productNames = include 'private/product-name-id.inc.php';
-                    foreach ($productNames as $product) {
-                        echo "<option value='{$product['product_id']}'>{$product['name']}</option>";
-                    }
-                } catch (Exception $e) {
-                    echo $e->getMessage();
-                }
-                ?>
-            </select>
-        </div>
+
 
         <button id="delete-product" name="delete_product" style="background-color:red">Delete Product</button>
 
@@ -98,6 +83,8 @@ require_once 'private/config_session.inc.php';
                     $updateMessage = htmlspecialchars($_GET['update']);
                     echo "<div style='color: green; text-align: center;'>" . $updateMessage . "</div>";
                 }
+
+                checkProductErrors();
 
                 echo "<button type='submit' id='update_product' name='update_product'>Update Product</button>";
 

@@ -29,8 +29,7 @@ require_once 'private/product/product_view.inc.php';
 
         require_once 'private/product/product_get.inc.php';
 
-
-
+        checkProductErrors();
 
         ?>
 

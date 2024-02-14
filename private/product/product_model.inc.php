@@ -33,31 +33,8 @@ function productCreate(object $pdo)
     return $newProductId;
 }
 
-function productUpdate(
-    object $pdo,
-    int $product_id,
-    string $name,
-    string $model,
-    string $brand,
-    float $price,
-    int $stock_quantity,
-    string $description,
-    string $power_efficiency,
-    string $power_consumption_heating,
-    string $power_consumption_cooling,
-    string $power_output_heating,
-    string $power_output_cooling,
-    float $noise_inside_unit,
-    float $noise_outside_unit,
-    int $max_temp_heating,
-    int $min_temp_heating,
-    int $max_temp_cooling,
-    int $min_temp_cooling,
-    string $size_inside_unit,
-    string $size_outside_unit,
-    string $recommended_room_size,
-    bool $wifi
-) {
+function productUpdate(object $pdo, array $productDetails)
+{
     $query = "UPDATE products SET 
     name = :name, 
     /* image_url = :image_url */
@@ -81,37 +58,16 @@ function productUpdate(
     recommended_room_size = :recommended_room_size, 
     wifi = :wifi, 
     description = :description 
-WHERE product_id = :product_id"; // Replace product_id with your actual identifier
+    WHERE product_id = :product_id"; // Replace product_id with your actual identifier
 
     $stmt = $pdo->prepare($query);
 
     // Bind parameters
 /* $stmt->bindParam(':image_url', $image_url, PDO::PARAM_STR); */
 
-    $stmt->bindParam(':product_id', $product_id);
-    $stmt->bindParam(':name', $name);
-    $stmt->bindParam(':model', $model);
-    $stmt->bindParam(':brand', $brand);
-    $stmt->bindParam(':price', $price);
-    $stmt->bindParam(':stock_quantity', $stock_quantity);
-    $stmt->bindParam(':description', $description);
-    $stmt->bindParam(':power_efficiency', $power_efficiency);
-    $stmt->bindParam(':power_consumption_heating', $power_consumption_heating);
-    $stmt->bindParam(':power_consumption_cooling', $power_consumption_cooling);
-    $stmt->bindParam(':power_output_heating', $power_output_heating);
-    $stmt->bindParam(':power_output_cooling', $power_output_cooling);
-    $stmt->bindParam(':noise_inside_unit', $noise_inside_unit);
-    $stmt->bindParam(':noise_outside_unit', $noise_outside_unit);
-    $stmt->bindParam(':max_temp_heating', $max_temp_heating);
-    $stmt->bindParam(':min_temp_heating', $min_temp_heating);
-    $stmt->bindParam(':max_temp_cooling', $max_temp_cooling);
-    $stmt->bindParam(':min_temp_cooling', $min_temp_cooling);
-    $stmt->bindParam(':size_inside_unit', $size_inside_unit);
-    $stmt->bindParam(':size_outside_unit', $size_outside_unit);
-    $stmt->bindParam(':recommended_room_size', $recommended_room_size);
-
-    $wifi = $wifi == "True" ? 1 : 0;
-    $stmt->bindParam(':wifi', $wifi);
+    foreach ($productDetails as $key => $value) {
+        $stmt->bindParam(':' . $key, $productDetails[$key]);
+    }
 
     $stmt->execute();
 }
@@ -126,3 +82,15 @@ function productDelete(object $pdo, int $product_id)
     $stmt->execute();
 }
 
+function getProductNamesAndId(object $pdo)
+{
+    $query = "SELECT product_id, name FROM products;";
+
+    $stmt = $pdo->prepare($query);
+
+    $stmt->execute();
+
+    $name_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $name_id;
+}

@@ -12,9 +12,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $errors = [];
 
         $productData = productGet($pdo, $productId);
+        $name_id = getProductNamesAndId($pdo);
 
         if (!$productData) {
             $errors['idNotFound'] = 'Product not found!';
+        }
+
+        if (!isUserAdmin($_SESSION['account_type'])) {
+            $errors['ivalidPermissions'] = 'You are not logged in as an admin!';
         }
 
         require_once 'private/config_session.inc.php';
@@ -24,13 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             header('Location: product.php?product_id=1');
             die();
         }
-        /* header("Location: product.php?product_id=" . $productData['product_id']); */
 
-        if (isUserAdmin()) {
-            productAdminTemplate($productData);
+        /* foreach ($name_id as $item) {
+            echo $item['product_id'];
+            echo '';
+            echo $item['name'];
         }
-
-
+        die(); */
+        productAdminTemplate($productData, $name_id);
 
         $pdo = null;
         $stmt = null;

@@ -2,64 +2,65 @@
 
 declare(strict_types=1);
 
-require_once 'private/config_session.inc.php';
+/* require_once '../private/config_session.inc.php'; */
 
-function isUserAdmin()
+function isUserAdmin($admin)
 {
-    if (isset($_SESSION['account_type']) && $_SESSION['account_type'] == "admin") {
+    if (isset($admin) && $admin == "admin") {
         return true;
     } else {
         return false;
     }
 }
 
-function areFieldsEmpty()
+function areFieldsEmpty(array $productDetails)
 {
-
-    $fields = [
-        'name',
-        'model',
-        'brand',
-        'price',
-        'stock_quantity',
-        'power_efficiency',
-        'power_consumption_heating',
-        'power_consumption_cooling',
-        'power_output_heating',
-        'power_output_cooling',
-        'noise_inside_unit',
-        'noise_outside_unit',
-        'max_temp_heating',
-        'min_temp_heating',
-        'max_temp_cooling',
-        'min_temp_cooling',
-        'size_inside_unit',
-        'size_outside_unit',
-        'recommended_room_size',
-        'wifi',
-        'description'
-    ];
-
-    foreach ($fields as $field) {
-        if (empty($data[$field]))
-            return false;
-
-        if (in_array($field, ['price', 'stock_quantity', 'power_efficiency', 'power_consumption_heating', 'power_consumption_cooling', 'power_output_heating', 'power_output_cooling', 'noise_inside_unit', 'noise_outside_unit', 'max_temp_heating', 'min_temp_heating', 'max_temp_cooling', 'min_temp_cooling', 'recommended_room_size'])) {
-            if (!is_numeric($data[$field]) || $data[$field] < 0)
-                return false;
-        }
-
-        if (in_array($field, ['size_inside_unit', 'size_outside_unit'])) {
-            if (!preg_match('/^\d+x\d+x\d+$/', $data[$field]))
-                return false;
-        }
-
-        if ($field === 'wifi') {
-            if (!in_array(strtolower($data[$field]), ['true', 'false']))
-                return false;
+    foreach ($productDetails as $key => $value) {
+        if (!isset($value) || $value == '') {
+            return true;
         }
     }
+    return false;
+}
 
+function areFieldsNumeric($productDetails, $numericFields)
+{
+    foreach ($numericFields as $field) {
+        if (!isset($productDetails[$field]) || !is_numeric($productDetails[$field]) || $productDetails[$field] < 0) {
+            return false;
+        }
+    }
     return true;
+}
 
+function areFieldsInSpecificFormat($productDetails, $formatFields)
+{
+    $pattern = '/^\d+x\d+x\d+$/';
+    foreach ($formatFields as $field) {
+        if (!isset($productDetails[$field]) || !preg_match($pattern, $productDetails[$field])) {
+            return false;
+        }
+    }
+    return true;
+}
+
+function isWifiFieldValid($productDetails)
+{
+    if (isset($productDetails['wifi'])) {
+        $wifiValue = strtolower($productDetails['wifi']);
+        return in_array($wifiValue, ['true', 'false'], true);
+    }
+    return false;
+}
+
+
+
+function convertWifi(string $wifi)
+{
+    if ($wifi == "true" || $wifi == "True") {
+        $wifi = 1;
+    } else {
+        $wifi = 0;
+    }
+    return $wifi;
 }

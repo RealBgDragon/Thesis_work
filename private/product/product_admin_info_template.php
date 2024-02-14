@@ -1,10 +1,19 @@
 <?php
-function productAdminTemplate($productData)
+function productAdminTemplate($productData, $name_id)
 {
-    echo "<input type='hidden' name='product_id' value='" . htmlspecialchars($productData["product_id"]) . "'>";
+    echo "<input type='hidden' name='product_id' value='" . htmlspecialchars($_GET['product_id']) . "'>";
 
     echo "<input type='hidden' id='image_url' name='image_url' value='" . htmlspecialchars($productData["image_url"]) . "'>";
 
+
+    echo "<div class='dropdown'>";
+    echo "<label for='productSelect'>Select Air Conditioner:</label>";
+    echo "<select id='productSelect' name='productSelect'>";
+    foreach ($name_id as $product) {
+        echo "<option value='{$product['product_id']}'>{$product['name']}</option>";
+    }
+    echo "</select>";
+    echo "</div>";
 
     echo "<div class='form-items'>";
 

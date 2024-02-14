@@ -27,7 +27,7 @@ function productDisplay($productData, $admin)
     productTemplate($productData, $admin);
 }
 
-function adminProductDisplay($productData)
+function adminProductDisplay($productData, $name_id)
 {
-    productAdminTemplate($productData);
+    productAdminTemplate($productData, $name_id);
 }
