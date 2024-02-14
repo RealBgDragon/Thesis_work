@@ -34,7 +34,7 @@ require_once 'private/product/product_view.inc.php'
             <h2>Are you sure you want to delete the current product?</h2>
             <div class="popup-buttons" style="display:flex">
                 <button name="close-windows" id="close-delete-popup">Cancel</button>
-                <form action='private/product-delete.inc.php' method='POST' class="product-create-form">
+                <form action='private/admin-product/product_delete.inc.php' method='POST' class="product-create-form">
                     <input type='hidden' name='product_id' value='<?php echo htmlspecialchars($_GET["product_id"]); ?>'>
                     <button type="submit" name="delete_product" style="background-color: red">Delete the
                         product</button>
@@ -47,7 +47,7 @@ require_once 'private/product/product_view.inc.php'
             <h2>Are you sure you want to crate a new product?</h2>
             <div class="popup-buttons" style="display:flex">
                 <button name="close-windows" id="close-create-popup">Cancel</button>
-                <form action='private/product-create.inc.php' method='POST' class="product-create-form">
+                <form action='private/admin-product/product_create.inc.php' method='POST' class="product-create-form">
                     <button type="submit" name="create_product">Create New Product</button>
                 </form>
             </div>

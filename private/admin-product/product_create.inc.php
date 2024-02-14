@@ -3,22 +3,12 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         require_once '../dbh.inc.php';
-        require_once 'product_model.inc.php';
-        require_once 'product_contr.inc.php';
+        require_once '../product/product_model.inc.php';
+        require_once '../product/product_contr.inc.php';
 
         $newProductId = productCreate($pdo);
 
-        $errors = [];
-
-        if ($errors) {
-            $_SESSION['errorsProduct'] = $errors;
-            header('Location: ../../admin-product.php?product_id=1');
-            die();
-        }
-
-        header("Location: ../../admin-product.php?product_id=" . $newProductId);
-
-        /* require_once '../config_session.inc.php'; */
+        header("Location: ../../admin-product.php?product_id=" . $newProductId . "&success=Product created successfully!");
 
         $pdo = null;
         $stmt = null;
