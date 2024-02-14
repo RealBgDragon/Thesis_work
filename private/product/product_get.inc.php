@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         }
         /* header("Location: product.php?product_id=" . $productData['product_id']); */
 
-        if (isUserAdmin($_SESSION['account_type'])) {
+        if (isset($_SESSION['account_type']) && isUserAdmin($_SESSION['account_type'])) {
             $admin = true;
         }
 
