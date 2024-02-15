@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 function productGet(object $pdo, int $product_id)
 {
-    /* $product_id = isset($_GET['product_id']) ? $product_id = htmlspecialchars($_GET["product_id"]) : "";  */
 
     $sql = "SELECT * FROM products WHERE product_id = :product_id;";
     $stmt = $pdo->prepare($sql);

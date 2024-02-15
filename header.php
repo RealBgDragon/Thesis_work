@@ -7,7 +7,7 @@
         <button type="submit">Search</button>
     </form>
     <div class="auth-links">
-        <?php if (isset($_SESSION['username'])):
+        <?php if (isset($_SESSION['userId'])):
             echo "<a href='user.php' class='user-link'>Profile</a>";
             echo "<a href='private/logout.php' class='user-link'>Logout</a>";
         else:

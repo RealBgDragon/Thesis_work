@@ -7,9 +7,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         require_once 'private/product/product_view.inc.php';
         require_once 'private/product/product_contr.inc.php';
 
-        $productId = htmlspecialchars($_GET['product_id']);
-
         $errors = [];
+
+        if (!isset($_GET['product_id'])) {
+            $productId = 1;
+            $errors['idNotFound'] = 'Product not found!';
+        } else {
+            $productId = htmlspecialchars($_GET['product_id']);
+        }
 
         $admin = false;
 

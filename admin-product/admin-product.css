@@ -74,7 +74,7 @@
 .product-info-form input[type="password"] {
     font-family: "Roboto", sans-serif;
     padding: 8px;
-    margin: 5px 0 15px;
+    margin: 5px 5px 15px 0;
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;

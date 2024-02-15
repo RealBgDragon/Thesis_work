@@ -27,9 +27,9 @@ require_once 'private/product/product_view.inc.php';
         <hr>
         <?php
 
-        require_once 'private/product/product_get.inc.php';
-
         checkProductErrors();
+
+        require_once 'private/product/product_get.inc.php';
 
         ?>
 

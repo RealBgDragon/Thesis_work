@@ -59,10 +59,6 @@ require_once 'private/product/product_view.inc.php'
 
         <button id="create-product" name="create_product">Create New Product</button>
 
-        <?php
-        $currentProduct = $_GET['product_id'];
-        echo "<input id='current_product_id' type='hidden' style='display:none' value='$currentProduct'></input>";
-        ?>
         <div class="product-info-div">
             <div class="image-container" id="imageDropZone">
                 <?php
