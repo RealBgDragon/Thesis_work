@@ -60,34 +60,25 @@ require_once 'private/product/product_view.inc.php'
         <button id="create-product" name="create_product">Create New Product</button>
 
         <div class="product-info-div">
-            <div class="image-container" id="imageDropZone">
-                <?php
-                // Image
-                /* $productData = include 'private/product-details.inc.php';
-                if (!empty($productData)) {
-                    $img = $productData['image_url'];
-                    echo "<img src='$img' type='file' name='image' id='productImage' class='img-responsive'>";
-                } */
-                ?>
-            </div>
-            <form action='private/admin-product/product_update.inc.php' method='POST' class="product-info-form">
-                <?php
 
-                require_once 'private/admin-product/product_get_admin.inc.php';
 
-                if (isset($_GET['update'])) {
-                    $updateMessage = htmlspecialchars($_GET['update']);
-                    echo "<div style='color: green; text-align: center;'>" . $updateMessage . "</div>";
-                }
+            <?php
 
-                checkProductErrors();
+            require_once 'private/admin-product/product_get_admin.inc.php';
 
-                echo "<button type='submit' id='update_product' name='update_product'>Update Product</button>";
+            if (isset($_GET['update'])) {
+                $updateMessage = htmlspecialchars($_GET['update']);
+                echo "<div style='color: green; text-align: center;'>" . $updateMessage . "</div>";
+            }
 
-                // echo "<button onclick='location.href='yourpage.php?newproduct=true''>Create New Product</button>"; 
-                
-                ?>
-            </form>
+            checkProductErrors();
+
+            echo "<button type='submit' id='update_product' name='update_product'>Update Product</button>";
+
+            // echo "<button onclick='location.href='yourpage.php?newproduct=true''>Create New Product</button>"; 
+            
+            ?>
+
         </div>
 
     </main>

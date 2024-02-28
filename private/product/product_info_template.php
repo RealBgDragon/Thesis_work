@@ -1,11 +1,12 @@
 <?php
 function productTemplate($productData, $admin)
 {
+    $img = htmlspecialchars($productData["image_url"]);
     echo
         "<div class='product-info-div'>",
         "<div class='image-container'>",
         //! Image
-        /*  "<img id='productImage' class='img-responsive' src='$img' alt='Product Image'>", */
+        "<img id='productImage' class='img-responsive' src='$img' alt='Product Image'>",
         "</div>",
         "<div class='price-box'>",
         // Price

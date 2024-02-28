@@ -35,12 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             die();
         }
 
-        /* foreach ($name_id as $item) {
-            echo $item['product_id'];
-            echo '';
-            echo $item['name'];
-        }
-        die(); */
         productAdminTemplate($productData, $name_id);
 
         $pdo = null;

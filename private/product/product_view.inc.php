@@ -29,5 +29,6 @@ function productDisplay($productData, $admin)
 
 function adminProductDisplay($productData, $name_id)
 {
+    imgDisplay($productData);
     productAdminTemplate($productData, $name_id);
 }
