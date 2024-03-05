@@ -73,7 +73,7 @@ require_once 'private/product/product_view.inc.php'
 
             checkProductErrors();
 
-            echo "<button type='submit' id='update_product' name='update_product'>Update Product</button>";
+
 
             // echo "<button onclick='location.href='yourpage.php?newproduct=true''>Create New Product</button>"; 
             

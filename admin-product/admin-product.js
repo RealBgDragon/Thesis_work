@@ -1,11 +1,3 @@
-document
-    .getElementById("imageDropZone")
-    .addEventListener("dragover", (event) => {
-        event.stopPropagation();
-        event.preventDefault();
-        // Add styling or effects when dragging over
-    });
-
 document.getElementById("imageDropZone").addEventListener("drop", (event) => {
     event.stopPropagation();
     event.preventDefault();
@@ -13,20 +5,30 @@ document.getElementById("imageDropZone").addEventListener("drop", (event) => {
     const files = event.dataTransfer.files;
     if (files.length > 0) {
         const file = files[0];
-        updateImage(file);
+        updateImage(file); // This function updates the image preview
+
+        // New code to upload the image to the server
+        const formData = new FormData();
+        formData.append("image", file); // 'image' is the key
+
+        fetch("upload_image.php", {
+            // Assuming 'upload_image.php' is your server-side script
+            method: "POST",
+            body: formData,
+        })
+            .then((response) => response.json()) // Assuming the server responds with JSON
+            .then((data) => {
+                if (data.success) {
+                    // If the server responded with success, update the hidden input's value
+                    document.getElementById("image_url").value = data.image_url;
+                } else {
+                    // Handle upload failure
+                    console.error("Upload failed:", data.error);
+                }
+            })
+            .catch((error) => console.error("Error:", error));
     }
 });
-
-var uploadedImage = null;
-
-function updateImage(file) {
-    var reader = new FileReader();
-    reader.onload = function (e) {
-        document.getElementById("productImage").src = e.target.result;
-        uploadedImage = file; // Store the uploaded image file
-    };
-    reader.readAsDataURL(file);
-}
 
 // create popup
 document
@@ -73,14 +75,18 @@ window.onclick = function (event) {
 };
 
 // Selecting product
-var currentProductId = document.getElementById("current_product_id").value;
-
 document.addEventListener("DOMContentLoaded", function () {
-    var selectElement = document.getElementById("productSelect");
-    selectElement.value = currentProductId; // Set the default selected option
+    var currentProductId = document.getElementById("product_id").value;
 
-    selectElement.addEventListener("change", function () {
-        var productId = this.value;
-        window.location.href = "admin-product.php?product_id=" + productId;
-    });
+    var selectElement = document.getElementById("productSelect");
+    if (selectElement) {
+        selectElement.value = currentProductId; // Set the default selected option
+
+        selectElement.addEventListener("change", function () {
+            var productId = this.value;
+            window.location.href = "admin-product.php?product_id=" + productId;
+        });
+    } else {
+        console.log("Error: Select element not found"); // Debugging line
+    }
 });

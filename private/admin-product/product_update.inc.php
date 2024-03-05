@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($errors) {
             $_SESSION['errorsProduct'] = $errors;
-            header('Location: ../../admin-product.php?product_id=1');
+            header('Location: ../../admin-product.php?product_id=' . $product_id);
             die();
         }
 

@@ -5,17 +5,14 @@ function productAdminTemplate($productData, $name_id)
 
     $img = htmlspecialchars($productData['image_url']);
 
-    echo "<input type='hidden' name='product_id' value='" . htmlspecialchars($_GET['product_id']) . "'>";
-
-    echo "<input type='hidden' id='image_url' name='image_url' value='" . htmlspecialchars($productData["image_url"]) . "'>";
-
     echo "<div class='image-container' id='imageDropZone'>";
     echo "<img id='image_url' class='img-responsive' src='$img' alt='Product Image'>";
     echo "</div>";
 
-
-
     echo "<form action='private/admin-product/product_update.inc.php' method='POST' class='product-info-form'>";
+
+    echo "<input type='hidden' name='product_id' id='product_id' value='" . htmlspecialchars($_GET['product_id']) . "'>"; //? I get the current id from here
+    echo "<input type='hidden' id='image_url' name='image_url' value='" . htmlspecialchars($productData["image_url"]) . "'>";
 
     echo "<div class='dropdown'>";
     echo "<label for='productSelect'>Select Air Conditioner:</label>";
@@ -120,6 +117,8 @@ function productAdminTemplate($productData, $name_id)
     // Description
     echo "<label for='description'>Description:</label>";
     echo "<input type='text' id='description' name='description' value='" . htmlspecialchars($productData["description"]) . "'>";
+
+    echo "<button type='submit' id='update_product' name='update_product'>Update Product</button>";
 
     echo "</form>";
 }

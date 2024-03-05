@@ -12,7 +12,7 @@ session_set_cookie_params([
 //TODO fix the session regeneration
 session_start();
 
-if (isset($_SESSION['user_id'])) {
+if (isset($_SESSION['userId'])) {
 
     if (!isset($_SESSION['last_regeneration'])) {
         regenerate_session_id_loggedin();
