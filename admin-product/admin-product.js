@@ -1,22 +1,35 @@
-document.getElementById("imageDropZone").addEventListener("drop", (event) => {
-    event.stopPropagation();
-    event.preventDefault();
+/* document.addEventListener("DOMContentLoaded", (event) => {
+    document
+        .getElementById("imageDropZone")
+        .addEventListener("dragover", (event) => {
+            console.log("Drag over detected");
+            event.stopPropagation();
+            event.preventDefault();
+            event.dataTransfer.dropEffect = "copy"; // Show as a copy action on drag over
+        });
+}); */
+document.addEventListener("DOMContentLoaded", (event) => {
+    document
+        .getElementById("imageDropZone")
+        .addEventListener("drop", (event) => {
+            event.stopPropagation();
+            event.preventDefault();
 
-    const files = event.dataTransfer.files;
-    if (files.length > 0) {
-        const file = files[0];
-        updateImage(file); // This function updates the image preview
+            const files = event.dataTransfer.files;
+            if (files.length > 0) {
+                const file = files[0];
+                updateImage(file); // This function updates the image preview
 
-        // New code to upload the image to the server
-        const formData = new FormData();
-        formData.append("image", file); // 'image' is the key
+                // New code to upload the image to the server
+                const formData = new FormData();
+                formData.append("image", file); // 'image' is the key
 
-        fetch("upload_image.php", {
-            // Assuming 'upload_image.php' is your server-side script
-            method: "POST",
-            body: formData,
-        })
-            .then((response) => response.json()) // Assuming the server responds with JSON
+                fetch("upload_image.php", {
+                    // Assuming 'upload_image.php' is your server-side script
+                    method: "POST",
+                    body: formData,
+                });
+                /*             .then((response) => response.json()) // Assuming the server responds with JSON
             .then((data) => {
                 if (data.success) {
                     // If the server responded with success, update the hidden input's value
@@ -26,10 +39,10 @@ document.getElementById("imageDropZone").addEventListener("drop", (event) => {
                     console.error("Upload failed:", data.error);
                 }
             })
-            .catch((error) => console.error("Error:", error));
-    }
+            .catch((error) => console.error("Error:", error)); */
+            }
+        });
 });
-
 // create popup
 document
     .getElementById("create-product")
