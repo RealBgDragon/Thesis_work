@@ -1,4 +1,4 @@
-/* document.addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener("DOMContentLoaded", (event) => {
     document
         .getElementById("imageDropZone")
         .addEventListener("dragover", (event) => {
@@ -7,7 +7,25 @@
             event.preventDefault();
             event.dataTransfer.dropEffect = "copy"; // Show as a copy action on drag over
         });
-}); */
+});
+
+function updateImage(file) {
+    if (!file) {
+        return;
+    }
+
+    let reader = new FileReader();
+
+    reader.onload = function (event) {
+        let dataUrl = event.target.result;
+
+        let imagePreview = document.getElementById("image_url");
+        imagePreview.src = dataUrl;
+    };
+
+    reader.readAsDataURL(file);
+}
+
 document.addEventListener("DOMContentLoaded", (event) => {
     document
         .getElementById("imageDropZone")
@@ -24,22 +42,39 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 const formData = new FormData();
                 formData.append("image", file); // 'image' is the key
 
-                fetch("upload_image.php", {
-                    // Assuming 'upload_image.php' is your server-side script
+                fetch("./private/admin-product/upload_image.php", {
                     method: "POST",
                     body: formData,
-                });
-                /*             .then((response) => response.json()) // Assuming the server responds with JSON
-            .then((data) => {
-                if (data.success) {
-                    // If the server responded with success, update the hidden input's value
-                    document.getElementById("image_url").value = data.image_url;
-                } else {
-                    // Handle upload failure
-                    console.error("Upload failed:", data.error);
-                }
-            })
-            .catch((error) => console.error("Error:", error)); */
+                })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error("Network response was not ok");
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        if (data.success) {
+                            // If the server responded with success, update the hidden input's value
+                            document.getElementById("image_url").value =
+                                data.image_url;
+                        } else {
+                            // Handle upload failure
+                            console.error("Upload failed:", data.error);
+                        }
+                    })
+                    .catch((error) => console.error("Error:", error));
+                /* .then((response) => response.json()) // Assuming the server responds with JSON
+                    .then((data) => {
+                        if (data.success) {
+                            // If the server responded with success, update the hidden input's value
+                            document.getElementById("image_url").value =
+                                data.image_url;
+                        } else {
+                            // Handle upload failure
+                            console.error("Upload failed:", data.error);
+                        }
+                    })
+                    .catch((error) => console.error("Error:", error)); */
             }
         });
 });
