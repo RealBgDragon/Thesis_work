@@ -1,80 +1,48 @@
 document.addEventListener("DOMContentLoaded", (event) => {
+    // Your script here
     document
         .getElementById("imageDropZone")
-        .addEventListener("dragover", (event) => {
-            console.log("Drag over detected");
-            event.stopPropagation();
-            event.preventDefault();
-            event.dataTransfer.dropEffect = "copy"; // Show as a copy action on drag over
+        .addEventListener("dragover", function (e) {
+            e.preventDefault(); // Prevent default behavior
         });
-});
 
-function updateImage(file) {
-    if (!file) {
-        return;
+    document
+        .getElementById("imageDropZone")
+        .addEventListener("drop", function (e) {
+            e.preventDefault();
+            if (e.dataTransfer.files.length) {
+                document.getElementById("imageFile").files =
+                    e.dataTransfer.files;
+                const file = e.dataTransfer.files[0];
+                updateImagePreview(file);
+            }
+        });
+
+    function updateImagePreview(file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const displayedImage = document.getElementById("displayedImage");
+            if (displayedImage) {
+                // Check if the element exists
+                displayedImage.src = e.target.result;
+            } else {
+                console.error("Element with ID displayedImage not found");
+            }
+        };
+        reader.readAsDataURL(file);
     }
 
-    let reader = new FileReader();
-
-    reader.onload = function (event) {
-        let dataUrl = event.target.result;
-
-        let imagePreview = document.getElementById("image_url");
-        imagePreview.src = dataUrl;
-    };
-
-    reader.readAsDataURL(file);
-}
-
-document.addEventListener("DOMContentLoaded", (event) => {
     document
         .getElementById("imageDropZone")
-        .addEventListener("drop", (event) => {
-            event.stopPropagation();
-            event.preventDefault();
+        .addEventListener("click", function () {
+            document.getElementById("imageFile").click();
+        });
 
-            const files = event.dataTransfer.files;
-            if (files.length > 0) {
-                const file = files[0];
-                updateImage(file); // This function updates the image preview
-
-                // New code to upload the image to the server
-                const formData = new FormData();
-                formData.append("image", file); // 'image' is the key
-
-                fetch("./private/admin-product/upload_image.php", {
-                    method: "POST",
-                    body: formData,
-                })
-                    .then((response) => {
-                        if (!response.ok) {
-                            throw new Error("Network response was not ok");
-                        }
-                        return response.json();
-                    })
-                    .then((data) => {
-                        if (data.success) {
-                            // If the server responded with success, update the hidden input's value
-                            document.getElementById("image_url").value =
-                                data.image_url;
-                        } else {
-                            // Handle upload failure
-                            console.error("Upload failed:", data.error);
-                        }
-                    })
-                    .catch((error) => console.error("Error:", error));
-                /* .then((response) => response.json()) // Assuming the server responds with JSON
-                    .then((data) => {
-                        if (data.success) {
-                            // If the server responded with success, update the hidden input's value
-                            document.getElementById("image_url").value =
-                                data.image_url;
-                        } else {
-                            // Handle upload failure
-                            console.error("Upload failed:", data.error);
-                        }
-                    })
-                    .catch((error) => console.error("Error:", error)); */
+    document
+        .getElementById("imageFile")
+        .addEventListener("change", function () {
+            if (this.files.length) {
+                updateImagePreview(this.files[0]);
             }
         });
 });

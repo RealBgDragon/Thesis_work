@@ -5,11 +5,12 @@ function productAdminTemplate($productData, $name_id)
 
     $img = htmlspecialchars($productData['image_url']);
 
-    echo "<div class='image-container' id='imageDropZone'>";
-    echo "<img id='image_url' class='img-responsive' src='$img' alt='Product Image'>";
-    echo "</div>";
+    echo "<form action='private/admin-product/product_update.inc.php' method='POST' class='product-info-form' enctype='multipart/form-data'>";
 
-    echo "<form action='private/admin-product/product_update.inc.php' method='POST' class='product-info-form'>";
+    echo "<div class='image-container' id='imageDropZone'>";
+    echo "<img id='displayedImage' class='img-responsive' src='$img' alt='Product Image' style='max-width: 100%; display: block;'>";
+    echo "<input type='file' id='imageFile' name='imageFile' style='display: none;'>";
+    echo "</div>";
 
     echo "<input type='hidden' name='product_id' id='product_id' value='" . htmlspecialchars($_GET['product_id']) . "'>"; //? I get the current id from here
     echo "<input type='hidden' id='image_url' name='image_url' value='" . htmlspecialchars($productData["image_url"]) . "'>";

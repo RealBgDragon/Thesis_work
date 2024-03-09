@@ -36,7 +36,7 @@ function productUpdate(object $pdo, array $productDetails)
 {
     $query = "UPDATE products SET 
     name = :name, 
-    /* image_url = :image_url */
+    image_url = :image_url,
     model = :model, 
     brand = :brand, 
     price = :price, 

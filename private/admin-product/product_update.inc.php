@@ -33,8 +33,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $wifi = convertWifi($wifi);
 
+        $uploadDirectory = "../../../website_images/";
+        $fileName = uniqid() . "-" . basename($_FILES['imageFile']['name']);
+        $uploadPath = $uploadDirectory . $fileName;
+
+        move_uploaded_file($_FILES['imageFile']['tmp_name'], $uploadPath);
+        $newImagePath = "../../../website_images/" . $fileName;
+
+
         $productDetails = [
             'name' => $name,
+            'image_url' => $newImagePath,
             'model' => $model,
             'brand' => $brand,
             'price' => $price,
@@ -56,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'wifi' => $wifi, // Make sure to convert this properly if it's expected to be a boolean in your database
             'description' => $description,
             'product_id' => $product_id
+
         ];
 
         $numericFields = [

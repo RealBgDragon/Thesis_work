@@ -5,32 +5,25 @@ header('Content-Type: application/json; charset=utf-8');
 $targetDir = "../../website_image/";
 $targetFile = $targetDir . basename($_FILES["image"]["name"]);
 $uploadOk = 1;
+$fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
-    $data = [
-        "success" => true,
-        "image_url" => $targetFile
-    ];
-    $json = json_encode($data);
-    echo $json;
+if ($_FILES["image"]["size"] > 5000000) { // Example size limit: 500KB
+    echo json_encode(["success" => false, "error" => "File is too large."]);
+    die();
+}
+
+if (!in_array($fileType, ['jpg', 'png', 'jpeg', 'gif'])) { // Add or remove file types as needed
+    echo json_encode(["success" => false, "error" => "Only JPG, JPEG, PNG & GIF files are allowed."]);
+    die();
+}
+
+if ($uploadOk == 0) {
+    echo "Sorry, your file was not uploaded.";
+    // if everything is ok, try to upload file
 } else {
-    http_response_code(400); // Set the appropriate HTTP status code for a bad request
-    echo json_encode([
-        "success" => false,
-        "error" => "Sorry, there was an error uploading your file."
-    ]);
-}
-
-/* $json = json_encode($data);
-if ($json === false) {
-    // Avoid echo of empty string (which is invalid JSON), and
-    // JSONify the error message instead:
-    $json = json_encode(["jsonError" => json_last_error_msg()]);
-    if ($json === false) {
-        // This should not happen, but we go all the way now:
-        $json = '{"jsonError":"unknown"}';
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
     }
-    // Set HTTP response status code to: 500 - Internal Server Error
-    http_response_code(500);
 }
-echo $json; */
