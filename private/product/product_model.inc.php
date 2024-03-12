@@ -57,12 +57,9 @@ function productUpdate(object $pdo, array $productDetails)
     recommended_room_size = :recommended_room_size, 
     wifi = :wifi, 
     description = :description 
-    WHERE product_id = :product_id"; // Replace product_id with your actual identifier
+    WHERE product_id = :product_id";
 
     $stmt = $pdo->prepare($query);
-
-    // Bind parameters
-/* $stmt->bindParam(':image_url', $image_url, PDO::PARAM_STR); */
 
     foreach ($productDetails as $key => $value) {
         $stmt->bindParam(':' . $key, $productDetails[$key]);

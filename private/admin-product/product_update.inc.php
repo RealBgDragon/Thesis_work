@@ -33,12 +33,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $wifi = convertWifi($wifi);
 
-        $uploadDirectory = "../../../website_images/";
-        $fileName = uniqid() . "-" . basename($_FILES['imageFile']['name']);
-        $uploadPath = $uploadDirectory . $fileName;
+        $fileSize = $_FILES["imageFile"]["size"];
 
-        move_uploaded_file($_FILES['imageFile']['tmp_name'], $uploadPath);
-        $newImagePath = "../../../website_images/" . $fileName;
+        $fileName = $_FILES["imageFile"]["name"];
+        $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+        if (checkFile($fileSize, $fileExtension)) {
+            $errors['imageError'] = 'File size or type not supported';
+            $newImagePath = 'error';
+        } else {
+            $uploadDirectory = "../../../website_images/";
+            $fileName = uniqid() . "-" . basename($_FILES['imageFile']['name']);
+            $uploadPath = $uploadDirectory . $fileName;
+
+            move_uploaded_file($_FILES['imageFile']['tmp_name'], $uploadPath);
+            $newImagePath = "../../../website_images/" . $fileName;
+        }
 
 
         $productDetails = [

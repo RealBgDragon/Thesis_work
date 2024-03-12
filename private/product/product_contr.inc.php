@@ -53,8 +53,6 @@ function isWifiFieldValid($productDetails)
     return false;
 }
 
-
-
 function convertWifi(string $wifi)
 {
     if ($wifi == "true" || $wifi == "True") {
@@ -63,4 +61,13 @@ function convertWifi(string $wifi)
         $wifi = 0;
     }
     return $wifi;
+}
+
+function checkFile(int $fileSize, string $fileType)
+{
+    if ($fileSize > 5000000 || !in_array($fileType, ['jpg', 'png', 'jpeg', 'gif'])) {
+        return true;
+    } else {
+        return false;
+    }
 }
