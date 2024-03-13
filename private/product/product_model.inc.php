@@ -78,6 +78,19 @@ function productDelete(object $pdo, int $product_id)
     $stmt->execute();
 }
 
+function allProductsGet(object $pdo)
+{
+    $query = "SELECT * FROM products";
+
+    $stmt = $pdo->prepare($query);
+
+    $stmt->execute();
+
+    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    return $products;
+}
+
 function getProductNamesAndId(object $pdo)
 {
     $query = "SELECT product_id, name FROM products;";

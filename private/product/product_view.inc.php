@@ -29,6 +29,6 @@ function productDisplay($productData, $admin)
 
 function adminProductDisplay($productData, $name_id)
 {
-    imgDisplay($productData);
+    /* imgDisplay($productData); */ //?Maybe delete
     productAdminTemplate($productData, $name_id);
 }
