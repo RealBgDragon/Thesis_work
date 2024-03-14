@@ -3,7 +3,7 @@
 try {
     require_once 'private/dbh.inc.php';
     require_once 'private/product/product_model.inc.php';
-    require_once 'private/product-display/all_product_view.inc.php';
+    require_once 'private/products-display/all_products_view.php';
     require_once 'private/product/product_contr.inc.php';
 
     $errors = [];
@@ -27,7 +27,9 @@ try {
         $admin = true;
     }
 
-    /* productDisplay($productData); */
+    foreach ($productData as $product) {
+        productCard($product);
+    }
 
     $pdo = null;
     $stmt = null;

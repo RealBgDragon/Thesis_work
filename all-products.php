@@ -13,7 +13,7 @@ require_once 'private/product/product_view.inc.php'
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="icon" type="image/x-icon" href="global-images/icon.png" />
     <link rel="stylesheet" href="global.css" />
-    <link rel="stylesheet" href="cart/cart.css" />
+    <link rel="stylesheet" href="all-products/all-products.css" />
 </head>
 
 <body>
@@ -22,10 +22,13 @@ require_once 'private/product/product_view.inc.php'
         <h1>Products</h1>
         <hr>
 
+        <?php
+        require_once 'private/products-display/all_products.inc.php';
+        ?>
 
     </main>
     <?php include 'footer.php'; ?>
-    <script src="cart/cart.js"></script>
+    <script src="all-products/all-products.js"></script>
 </body>
 
 </html>

@@ -20,8 +20,8 @@
         <a href=cart.php><i class="fas fa-shopping-cart"></i></a>
     </div>
 
-    <div class="cart-modal">
-        <!-- <div class="modal-content">
+    <!-- <div class="cart-modal">
+        <div class="modal-content">
             <span class="close-btn">&times;</span>
             <h2>Cart</h2>
             <div class="cart-items">
@@ -30,8 +30,8 @@
             <div class="cart-total">
                 <p>Total: $<span class="total-amount">0</span></p>
             </div>
-        </div> -->
-    </div>
+        </div>
+    </div> -->
 </header>
 <nav>
     <ul>

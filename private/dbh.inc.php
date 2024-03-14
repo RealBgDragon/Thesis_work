@@ -2,7 +2,7 @@
 
 $dsn = "mysql:host=localhost;dbname=air_conditioners";
 $dbusername = "site";
-$dbpassword = "vx)ZS62CBdCs!sB]"; //change couz new pass
+$dbpassword = "Kq@aAYFXIezCOz//"; //change couz new pass
 
 try {
     $pdo = new PDO($dsn, $dbusername, $dbpassword);
