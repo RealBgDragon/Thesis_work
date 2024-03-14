@@ -1,3 +1,11 @@
+.item .info input.qty {
+    display: block;
+    position: relative;
+    max-width: 50px;
+    border: 1px dotted #1b9dd7;
+    border-radius: 5px;
+}
+
 a {
     cursor: pointer;
     text-decoration: none;
@@ -6,17 +14,19 @@ a {
 .item {
     display: inline-block;
     width: 300px;
+    height: 450px;
     margin: 10px;
     padding: 20px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     text-align: center;
+    vertical-align: top;
 }
 
 .item img {
     max-width: 100%;
-    height: auto;
+    height: 200px;
     margin-bottom: 10px;
 }
 
@@ -49,12 +59,6 @@ a {
     font-size: 18px;
     font-weight: bold;
     color: #1b9dd7;
-}
-
-hr {
-    border: none;
-    border-top: 1px solid #ddd;
-    margin: 10px 0;
 }
 
 .item .info .add-to-cart {
