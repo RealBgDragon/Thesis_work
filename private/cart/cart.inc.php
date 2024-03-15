@@ -9,7 +9,7 @@ try {
 
     $errors = [];
 
-    if (!isset($_SESSION['selectedProduct'])) {
+    if (!isset ($_SESSION['selectedProduct'])) {
         $errors['idNotFound'] = 'You haven`t added any products yet';
     }
 
@@ -19,8 +19,12 @@ try {
         die();
     }
 
-    array_push($productIds, $_SESSION['selectedProduct']);
-    array_push($qty, $_SESSION['qty']);
+    $productIds = array($_SESSION['selectedProduct']);
+
+
+
+    $qty = array($_SESSION['qty']);
+
 
     $productData = [];
 
