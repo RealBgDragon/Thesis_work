@@ -1,0 +1,43 @@
+<?php
+
+try {
+    require_once 'private/dbh.inc.php';
+    require_once 'private/product/product_model.inc.php';
+    require_once 'private/cart/cart_view.php';
+    require_once 'private/product/product_contr.inc.php';
+    require_once 'private/config_session.inc.php';
+
+    $errors = [];
+
+    if (!isset($_SESSION['selectedProduct'])) {
+        $errors['idNotFound'] = 'You haven`t added any products yet';
+    }
+
+    if ($errors) {
+        $_SESSION['errorsProduct'] = $errors;
+        header("Location: all-products.php?error=select");
+        die();
+    }
+
+    array_push($productIds, $_SESSION['selectedProduct']);
+    array_push($qty, $_SESSION['qty']);
+
+    $productData = [];
+
+    foreach ($productIds as $product) {
+        array_push($productData, productGet($pdo, $product));
+    }
+
+    foreach ($productData as $product) {
+        cartProduct($product, $qty[array_search('$product', $productData)]);
+    }
+
+    $pdo = null;
+    $stmt = null;
+
+} catch (Exception $e) {
+    $errors['connectionError'] = 'Connection error! Please try again later!';
+    $errors['connectionError'] = $e->getCode();
+    $_SESSION['errorsProduct'] = $errors;
+    header("Location: product.php?product_id=1");
+}

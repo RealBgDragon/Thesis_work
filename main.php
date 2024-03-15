@@ -38,7 +38,7 @@ require_once 'private/login-mvc/login_view.inc.php';
                 </a>
             </li>
             <li class="product">
-                <a href="product.php?product_id=1" class="product-link">
+                <a href="product.php?product_id=2" class="product-link">
                     <img src="https://osaka.bg/sites/default/files/klimatik-OSAKA-DSBL_0.JPG" alt="File not found">
                     <h2>Product Name</h2>
                     <p class="price">$100</p>
