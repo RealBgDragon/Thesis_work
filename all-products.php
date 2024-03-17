@@ -20,10 +20,10 @@ require_once 'private/product/product_view.inc.php';
 <body>
     <?php
     include 'header.php';
-    if (isset($_GET['error']) && $_GET['error'] = 'select') {
-        echo "<p class='error'>You haven`t selected any products yet!<p>";
-    } elseif (isset($_GET['error']) && $_GET['error'] = 'success') {
-        echo "<p class='error'>Succesfully added to cart!<p>";
+    if (isset ($_GET['error']) && $_GET['error'] == 'select') {
+        echo "<p class='error'>You haven't selected any products yet!</p>";
+    } elseif (isset ($_GET['error']) && $_GET['error'] == 'success') {
+        echo "<p class='success'>Successfully added to cart!</p>";
     }
     ?>
     <main>

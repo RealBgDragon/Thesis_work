@@ -84,7 +84,16 @@ a {
 }
 
 .error {
-    background-color: green;
+    background-color: rgb(255, 57, 57);
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.success {
+    background-color: rgb(9, 177, 9);
     color: white;
     font-weight: bold;
     text-align: center;

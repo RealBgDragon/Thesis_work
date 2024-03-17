@@ -1,16 +1,16 @@
 <?php
-
 try {
     require_once 'private/dbh.inc.php';
     require_once 'private/product/product_model.inc.php';
     require_once 'private/cart/cart_view.php';
     require_once 'private/product/product_contr.inc.php';
+
     require_once 'private/config_session.inc.php';
 
     $errors = [];
 
-    if (!isset ($_SESSION['selectedProduct'])) {
-        $errors['idNotFound'] = 'You haven`t added any products yet';
+    if (!isset ($_SESSION['cart']) || empty ($_SESSION['cart'])) {
+        $errors['idNotFound'] = 'You haven\'t added any products yet';
     }
 
     if ($errors) {
@@ -19,21 +19,16 @@ try {
         die();
     }
 
-    $productIds = array($_SESSION['selectedProduct']);
-
-
-
-    $qty = array($_SESSION['qty']);
-
-
     $productData = [];
 
-    foreach ($productIds as $product) {
-        array_push($productData, productGet($pdo, $product));
+    foreach ($_SESSION['cart'] as $productId => $item) {
+        $product = productGet($pdo, $productId);
+        $product['qty'] = $item['qty'];
+        $productData[] = $product;
     }
 
     foreach ($productData as $product) {
-        cartProduct($product, $qty[array_search('$product', $productData)]);
+        cartProduct($product, $product['qty']);
     }
 
     $pdo = null;
