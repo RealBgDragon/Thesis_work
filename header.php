@@ -7,7 +7,7 @@
         <button type="submit">Search</button>
     </form>
     <div class="auth-links">
-        <?php if (isset($_SESSION['userId'])):
+        <?php if (isset ($_SESSION['userId'])):
             echo "<a href='user.php' class='user-link'>Profile</a>";
             echo "<a href='private/logout.php' class='user-link'>Logout</a>";
         else:
@@ -16,22 +16,17 @@
         endif; ?>
     </div>
     <div class="cart-icon">
-        <span class="cart-count">0</span>
+        <?php
+        $totalQty = 0;
+        if (isset ($_SESSION['cart'])) {
+            foreach ($_SESSION['cart'] as $productId => $item) {
+                $totalQty += $item['qty'];
+            }
+        }
+        echo "<span class='cart-count'>$totalQty</span>";
+        ?>
         <a href=cart.php><i class="fas fa-shopping-cart"></i></a>
     </div>
-
-    <!-- <div class="cart-modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>Cart</h2>
-            <div class="cart-items">
-                Cart items will be dynamically added here
-            </div>
-            <div class="cart-total">
-                <p>Total: $<span class="total-amount">0</span></p>
-            </div>
-        </div>
-    </div> -->
 </header>
 <nav>
     <ul>

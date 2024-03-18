@@ -32,7 +32,7 @@ function cartProduct($product, $qty)
             <form action='private/remove_from_cart.inc.php' method='POST'>
                 <input type='hidden' name='product_id' value='" . $product['product_id'] . "'>
                 <input type='number' name='qty' maxlengt='2' min='1' value='" . $qty . "' max='99' requered class='qty'>
-                <input type='submit' value='Remove from cart' name='add_to_cart' class='add-to-cart'>
+                <input type='submit' value='Remove from cart' name='add_to_cart' class='action-button'>
             </form>
         </div>
     </div>

@@ -25,7 +25,7 @@ require_once 'private/product/product_view.inc.php';
         require_once 'private/cart/cart.inc.php';
         checkCartErrors();
         ?>
-
+        <a href="check-out.php" class="action-button">Check out</a>
     </main>
     <?php include 'footer.php'; ?>
     <script src="cart/cart.js"></script>
