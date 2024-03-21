@@ -97,6 +97,13 @@
     margin-left: 10%;
 }
 
+.success {
+    color: rgb(0, 205, 0);
+}
+.error {
+    color: red;
+}
+
 @media screen and (max-width: 1616px) {
     .login {
         margin: 0;

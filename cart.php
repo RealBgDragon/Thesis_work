@@ -24,6 +24,7 @@ require_once 'private/product/product_view.inc.php';
         <?php
         require_once 'private/cart/cart.inc.php';
         checkCartErrors();
+        displayTotalPrice();
         ?>
         <a href="check-out.php" class="action-button">Check out</a>
     </main>

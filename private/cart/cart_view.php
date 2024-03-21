@@ -38,3 +38,9 @@ function cartProduct($product, $qty)
     </div>
     ";
 }
+
+function displayTotalPrice()
+{
+    $totalPrice = $_SESSION['totalCartPrice'];
+    echo "<p class='total_price'>Total price:" . $totalPrice . " € </p>";
+}

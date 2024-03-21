@@ -26,11 +26,14 @@ try {
         $product['qty'] = $item['qty'];
         $productData[] = $product;
     }
+    $totalPrice = 0;
 
     foreach ($productData as $product) {
         cartProduct($product, $product['qty']);
+        $totalPrice += $product['price'] * $product['qty'];
     }
 
+    $_SESSION['totalCartPrice'] = $totalPrice;
     $pdo = null;
     $stmt = null;
 

@@ -22,43 +22,51 @@ require_once 'private/product/product_view.inc.php';
     <main>
         <h1>Checkout</h1>
         <hr>
+        <?php
+        if (!isset ($_SESSION['userId'])) {
+            header('Location: login.php?error=Please create an account for checkout!');
+            die();
+        }
+        ?>
 
         <h2>Shipping Information</h2>
         <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
 
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" required>
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
 
-            <label for="city">City:</label>
-            <input type="text" id="city" name="city" required>
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
 
-            <label for="state">State/Province:</label>
-            <input type="text" id="state" name="state" required>
+                <label for="state">State/Province:</label>
+                <input type="text" id="state" name="state" required>
 
-            <label for="zip">Zip/Postal Code:</label>
-            <input type="text" id="zip" name="zip" required>
+                <label for="zip">Zip/Postal Code:</label>
+                <input type="text" id="zip" name="zip" required>
 
-            <label for="country">Country:</label>
-            <input type="text" id="country" name="country" required>
-        </form>
+                <label for="country">Country:</label>
+                <input type="text" id="country" name="country" required>
+            </div>
 
-        <h2>Payment Information</h2>
-        <form>
-            <label for="card-number">Card Number:</label>
-            <input type="text" id="card-number" name="card-number" required>
+            <h2>Payment Information</h2>
+            <div>
+                <label for="card-number">Card Number:</label>
+                <input type="text" id="card-number" name="card-number" required>
 
-            <label for="expiry-date">Expiry Date:</label>
-            <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
+                <label for="expiry-date">Expiry Date:</label>
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" required>
 
-            <label for="cvv">CVV:</label>
-            <input type="text" id="cvv" name="cvv" required>
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" name="cvv" required>
 
-            <button type="submit">Place Order</button>
+                <button type="submit">Place Order</button>
+            </div>
         </form>
     </main>
     <?php include 'footer.php'; ?>
