@@ -2,8 +2,8 @@
     <a href="main.php">
         <img src="global-images/logo.png" alt="Logo">
     </a>
-    <form class="search-bar">
-        <input type="search" placeholder="Search for products..." name="search">
+    <form action="search.php?action=search" method="get" class="search-bar">
+        <input type="search" placeholder="Search for products..." name="search" id="search">
         <button type="submit">Search</button>
     </form>
     <div class="auth-links">

@@ -38,7 +38,7 @@ input[type="email"]:focus {
     outline: none;
 }
 
-button[type="submit"] {
+div button[type="submit"] {
     width: 150px;
     text-decoration: none;
     font-family: "Roboto", sans-serif;
@@ -55,7 +55,7 @@ button[type="submit"] {
     margin: 20px auto;
 }
 
-.main button[type="submit"]:hover {
+div button[type="submit"]:hover {
     background-color: #1188be;
 }
 
