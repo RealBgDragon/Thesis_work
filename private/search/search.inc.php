@@ -1,16 +1,16 @@
 <?php
-require_once 'SearchController.php';
+require_once 'search_contr.inc.php';
 
 if (isset ($_GET['action'])) {
     $action = $_GET['action'];
     switch ($action) {
         case 'search':
-            $searchController->search();
+            search();
             break;
         case 'getSuggestions':
-            $searchController->getSuggestions();
+            getSuggestions();
             break;
     }
 } else {
-    $searchController->search();
+    search();
 }

@@ -11,6 +11,12 @@ function productTemplate($productData, $admin)
         "<div class='price-box'>",
         // Price
         "<p id='productPrice'>" . htmlspecialchars($productData["price"]) . "</p>",
+
+        "<form action='private\add_to_cart.inc.php' method='POST'>
+        <input type='hidden' name='product_id' value='" . $_GET['product_id'] . "'>
+        <input type='number' name='qty' maxlengt='2' min='1' value='1' max='99' requered class='qty'>
+        <input type='submit' value='Add to cart' name='add_to_cart' class='add-to-cart'>
+    </form>",
         "</div>",
         "</div>";
     echo "<div class='product-details'>";

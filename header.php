@@ -2,7 +2,7 @@
     <a href="main.php">
         <img src="global-images/logo.png" alt="Logo">
     </a>
-    <form action="search.php?action=search" method="get" class="search-bar">
+    <form action="private/search/search.inc.php?action=search" method="get" class="search-bar">
         <input type="search" placeholder="Search for products..." name="search" id="search">
         <button type="submit">Search</button>
     </form>

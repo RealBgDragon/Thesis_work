@@ -74,6 +74,36 @@
     outline: none; /* Remove outline on focus for cleaner look */
 }
 
+input.qty {
+    display: block;
+    position: relative;
+    max-width: 50px;
+    border: 1px dotted #1b9dd7;
+    border-radius: 5px;
+    margin-bottom: 10p x;
+}
+
+input.qty:hover {
+    border: 2px solid #1b9dd7;
+    margin-bottom: 8px;
+}
+
+.add-to-cart {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #1b9dd7;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+.add-to-cart:hover {
+    background-color: #1188be;
+}
+
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
     .product-info-div {

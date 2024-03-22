@@ -30,7 +30,7 @@ require_once 'private/product/product_view.inc.php';
         ?>
 
         <h2>Shipping Information</h2>
-        <form>
+        <form action="private/check-out/check_out.inc.php" method="POST">
             <div>
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>

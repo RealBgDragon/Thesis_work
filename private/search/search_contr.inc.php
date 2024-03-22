@@ -1,34 +1,27 @@
 <?php
-require_once 'Product.php';
+require_once 'search_model.inc.php';
 
-class SearchController
+
+function search()
 {
-    private $product;
+    require_once '../dbh.inc.php';
+    $query = isset ($_GET['search']) ? $_GET['search'] : '';
 
-    public function __construct($db)
-    {
-        $this->product = new Product($db);
+    if (!empty ($query)) {
+        $results = searchProducts($pdo, $query);
+        require_once 'search_view.inc.php';
+    } else {
+        require_once 'search_view.inc.php';
     }
+}
 
-    public function search()
-    {
-        $query = isset ($_GET['search']) ? $_GET['search'] : '';
+function getSuggestions()
+{
+    require_once '../dbh.inc.php';
+    $query = isset ($_GET['q']) ? $_GET['q'] : '';
 
-        if (!empty ($query)) {
-            $results = $this->product->searchProducts($query);
-            require_once 'search_view.php';
-        } else {
-            require_once 'search_view.php';
-        }
-    }
-
-    public function getSuggestions()
-    {
-        $query = isset ($_GET['q']) ? $_GET['q'] : '';
-
-        if (!empty ($query) && strlen($query) >= 3) {
-            $suggestions = $this->product->getProductSuggestions($query);
-            echo json_encode($suggestions);
-        }
+    if (!empty ($query) && strlen($query) >= 3) {
+        $suggestions = $product->getProductSuggestions($query);
+        echo json_encode($suggestions);
     }
 }
