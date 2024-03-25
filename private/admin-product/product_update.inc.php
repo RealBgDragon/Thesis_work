@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $recommended_room_size = htmlspecialchars($_POST['recommended_room_size']);
         $wifi = htmlspecialchars($_POST['wifi']);
         $description = htmlspecialchars($_POST['description']);
+        $old_image_path = htmlspecialchars($_POST['image_url']);
 
         $wifi = convertWifi($wifi);
 
@@ -38,16 +39,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fileName = $_FILES["imageFile"]["name"];
         $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
-        if (checkFile($fileSize, $fileExtension)) {
-            $errors['imageError'] = 'File size or type not supported';
-            $newImagePath = 'error';
-        } else {
-            $uploadDirectory = "../../../website_images/";
-            $fileName = uniqid() . "-" . basename($_FILES['imageFile']['name']);
-            $uploadPath = $uploadDirectory . $fileName;
+        if ($_FILES["imageFile"]["size"] > 0) {
+            $fileSize = $_FILES["imageFile"]["size"];
+            $fileName = $_FILES["imageFile"]["name"];
+            $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
 
-            move_uploaded_file($_FILES['imageFile']['tmp_name'], $uploadPath);
-            $newImagePath = "../../../website_images/" . $fileName;
+            if (checkFile($fileSize, $fileExtension)) {
+                $errors['imageError'] = 'File size or type not supported';
+                $newImagePath = 'error';
+            } else {
+                $uploadDirectory = "../../../website_images/";
+                $fileName = uniqid() . "-" . basename($_FILES['imageFile']['name']);
+                $uploadPath = $uploadDirectory . $fileName;
+
+                move_uploaded_file($_FILES['imageFile']['tmp_name'], $uploadPath);
+                $newImagePath = "../../../website_images/" . $fileName;
+            }
+        } else {
+            $newImagePath = $old_image_path;
         }
 
 

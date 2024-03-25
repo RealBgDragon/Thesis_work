@@ -20,11 +20,6 @@ require_once 'private/product/product_view.inc.php';
 <body>
     <?php include 'header.php'; ?>
     <main>
-        <?php
-        // Image
-        /* $productData = include 'private/product-details.inc.php'; */// Replace with your actual include path
-        
-        ?>
         <hr>
         <?php
 

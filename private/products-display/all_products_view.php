@@ -2,7 +2,7 @@
 
 function checkAllProductErrors()
 {
-    if (isset($_SESSION['errorsProduct'])) {
+    if (isset ($_SESSION['errorsProduct'])) {
         $errors = $_SESSION['errorsProduct'];
 
         echo '<br>';
@@ -28,7 +28,11 @@ function productCard($product)
             <input type='text' class='model' value='" . htmlspecialchars($product['model']) . "' readonly>
             <input type='text' class='brand' value='" . htmlspecialchars($product['brand']) . "' readonly>
             <input type='text' class='price' value='" . htmlspecialchars($product['price']) . "' readonly>
-            </a>
+            <input type='hidden' class='stock' value='" . htmlspecialchars($product['stock_quantity']) . "'>
+            <input type='hidden' class='power' value='" . htmlspecialchars($product['power_consumption_heating']) . "'>
+            <input type='hidden' class='power' value='" . htmlspecialchars($product['power_consumption_cooling']) . "'>
+            <input type='hidden' class='wifi' value='" . htmlspecialchars($product['wifi'] ? '1' : '0') . "'>
+    </a>
             <form action='private\add_to_cart.inc.php' method='POST'>
                 <input type='hidden' name='product_id' value='" . $product['product_id'] . "'>
                 <input type='number' name='qty' maxlengt='2' min='1' value='1' max='99' requered class='qty'>

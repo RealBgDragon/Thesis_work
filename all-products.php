@@ -26,6 +26,41 @@ require_once 'private/product/product_view.inc.php';
         echo "<p class='success'>Successfully added to cart!</p>";
     }
     ?>
+    <div class="filter-container">
+        <form id="filter-form">
+            <label for="price-filter">Price Range:</label>
+            <input type="range" id="price-filter" name="price-filter" min="0" max="1000" value="1000"
+                oninput="updatePriceRange(this.value)">
+            <span id="price-range">0 - 1000</span>
+
+            <label for="brand-filter">Brand:</label>
+            <select id="brand-filter" name="brand-filter">
+                <option value="">All Brands</option>
+                <!-- Add options for available brands dynamically -->
+            </select>
+
+            <label for="stock-filter">In Stock:</label>
+            <select id="stock-filter" name="stock-filter">
+                <option value="">All</option>
+                <option value="1">In Stock</option>
+                <option value="0">Out of Stock</option>
+            </select>
+
+            <label for="power-filter">Power Consumption:</label>
+            <input type="range" id="power-filter" name="power-filter" min="0" max="1000" value="1000"
+                oninput="updatePowerRange(this.value)">
+            <span id="power-range">0 - 1000</span>
+
+            <label for="wifi-filter">Wi-Fi:</label>
+            <select id="wifi-filter" name="wifi-filter">
+                <option value="">All</option>
+                <option value="1">With Wi-Fi</option>
+                <option value="0">Without Wi-Fi</option>
+            </select>
+
+            <button type="button" onclick="filterProducts()">Filter</button>
+        </form>
+    </div>
     <main>
         <h1>Products</h1>
         <hr>

@@ -6,7 +6,7 @@ declare(strict_types=1);
 
 function isUserAdmin($admin)
 {
-    if (isset($admin) && $admin == "admin") {
+    if (isset ($admin) && $admin == "admin") {
         return true;
     } else {
         return false;
@@ -16,7 +16,7 @@ function isUserAdmin($admin)
 function areFieldsEmpty(array $productDetails)
 {
     foreach ($productDetails as $key => $value) {
-        if (!isset($value) || $value == '') {
+        if (!isset ($value) || $value == '') {
             return true;
         }
     }
@@ -26,7 +26,7 @@ function areFieldsEmpty(array $productDetails)
 function areFieldsNumeric($productDetails, $numericFields)
 {
     foreach ($numericFields as $field) {
-        if (!isset($productDetails[$field]) || !is_numeric($productDetails[$field]) || $productDetails[$field] < 0) {
+        if (!isset ($productDetails[$field]) || !is_numeric($productDetails[$field]) || $productDetails[$field] < 0) {
             return false;
         }
     }
@@ -37,7 +37,7 @@ function areFieldsInSpecificFormat($productDetails, $formatFields)
 {
     $pattern = '/^\d+x\d+x\d+$/';
     foreach ($formatFields as $field) {
-        if (!isset($productDetails[$field]) || !preg_match($pattern, $productDetails[$field])) {
+        if (!isset ($productDetails[$field]) || !preg_match($pattern, $productDetails[$field])) {
             return false;
         }
     }
@@ -46,7 +46,7 @@ function areFieldsInSpecificFormat($productDetails, $formatFields)
 
 function isWifiFieldValid($productDetails)
 {
-    if (isset($productDetails['wifi'])) {
+    if (isset ($productDetails['wifi'])) {
         $wifiValue = strtolower($productDetails['wifi']);
         return in_array($wifiValue, ['true', 'false'], true);
     }
