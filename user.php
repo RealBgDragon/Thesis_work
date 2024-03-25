@@ -23,21 +23,11 @@ require_once 'private/account-details/account_details_view.inc.php';
         <div class="user-info-form">
             <h1>Account</h1>
             <hr>
-            <div class="user">
-                <?php
+            <?php
 
-                require_once 'private/account-details/account_details_get.inc.php';
-                checkAccountErrors();
-                ?>
-            </div>
-
-            <div class="admin">
-                <?php
-                if ($_SESSION['account_type'] == 'admin') {
-                    require_once 'private/manage-account/manage.inc.php';
-                }
-                ?>
-            </div>
+            require_once 'private/account-details/account_details_get.inc.php';
+            checkAccountErrors();
+            ?>
         </div>
     </main>
     <?php include 'footer.php'; ?>

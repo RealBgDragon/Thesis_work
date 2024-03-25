@@ -2,7 +2,7 @@
 
 function checkAccountErrors()
 {
-    if (isset($_SESSION['errorsAccount'])) {
+    if (isset ($_SESSION['errorsAccount'])) {
         $errors = $_SESSION['errorsAccount'];
 
         echo '<br>';
@@ -15,10 +15,10 @@ function checkAccountErrors()
     }
 }
 
-function outputUserInfo($userData)
+function outputUserInfo($userData, $admin, $users)
 {
 
-    echo "<form action='private/account-details/account_details.inc.php' method='POST'>";
+    echo "<form action='private/account-details/account_details.inc.php' method='POST' class='account_info'>";
     // First Name
     echo "<label for='firstName'>First Name:</label>";
     echo "<input type='text' id='firstName' name='firstName' value='" . htmlspecialchars($userData["firstName"]) . "'>";
@@ -56,6 +56,18 @@ function outputUserInfo($userData)
     echo "<button id='submit'>Update</button>";
 
     echo "</form>";
-    if (isset($_GET['update']) && $_GET['update'] == 'success')
+    if ($admin) {
+        echo "<form action='private/account-details/account_details.inc.php' method='POST' class='admin_info'>";
+        echo "<div class='dropdown'>";
+        echo "<label for='productSelect'>Select Air Conditioner:</label>";
+        echo "<select id='productSelect' name='productSelect'>";
+        foreach ($users as $user) {
+            echo "<option value='{$user['user_id']}'>{$user['name']}</option>";
+        }
+        echo "</select>";
+        echo "</div>";
+
+    }
+    if (isset ($_GET['update']) && $_GET['update'] == 'success')
         echo "<p style='color: green'>Update is successful</p>";
 }

@@ -11,8 +11,8 @@ try {
     $errors = [];
 
     $userId = $_SESSION['userId'];
-
-
+    $users = [];
+    $admin = false;
 
     if (isNotUserLoggedIn($userId)) {
         $errors['userNotLoggedIn'] = 'You need to login to an account to acces your data!';
@@ -24,9 +24,14 @@ try {
         die();
     }
 
+    if (isset ($_SESSION['account_type']) && isUserAdmin($_SESSION['account_type'])) {
+        $admin = true;
+        $users = getUserNameAndId($pdo);
+    }
+
     $userData = getUser($pdo, $userId);
 
-    outputUserInfo($userData);
+    outputUserInfo($userData, $admin, $users);
 
     $pdo = null;
     $stmt = null;
