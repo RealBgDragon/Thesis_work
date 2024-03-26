@@ -48,7 +48,7 @@ function updatePassword(object $pdo, int $userId, string $pwd)
 
 function getUserNameAndId(object $pdo)
 {
-    $query = "SELECT user_id, name FROM users;";
+    $query = "SELECT id, username FROM users;";
 
     $stmt = $pdo->prepare($query);
 

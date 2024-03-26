@@ -59,7 +59,7 @@ function outputUserInfo($userData, $admin, $users)
     if ($admin) {
         echo "<form action='private/account-details/account_details.inc.php' method='POST' class='admin_info'>";
         echo "<div class='dropdown'>";
-        echo "<label for='productSelect'>Select Air Conditioner:</label>";
+        echo "<label for='productSelect'>Select Account:</label>";
         echo "<select id='productSelect' name='productSelect'>";
         foreach ($users as $user) {
             echo "<option value='{$user['user_id']}'>{$user['name']}</option>";
