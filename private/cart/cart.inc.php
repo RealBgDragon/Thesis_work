@@ -9,8 +9,8 @@ try {
 
     $errors = [];
 
-    if (!isset ($_SESSION['cart']) || empty ($_SESSION['cart'])) {
-        $errors['idNotFound'] = 'You haven\'t added any products yet';
+    if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
+        $errors['idNotFound'] = '';
     }
 
     if ($errors) {

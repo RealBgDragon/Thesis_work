@@ -18,16 +18,16 @@ a {
 }
 
 .item {
-    display: inline-block;
     width: 275px;
     height: 425px;
     margin: 10px;
-    padding: 20px;
+    padding: 23px;
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     text-align: center;
     vertical-align: top;
+    float: left;
 }
 
 .item img {
