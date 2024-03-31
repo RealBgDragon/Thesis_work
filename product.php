@@ -1,6 +1,13 @@
 <?php
 require_once 'private/config_session.inc.php';
+require_once 'private/product/product_contr.inc.php';
 require_once 'private/product/product_view.inc.php';
+
+$requestData = handleProductRequest();
+if ($requestData) {
+    $productData = $requestData['productData'];
+    $admin = $requestData['admin'];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,15 +29,15 @@ require_once 'private/product/product_view.inc.php';
     <main>
         <hr>
         <?php
-
         checkProductErrors();
 
-        require_once 'private/product/product_get.inc.php';
-
+        if (isset($productData) && isset($admin)) {
+            productDisplay($productData, $admin);
+        }
         ?>
         <div class="comments">
-            <form action="" methood='POST'>
-                <input style='hidden' name='productId' type="text" class="text" value=<?php $_GET['product_id'] ?>>
+            <form action="" method='POST'>
+                <input style='hidden' name='productId' type="text" class="text" value=<?php echo htmlspecialchars($_GET['product_id']); ?>>
                 <input name='comment' type="text" class="text">
                 <input type="submit" class="submit" value="submit comment">
             </form>

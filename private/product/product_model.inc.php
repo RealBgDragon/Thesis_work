@@ -1,39 +1,28 @@
 <?php
+require_once 'private/dbh.inc.php';
 
-declare(strict_types=1);
-
-function productGet(object $pdo, int $product_id)
+function productGet(int $product_id)
 {
-
+    global $pdo;
     $sql = "SELECT * FROM products WHERE product_id = :product_id;";
     $stmt = $pdo->prepare($sql);
-
-    $stmt->bindParam(':product_id', $product_id, PDO::PARAM_STR);
-
+    $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
     $stmt->execute();
-
-    $productData = [];
-
-    $productData = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    return $productData;
-
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-function productCreate(object $pdo)
+function productCreate()
 {
+    global $pdo;
     $query = "INSERT INTO products (name, model, brand, price, stock_quantity) VALUES('Place holder', 'Place holder', 'Place holder', '0.0', '0');";
     $stmt = $pdo->prepare($query);
-
     $stmt->execute();
-
-    $newProductId = $pdo->lastInsertId();
-
-    return $newProductId;
+    return $pdo->lastInsertId();
 }
 
-function productUpdate(object $pdo, array $productDetails)
+function productUpdate(array $productDetails)
 {
+    global $pdo;
     $query = "UPDATE products SET 
     name = :name, 
     image_url = :image_url,
@@ -60,46 +49,35 @@ function productUpdate(object $pdo, array $productDetails)
     WHERE product_id = :product_id";
 
     $stmt = $pdo->prepare($query);
-
     foreach ($productDetails as $key => $value) {
         $stmt->bindParam(':' . $key, $productDetails[$key]);
     }
-
     $stmt->execute();
 }
 
-function productDelete(object $pdo, int $product_id)
+function productDelete(int $product_id)
 {
+    global $pdo;
     $query = "DELETE FROM products WHERE product_id = :product_id;";
     $stmt = $pdo->prepare($query);
-
     $stmt->bindValue(':product_id', $product_id, PDO::PARAM_INT);
-
     $stmt->execute();
 }
 
-function allProductsGet(object $pdo)
+function allProductsGet()
 {
+    global $pdo;
     $query = "SELECT * FROM products";
-
     $stmt = $pdo->prepare($query);
-
     $stmt->execute();
-
-    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    return $products;
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getProductNamesAndId(object $pdo)
+function getProductNamesAndId()
 {
+    global $pdo;
     $query = "SELECT product_id, name FROM products;";
-
     $stmt = $pdo->prepare($query);
-
     $stmt->execute();
-
-    $name_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    return $name_id;
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
