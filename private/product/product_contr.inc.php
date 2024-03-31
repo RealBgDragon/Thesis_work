@@ -65,7 +65,7 @@ function convertWifi(string $wifi)
 
 function checkFile(int $fileSize, string $fileType)
 {
-    if ($fileSize > 5000000 || !in_array($fileType, ['jpg', 'png', 'jpeg', 'gif'])) {
+    if ($fileSize > 10000000 || !in_array($fileType, ['jpg', 'png', 'jpeg', 'gif'])) {
         return true;
     } else {
         return false;

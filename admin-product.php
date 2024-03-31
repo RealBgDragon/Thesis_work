@@ -19,7 +19,7 @@ require_once 'private/product/product_view.inc.php'
 
 <body>
     <?php include 'header.php';
-    if (!isset($_SESSION['account_type']) || $_SESSION['account_type'] != "admin") {
+    if (!isset ($_SESSION['account_type']) || $_SESSION['account_type'] != "admin") {
         echo "<p style='color:red'> You do not have premission to view this page. Please return to home page:</p>";
         echo "<a href=main.php style='color:red'>Home</a>";
         die();
@@ -43,7 +43,6 @@ require_once 'private/product/product_view.inc.php'
             </div>
         </div>
 
-
         <div class="popup" id="create-popup" style="display: none">
             <h2>Are you sure you want to crate a new product?</h2>
             <div class="popup-buttons" style="display:flex">
@@ -53,8 +52,6 @@ require_once 'private/product/product_view.inc.php'
                 </form>
             </div>
         </div>
-
-
 
         <button id="delete-product" name="delete_product" style="background-color:red">Delete Product</button>
 
@@ -67,17 +64,13 @@ require_once 'private/product/product_view.inc.php'
 
             require_once 'private/admin-product/product_get_admin.inc.php';
 
-            if (isset($_GET['update'])) {
+            if (isset ($_GET['update'])) {
                 $updateMessage = htmlspecialchars($_GET['update']);
                 echo "<div style='color: green; text-align: center;'>" . $updateMessage . "</div>";
             }
 
             checkProductErrors();
 
-
-
-            // echo "<button onclick='location.href='yourpage.php?newproduct=true''>Create New Product</button>"; 
-            
             ?>
 
         </div>

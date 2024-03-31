@@ -64,9 +64,11 @@ require_once 'private/product/product_view.inc.php';
     <main>
         <h1>Products</h1>
         <hr>
-        <?php
-        require_once 'private/products-display/all_products.inc.php';
-        ?>
+        <div class="items-container">
+            <?php
+            require_once 'private/products-display/all_products.inc.php';
+            ?>
+        </div>
 
     </main>
     <?php include 'footer.php'; ?>

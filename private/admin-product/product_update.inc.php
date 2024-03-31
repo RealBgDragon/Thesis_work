@@ -43,7 +43,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $fileSize = $_FILES["imageFile"]["size"];
             $fileName = $_FILES["imageFile"]["name"];
             $fileExtension = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
-
             if (checkFile($fileSize, $fileExtension)) {
                 $errors['imageError'] = 'File size or type not supported';
                 $newImagePath = 'error';
@@ -81,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             'size_inside_unit' => $size_inside_unit,
             'size_outside_unit' => $size_outside_unit,
             'recommended_room_size' => $recommended_room_size,
-            'wifi' => $wifi, // Make sure to convert this properly if it's expected to be a boolean in your database
+            'wifi' => $wifi,
             'description' => $description,
             'product_id' => $product_id
 
