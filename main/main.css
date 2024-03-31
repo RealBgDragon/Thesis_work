@@ -18,7 +18,7 @@ main {
 }
 
 .body-with-success {
-    margin-top: 20px; /* This should match the height of the .login-success div */
+    margin-top: 20px;
 }
 
 .list-products {

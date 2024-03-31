@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 function checkSignupErrors()
 {
-    if (isset($_SESSION['errorSignup'])) {
+    if (isset ($_SESSION['errorSignup'])) {
         $errors = $_SESSION['errorSignup'];
 
 
@@ -15,7 +15,7 @@ function checkSignupErrors()
         }
 
         unset($_SESSION['errorSignup']);
-    } else if (isset($_GET['signup']) && $_GET['signup'] == 'success') {
+    } else if (isset ($_GET['signup']) && $_GET['signup'] == 'success') {
         echo "<p style='color: green;'>Signup success!</p>";
     }
 }

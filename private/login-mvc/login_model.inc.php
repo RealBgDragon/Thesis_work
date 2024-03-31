@@ -1,14 +1,13 @@
 <?php
+require_once 'private/dbh.inc.php';
 
-declare(strict_types=1);
-
-function getUser(object $pdo, string $username)
+function getUser(string $username)
 {
+    global $pdo;
     $query = "SELECT * FROM users WHERE username = :username;";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(":username", $username);
     $stmt->execute();
 
-    $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $result;
+    return $stmt->fetch(PDO::FETCH_ASSOC);
 }
