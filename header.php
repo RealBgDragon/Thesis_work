@@ -7,7 +7,7 @@
         <button type="submit">Search</button>
     </form>
     <div class="auth-links">
-        <?php if (isset ($_SESSION['userId'])):
+        <?php if (isset($_SESSION['userId'])):
             echo "<a href='user.php' class='user-link'>Profile</a>";
             echo "<a href='private/logout.php' class='user-link'>Logout</a>";
         else:
@@ -18,7 +18,7 @@
     <div class="cart-icon">
         <?php
         $totalQty = 0;
-        if (isset ($_SESSION['cart'])) {
+        if (isset($_SESSION['cart'])) {
             foreach ($_SESSION['cart'] as $productId => $item) {
                 $totalQty += $item['qty'];
             }
