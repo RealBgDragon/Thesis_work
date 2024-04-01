@@ -31,19 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         if ($errors) {
             $_SESSION['errorSignup'] = $errors;
-
-            /* $signupData = [
-                "username" => $username,
-                "email" => $email
-            ];
-            $_SESSION["singup_data"] = $signupData; */
-
             header('Location: ../../register.php');
             die();
         }
-
-        //TODO don't forget about the user error handling from the server (add the user responce)
-
 
         createUser($pdo, $username, $pwd, $email, $firstName, $lastName);
         header('Location: ../../register.php?signup=success');

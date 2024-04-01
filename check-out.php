@@ -1,6 +1,6 @@
 <?php
 require_once 'private/config_session.inc.php';
-require_once 'private/product/product_view.inc.php';
+require_once 'private/check-out/check_out_view.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,7 +23,7 @@ require_once 'private/product/product_view.inc.php';
         <h1>Checkout</h1>
         <hr>
         <?php
-        if (!isset ($_SESSION['userId'])) {
+        if (!isset($_SESSION['userId'])) {
             header('Location: login.php?error=Please create an account for checkout!');
             die();
         }
@@ -68,6 +68,9 @@ require_once 'private/product/product_view.inc.php';
                 <button type="submit">Place Order</button>
             </div>
         </form>
+        <?php
+        checkCheckOutErrors();
+        ?>
     </main>
     <?php include 'footer.php'; ?>
     <script src="cart/cart.js"></script>
