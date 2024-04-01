@@ -19,10 +19,17 @@ require_once 'private/product/product_view.inc.php'
 
 <body>
     <?php include 'header.php';
-    if (!isset ($_SESSION['account_type']) || $_SESSION['account_type'] != "admin") {
+    if (!isset($_SESSION['account_type']) || $_SESSION['account_type'] != "admin") {
         echo "<p style='color:red'> You do not have premission to view this page. Please return to home page:</p>";
         echo "<a href=main.php style='color:red'>Home</a>";
         die();
+    }
+    if (isset($_GET['update'])) {
+        ?>
+        <div class="update-success">
+            <?php echo $_GET['update'] ?>
+        </div>
+        <?php
     }
     ?>
     <main>
@@ -64,7 +71,7 @@ require_once 'private/product/product_view.inc.php'
 
             require_once 'private/admin-product/product_get_admin.inc.php';
 
-            if (isset ($_GET['update'])) {
+            if (isset($_GET['update'])) {
                 $updateMessage = htmlspecialchars($_GET['update']);
                 echo "<div style='color: green; text-align: center;'>" . $updateMessage . "</div>";
             }

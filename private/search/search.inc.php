@@ -1,16 +1,8 @@
 <?php
-require_once 'search_contr.inc.php';
+require_once 'search_model.inc.php';
+require_once 'search_view.inc.php';
 
-if (isset($_GET['action'])) {
-    $action = $_GET['action'];
-    switch ($action) {
-        case 'search':
-            search();
-            break;
-        case 'getSuggestions':
-            getSuggestions();
-            break;
-    }
-} else {
-    search();
-}
+$action = isset($_GET['action']) ? $_GET['action'] : 'search';
+
+$query = isset($_GET['search']) ? $_GET['search'] : '';
+header('Location: ../../search.php?query=' . $query);

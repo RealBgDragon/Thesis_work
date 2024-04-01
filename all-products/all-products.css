@@ -156,21 +156,23 @@ a {
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1750px) {
+    .item {
+        flex: 0 0 calc(30% - 20px); /* 2 items per line */
+        max-width: calc(30% - 20px);
+    }
+}
+
+@media screen and (max-width: 1400px) {
     .item {
         flex: 0 0 calc(50% - 20px); /* 2 items per line */
         max-width: calc(50% - 20px);
     }
+}
+
+@media screen and (max-width: 1200px) {
     .filter-container {
         position: static;
         width: 90vw;
-        margin-bottom: 20px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .item {
-        flex: 0 0 100%; /* 1 item per line */
-        max-width: 100%;
     }
 }

@@ -1,3 +1,8 @@
+<?php
+require_once 'private/search/search_model.inc.php';
+require_once 'private/search/search_view.inc.php';
+require_once 'private/dbh.inc.php';
+?>
 <!DOCTYPE html>
 <html>
 
@@ -19,7 +24,10 @@
     <?php require ('header.php'); ?>
 
     <div id="search-results">
-        <?php require_once ("private/search/search.inc.php"); ?>
+        <?php
+        $query = $_GET['query'];
+        $results = searchProducts($pdo, $query);
+        renderSearchResults($results); ?>
     </div>
 
     <ul id="suggestions"></ul>
@@ -52,31 +60,3 @@
 </body>
 
 </html>
-
-<?php
-require_once 'search_model.inc.php';
-
-function search()
-{
-    require_once 'dbh.inc.php';
-    $query = isset($_GET['search']) ? $_GET['search'] : '';
-
-    if (!empty($query)) {
-        $results = searchProducts($pdo, $query);
-        require_once 'search_view.inc.php';
-    } else {
-        require_once 'search_view.inc.php';
-    }
-}
-
-function getSuggestions()
-{
-    require_once 'dbh.inc.php';
-    $query = isset($_GET['q']) ? $_GET['q'] : '';
-
-    if (!empty($query) && strlen($query) >= 3) {
-        $suggestions = getProductSuggestions($pdo, $query);
-        echo json_encode($suggestions);
-    }
-}
-?>
