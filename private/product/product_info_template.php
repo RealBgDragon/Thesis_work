@@ -55,6 +55,7 @@ function productTemplate($productData, $admin)
 
     // Noise outside
     echo "<p><strong>Noise Outside:</strong> " . htmlspecialchars($productData["noise_outside_unit"]) . "</p>";
+    require_once 'private/product/product_get.inc.php';
 
     // Max temp heating
     echo "<p><strong>Max Temp Heating (in C):</strong> " . htmlspecialchars($productData["max_temp_heating"]) . "</p>";

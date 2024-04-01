@@ -21,12 +21,8 @@ require_once 'private/login-mvc/login_view.inc.php';
 
 <body>
     <?php include 'header.php';
-    if (isset ($_GET['login']) && $_GET['login'] == 'success') {
-        ?>
-        <div class="login-success">Successful login!</div>
-        <?php
-    }
-    ?>
+    checkLoginErrors(); ?>
+
     <main>
 
         <ul class="list-products">

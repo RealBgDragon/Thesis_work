@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         productUpdate($pdo, $productDetails);
 
-        header('Location: ../../admin-product.php?product_id=' . $product_id . '&update=Successfuly updated!');
+        header('Location: ../../admin-product.php?product_id=' . $product_id . '&update=success');
 
 
         $pdo = null;

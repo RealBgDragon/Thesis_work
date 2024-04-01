@@ -106,14 +106,3 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Error: Select element not found"); // Debugging line
     }
 });
-
-// JS code for success message dissapearing
-document.addEventListener("DOMContentLoaded", (event) => {
-    if (document.querySelector(".update-success")) {
-        setTimeout(function () {
-            document.querySelector(".update-success").style.display = "none";
-            document.body.classList.remove("body-with-update");
-        }, 5000);
-        document.body.classList.add("body-with-update");
-    }
-});

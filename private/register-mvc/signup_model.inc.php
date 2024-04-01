@@ -1,9 +1,9 @@
 <?php
-require_once 'private/dbh.inc.php';
 
-function setUser($username, $pwd, $email, $firstName, $lastName)
+declare(strict_types=1);
+
+function setUser(object $pdo, $username, $pwd, $email, $firstName, $lastName)
 {
-    global $pdo;
     $query = "INSERT INTO users (username, pwd, email, account_type, firstName, lastName) 
     VALUES (:username, :pwd, :email, :account_type, :firstName, :lastName);";
 
@@ -14,6 +14,7 @@ function setUser($username, $pwd, $email, $firstName, $lastName)
     ];
 
     $hashedPwd = password_hash($pwd, PASSWORD_BCRYPT, $options);
+    /* $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT); */
 
     $stmt = $pdo->prepare($query);
 
