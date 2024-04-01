@@ -24,7 +24,15 @@ require_once 'private/product/product_view.inc.php'
         echo "<a href=main.php style='color:red'>Home</a>";
         die();
     }
+    if (isset ($_GET['update'])) {
+        ?>
+        <div class="update-success">
+            <?php echo $_GET['update'] ?>
+        </div>
+        <?php
+    }
     ?>
+
     <main>
         <h1>Product Details</h1>
         <hr>
@@ -64,11 +72,11 @@ require_once 'private/product/product_view.inc.php'
 
             require_once 'private/admin-product/product_get_admin.inc.php';
 
-            if (isset ($_GET['update'])) {
-                $updateMessage = htmlspecialchars($_GET['update']);
-                echo "<div style='color: green; text-align: center;'>" . $updateMessage . "</div>";
-            }
-
+            /*             if (isset ($_GET['update'])) {
+                            $updateMessage = htmlspecialchars($_GET['update']);
+                            echo "<div style='color: green; text-align: center;'>" . $updateMessage . "</div>";
+                        }
+             */
             checkProductErrors();
 
             ?>

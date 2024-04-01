@@ -26,6 +26,7 @@ a {
 .item {
     flex: 0 0 calc(25% - 20px); /* 4 items per line initially */
     max-width: calc(25% - 20px); /* Adjust the value as needed */
+    min-width: 200px;
     margin-bottom: 20px;
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -156,11 +157,21 @@ a {
     }
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1750px) {
+    .item {
+        flex: 0 0 calc(30% - 20px); /* 2 items per line */
+        max-width: calc(30% - 20px);
+    }
+}
+
+@media screen and (max-width: 1400px) {
     .item {
         flex: 0 0 calc(50% - 20px); /* 2 items per line */
         max-width: calc(50% - 20px);
     }
+}
+
+@media screen and (max-width: 1200px) {
     .filter-container {
         position: static;
         width: 90vw;
