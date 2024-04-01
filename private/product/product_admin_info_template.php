@@ -1,125 +1,118 @@
 <?php
-
 function productAdminTemplate($productData, $name_id)
 {
-
     $img = htmlspecialchars($productData['image_url']);
+    ?>
 
-    echo "<form action='private/admin-product/product_update.inc.php' method='POST' class='product-info-form' enctype='multipart/form-data'>";
+    <form action="private/admin-product/product_update.inc.php" method="POST" class="product-info-form"
+        enctype="multipart/form-data">
 
-    echo "<div class='image-container' id='imageDropZone'>";
-    echo "<img id='displayedImage' class='img-responsive' src='$img' alt='Product Image' style='max-width: 100%; display: block;'>";
-    echo "<input type='file' id='imageFile' name='imageFile' style='display: none;'>";
-    echo "</div>";
+        <div class="image-container" id="imageDropZone">
+            <img id="displayedImage" class="img-responsive" src="<?= $img ?>" alt="Product Image"
+                style="max-width: 100%; display: block;">
+            <input type="file" id="imageFile" name="imageFile" style="display: none;">
+        </div>
 
-    echo "<input type='hidden' name='product_id' id='product_id' value='" . htmlspecialchars($_GET['product_id']) . "'>"; //? I get the current id from here
-    echo "<input type='hidden' id='image_url' name='image_url' value='" . htmlspecialchars($productData["image_url"]) . "'>";
+        <input type="hidden" name="product_id" id="product_id" value="<?= htmlspecialchars($_GET['product_id']) ?>">
+        <input type="hidden" id="image_url" name="image_url" value="<?= htmlspecialchars($productData["image_url"]) ?>">
 
-    echo "<div class='dropdown'>";
-    echo "<label for='productSelect'>Select Air Conditioner:</label>";
-    echo "<select id='productSelect' name='productSelect'>";
-    foreach ($name_id as $product) {
-        echo "<option value='{$product['product_id']}'>{$product['name']}</option>";
-    }
-    echo "</select>";
-    echo "</div>";
+        <div class="dropdown">
+            <label for="productSelect">Select Air Conditioner:</label>
+            <select id="productSelect" name="productSelect">
+                <?php foreach ($name_id as $product): ?>
+                    <option value="<?= $product['product_id'] ?>">
+                        <?= $product['name'] ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
 
-    echo "<div class='form-items'>";
+        <div class="form-items">
+            <div class="form-half">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="<?= htmlspecialchars($productData["name"]) ?>">
 
-    echo "<div class='form-half'>";
+                <label for="model">Model:</label>
+                <input type="text" id="model" name="model" value="<?= htmlspecialchars($productData["model"]) ?>">
 
-    // Name
-    echo "<label for='name'>Name:</label>";
-    echo "<input type='text' id='name' name='name' value='" . htmlspecialchars($productData["name"]) . "'>";
+                <label for="brand">Brand:</label>
+                <input type="text" id="brand" name="brand" value="<?= htmlspecialchars($productData["brand"]) ?>">
 
-    // Model
-    echo "<label for='model'>Model:</label>";
-    echo "<input type='text' id='model' name='model' value='" . htmlspecialchars($productData["model"]) . "'>";
+                <label for="price">Price (in lev):</label>
+                <input type="text" id="price" name="price" value="<?= htmlspecialchars($productData["price"]) ?>">
 
-    // Brand
-    echo "<label for='brand'>Brand:</label>";
-    echo "<input type='text' id='brand' name='brand' value='" . htmlspecialchars($productData["brand"]) . "'>";
+                <label for="stock_quantity">Stock quantity:</label>
+                <input type="text" id="stock_quantity" name="stock_quantity"
+                    value="<?= htmlspecialchars($productData["stock_quantity"]) ?>">
 
-    // Price
-    echo "<label for='price'>Price (in lev):</label>";
-    echo "<input type='text' id='price' name='price' value='" . htmlspecialchars($productData["price"]) . "'>";
+                <label for="power_efficiency">Power efficiency (B, A, A+):</label>
+                <input type="text" id="power_efficiency" name="power_efficiency"
+                    value="<?= htmlspecialchars($productData["power_efficiency"]) ?>">
 
-    // Stock quantity
-    echo "<label for='stock_quantity'>Stock quantity:</label>";
-    echo "<input type='text' id='stock_quantity' name='stock_quantity' value='" . htmlspecialchars($productData["stock_quantity"]) . "'>";
+                <label for="power_consumption_heating">Power Consumption (Heating in W):</label>
+                <input type="text" id="power_consumption_heating" name="power_consumption_heating"
+                    value="<?= htmlspecialchars($productData["power_consumption_heating"]) ?>">
 
-    // Power efficiency
-    echo "<label for='power_efficiency'>Power efficiency (B, A, A+):</label>";
-    echo "<input type='text' id='power_efficiency' name='power_efficiency' value='" . htmlspecialchars($productData["power_efficiency"]) . "'>";
+                <label for="power_consumption_cooling">Power Consumption (Cooling in W):</label>
+                <input type="text" id="power_consumption_cooling" name="power_consumption_cooling"
+                    value="<?= htmlspecialchars($productData["power_consumption_cooling"]) ?>">
 
-    // Power consumption heating
-    echo "<label for='power_consumption_heating'>Power Consumption (Heating in W):</label>";
-    echo "<input type='text' id='power_consumption_heating' name='power_consumption_heating' value='" . htmlspecialchars($productData["power_consumption_heating"]) . "'>";
+                <label for="power_output_heating">Power Output (Heating in W):</label>
+                <input type="text" id="power_output_heating" name="power_output_heating"
+                    value="<?= htmlspecialchars($productData["power_output_heating"]) ?>">
 
-    // Power consumption cooling
-    echo "<label for='power_consumption_cooling'>Power Consumption (Cooling in W):</label>";
-    echo "<input type='text' id='power_consumption_cooling' name='power_consumption_cooling' value='" . htmlspecialchars($productData["power_consumption_cooling"]) . "'>";
+                <label for="power_output_cooling">Power Output (Cooling in W):</label>
+                <input type="text" id="power_output_cooling" name="power_output_cooling"
+                    value="<?= htmlspecialchars($productData["power_output_cooling"]) ?>">
+            </div>
 
-    // Power output heating
-    echo "<label for='power_output_heating'>Power Output (Heating in W):</label>";
-    echo "<input type='text' id='power_output_heating' name='power_output_heating' value='" . htmlspecialchars($productData["power_output_heating"]) . "'>";
+            <div class="form-half">
+                <label for="noise_inside_unit">Noise inside (in db):</label>
+                <input type="text" id="noise_inside_unit" name="noise_inside_unit"
+                    value="<?= htmlspecialchars($productData["noise_inside_unit"]) ?>">
 
-    // Power output cooling
-    echo "<label for='power_output_cooling'>Power Output (Cooling in W):</label>";
-    echo "<input type='text' id='power_output_cooling' name='power_output_cooling' value='" . htmlspecialchars($productData["power_output_cooling"]) . "'>";
-    echo "</div>";
+                <label for="noise_outside_unit">Noise outside (in db):</label>
+                <input type="text" id="noise_outside_unit" name="noise_outside_unit"
+                    value="<?= htmlspecialchars($productData["noise_outside_unit"]) ?>">
 
-    echo "<div class='form-half'>";
-    // Noice inside
-    echo "<label for='noise_inside_unit'>Noice inside (in db):</label>";
-    echo "<input type='text' id='noise_inside_unit' name='noise_inside_unit' value='" . htmlspecialchars($productData["noise_inside_unit"]) . "'>";
+                <label for="max_temp_heating">Max temp heating (in C):</label>
+                <input type="text" id="max_temp_heating" name="max_temp_heating"
+                    value="<?= htmlspecialchars($productData["max_temp_heating"]) ?>">
 
-    // Noice outside
-    echo "<label for='noise_outside_unit'>Noice outside (in db):</label>";
-    echo "<input type='text' id='noise_outside_unit' name='noise_outside_unit' value='" . htmlspecialchars($productData["noise_outside_unit"]) . "'>";
+                <label for="min_temp_heating">Min temp heating (in C):</label>
+                <input type="text" id="min_temp_heating" name="min_temp_heating"
+                    value="<?= htmlspecialchars($productData["min_temp_heating"]) ?>">
 
-    // Max temp heating
-    echo "<label for='max_temp_heating'>Max temp heating (in C):</label>";
-    echo "<input type='text' id='max_temp_heating' name='max_temp_heating' value='" . htmlspecialchars($productData["max_temp_heating"]) . "'>";
+                <label for="max_temp_cooling">Max temp cooling (in C):</label>
+                <input type="text" id="max_temp_cooling" name="max_temp_cooling"
+                    value="<?= htmlspecialchars($productData["max_temp_cooling"]) ?>">
 
-    // Min temp heating 
-    echo "<label for='min_temp_heating'>Min temp heating (in C):</label>";
-    echo "<input type='text' id='min_temp_heating' name='min_temp_heating' value='" . htmlspecialchars($productData["min_temp_heating"]) . "'>";
+                <label for="min_temp_cooling">Min temp cooling (in C):</label>
+                <input type="text" id="min_temp_cooling" name="min_temp_cooling"
+                    value="<?= htmlspecialchars($productData["min_temp_cooling"]) ?>">
 
-    // Max temp cooling
-    echo "<label for='max_temp_cooling'>Max temp cooling (in C):</label>";
-    echo "<input type='text' id='max_temp_cooling' name='max_temp_cooling' value='" . htmlspecialchars($productData["max_temp_cooling"]) . "'>";
+                <label for="size_inside_unit">Inside size (format HHxWWxDD):</label>
+                <input type="text" id="size_inside_unit" name="size_inside_unit"
+                    value="<?= htmlspecialchars($productData["size_inside_unit"]) ?>">
 
-    // Min temp cooling
-    echo "<label for='min_temp_cooling'>Min temp cooling (in C):</label>";
-    echo "<input type='text' id='min_temp_cooling' name='min_temp_cooling' value='" . htmlspecialchars($productData["min_temp_cooling"]) . "'>";
+                <label for="size_outside_unit">Outside size (format HHxWWxDD):</label>
+                <input type="text" id="size_outside_unit" name="size_outside_unit"
+                    value="<?= htmlspecialchars($productData["size_outside_unit"]) ?>">
 
-    // Size inside
-    echo "<label for='size_inside_unit'>Inside size (format HHxWWxDD):</label>";
-    echo "<input type='text' id='size_inside_unit' name='size_inside_unit' value='" . htmlspecialchars($productData["size_inside_unit"]) . "'>";
+                <label for="recommended_room_size">Max size of room (in cm2):</label>
+                <input type="text" id="recommended_room_size" name="recommended_room_size"
+                    value="<?= htmlspecialchars($productData["recommended_room_size"]) ?>">
 
-    // Size outside
-    echo "<label for='size_outside_unit'>Outside size (format HHxWWxDD):</label>";
-    echo "<input type='text' id='size_outside_unit' name='size_outside_unit' value='" . htmlspecialchars($productData["size_outside_unit"]) . "'>";
+                <label for="wifi">Wi-Fi (true or false, default false):</label>
+                <input type="text" id="wifi" name="wifi" value="<?= $productData["wifi"] == 1 ? "True" : "False" ?>">
+            </div>
+        </div>
 
-    // Max size
-    echo "<label for='recommended_room_size'>Max size of room (in cm2):</label>";
-    echo "<input type='text' id='recommended_room_size' name='recommended_room_size' value='" . htmlspecialchars($productData["recommended_room_size"]) . "'>";
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" value="<?= htmlspecialchars($productData["description"]) ?>">
 
-    // Wi-Fi
-    echo "<label for='wifi'>Wi-Fi (true or false, default false):</label>";
-    $wifi_status = $productData["wifi"] == 1 ? "True" : "False";
-    echo "<input type='text' id='wifi' name='wifi' value='" . $wifi_status . "'>";
+        <button type="submit" id="update_product" name="update_product">Update Product</button>
 
-
-    echo "</div>";
-    echo "</div>";
-
-    // Description
-    echo "<label for='description'>Description:</label>";
-    echo "<input type='text' id='description' name='description' value='" . htmlspecialchars($productData["description"]) . "'>";
-
-    echo "<button type='submit' id='update_product' name='update_product'>Update Product</button>";
-
-    echo "</form>";
+    </form>
+    <?php
 }
