@@ -103,3 +103,15 @@ function getProductNamesAndId(object $pdo)
 
     return $name_id;
 }
+function getProductBrands(object $pdo)
+{
+    $query = "SELECT DISTINCT brand FROM products ORDER BY brand;";
+
+    $stmt = $pdo->prepare($query);
+
+    $stmt->execute();
+
+    $names = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    return $names;
+}

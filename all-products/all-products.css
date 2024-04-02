@@ -24,8 +24,8 @@ a {
 }
 
 .item {
-    flex: 0 0 calc(25% - 20px); /* 4 items per line initially */
-    max-width: calc(25% - 20px); /* Adjust the value as needed */
+    flex: 0 0 calc(25% - 20px); /* 4 items per line on large screens */
+    max-width: calc(25% - 20px);
     margin-bottom: 20px;
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -37,7 +37,7 @@ a {
 
 .item img {
     max-width: 100%;
-    height: 200px;
+    height: 200px; /* Adjusted for responsive images */
     margin-bottom: 10px;
 }
 
@@ -150,29 +150,37 @@ a {
 }
 
 /* Responsive Styles */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1800px) {
+    .item {
+        flex: 0 0 calc(33.33% - 20px); /* 3 items per line */
+        max-width: calc(33.33% - 20px);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .item {
+        flex: 0 0 calc(50% - 20px); /* 2 items per line */
+        max-width: calc(50% - 20px);
+    }
     main {
         margin-left: 0;
     }
 }
 
-@media screen and (max-width: 1750px) {
+@media screen and (max-width: 600px) {
     .item {
-        flex: 0 0 calc(30% - 20px); /* 2 items per line */
-        max-width: calc(30% - 20px);
+        flex: 0 0 calc(100% - 20px); /* 1 item per line */
+        max-width: calc(100% - 20px);
     }
 }
 
-@media screen and (max-width: 1400px) {
-    .item {
-        flex: 0 0 calc(50% - 20px); /* 2 items per line */
-        max-width: calc(50% - 20px);
-    }
+@media screen and (max-width: 768px) {
 }
 
 @media screen and (max-width: 1200px) {
     .filter-container {
         position: static;
-        width: 90vw;
+        width: 100%; /* Adjusted for consistency */
+        padding: 0 20px; /* Optional: Adds some padding on smaller screens */
     }
 }

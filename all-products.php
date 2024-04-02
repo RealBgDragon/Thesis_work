@@ -1,6 +1,7 @@
 <?php
 require_once 'private/config_session.inc.php';
 require_once 'private/product/product_view.inc.php';
+require_once 'private/products-display/all_products_view.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,9 +21,9 @@ require_once 'private/product/product_view.inc.php';
 <body>
     <?php
     include 'header.php';
-    if (isset ($_GET['error']) && $_GET['error'] == 'select') {
+    if (isset($_GET['error']) && $_GET['error'] == 'select') {
         echo "<p class='error'>You haven't selected any products yet!</p>";
-    } elseif (isset ($_GET['error']) && $_GET['error'] == 'success') {
+    } elseif (isset($_GET['error']) && $_GET['error'] == 'success') {
         echo "<p class='success'>Successfully added to cart!</p>";
     }
     ?>
@@ -30,17 +31,17 @@ require_once 'private/product/product_view.inc.php';
         <form id="filter-form">
             <label for="price-filter">Price Range:</label>
             <input type="range" id="price-filter" name="price-filter" min="0" max="1000" value="1000"
-                oninput="updatePriceRange(this.value)">
+                oninput="filterProducts(); updatePriceRange(this.value)">
             <span id="price-range">0 - 1000</span>
 
             <label for="brand-filter">Brand:</label>
-            <select id="brand-filter" name="brand-filter">
+            <select id="brand-filter" name="brand-filter" onchange="filterProducts()">
                 <option value="">All Brands</option>
-                <!-- Add options for available brands dynamically -->
+                <?php /* brandsOptions(); */ ?> <!-- FIX IT -->
             </select>
 
             <label for="stock-filter">In Stock:</label>
-            <select id="stock-filter" name="stock-filter">
+            <select id="stock-filter" name="stock-filter" onchange="filterProducts()">
                 <option value="">All</option>
                 <option value="1">In Stock</option>
                 <option value="0">Out of Stock</option>
@@ -48,17 +49,15 @@ require_once 'private/product/product_view.inc.php';
 
             <label for="power-filter">Power Consumption:</label>
             <input type="range" id="power-filter" name="power-filter" min="0" max="1000" value="1000"
-                oninput="updatePowerRange(this.value)">
+                oninput="filterProducts(); updatePowerRange(this.value)">
             <span id="power-range">0 - 1000</span>
 
             <label for="wifi-filter">Wi-Fi:</label>
-            <select id="wifi-filter" name="wifi-filter">
+            <select id="wifi-filter" name="wifi-filter" onchange="filterProducts()">
                 <option value="">All</option>
                 <option value="1">With Wi-Fi</option>
                 <option value="0">Without Wi-Fi</option>
             </select>
-
-            <button type="button" onclick="filterProducts()">Filter</button>
         </form>
     </div>
     <main>

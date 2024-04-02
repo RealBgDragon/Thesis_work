@@ -2,7 +2,7 @@
 
 function checkAllProductErrors()
 {
-    if (isset ($_SESSION['errorsProduct'])) {
+    if (isset($_SESSION['errorsProduct'])) {
         $errors = $_SESSION['errorsProduct'];
 
         echo '<br>';
@@ -42,3 +42,17 @@ function productCard($product)
     </div>
     ";
 }
+
+//TODO Fix it
+
+/* function brandsOptions() */
+/* {
+    require_once 'private/products-display/all_products_contr.inc.php';
+    $productsBrands = [];
+
+    $productsBrands = getAllProducts();
+
+    foreach ($productsBrands as $product) {
+        echo '<option value="">' . $product . '</option>';
+    }
+} */
