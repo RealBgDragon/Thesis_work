@@ -9,7 +9,8 @@ session_set_cookie_params([
     'secure' => true,
     'httponly' => true,
 ]);
-//TODO fix the session regeneration
+
+
 session_start();
 
 if (isset($_SESSION['userId'])) {
