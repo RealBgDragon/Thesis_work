@@ -2,7 +2,7 @@
 
 header('Content-Type: application/json; charset=utf-8');
 
-$targetDir = "../../website_image/"; //! for appachi implementation chage to ../website_image/
+$targetDir = "../website_image/";
 $targetFile = $targetDir . basename($_FILES["image"]["name"]);
 $uploadOk = 1;
 $fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
