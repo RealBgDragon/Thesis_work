@@ -14,7 +14,6 @@ function setUser(object $pdo, $username, $pwd, $email, $firstName, $lastName)
     ];
 
     $hashedPwd = password_hash($pwd, PASSWORD_BCRYPT, $options);
-    /* $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT); */
 
     $stmt = $pdo->prepare($query);
 

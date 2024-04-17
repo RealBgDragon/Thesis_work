@@ -109,8 +109,8 @@ a {
 /* Filter Container */
 .filter-container {
     position: fixed;
-    top: 180px; /* Adjust this value based on your header height */
-    left: 20px;
+    top: 250px;
+    left: 0;
     width: 250px;
     padding: 20px;
     background-color: #fff;
@@ -165,22 +165,16 @@ a {
     main {
         margin-left: 0;
     }
+    .filter-container {
+        position: static;
+        width: 100%; /* Adjusted for consistency */
+        padding: 0 20px;
+    }
 }
 
 @media screen and (max-width: 600px) {
     .item {
-        flex: 0 0 calc(100% - 20px); /* 1 item per line */
+        flex: 0 0 calc(100% - 20px);
         max-width: calc(100% - 20px);
-    }
-}
-
-@media screen and (max-width: 768px) {
-}
-
-@media screen and (max-width: 1200px) {
-    .filter-container {
-        position: static;
-        width: 100%; /* Adjusted for consistency */
-        padding: 0 20px; /* Optional: Adds some padding on smaller screens */
     }
 }

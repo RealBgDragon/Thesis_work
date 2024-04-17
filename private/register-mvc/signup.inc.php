@@ -2,20 +2,19 @@
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
-    $username = $_POST["username"];
-    $pwd = $_POST['pwd'];
-    $email = $_POST['email'];
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
+    $username = htmlspecialchars($_POST["username"]);
+    $pwd = htmlentities($_POST['pwd']);
+    $email = htmlentities($_POST['email']);
+    $firstName = htmlentities($_POST['firstName']);
+    $lastName = htmlentities($_POST['lastName']);
 
     try {
 
         require_once '../dbh.inc.php';
         require_once 'signup_model.inc.php';
-        //require_once 'signup_view.inc.php';
         require_once 'signup_contr.inc.php';
 
-        // ERRPR HANDLERS 
+        // ERROR HANDLERS 
 
         $errors = [];
 

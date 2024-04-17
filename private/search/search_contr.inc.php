@@ -9,7 +9,6 @@ function search()
 
     if (!empty($query)) {
         $results = searchProducts($pdo, $query);
-        /* require_once '../../search_view.inc.php'; */
         header("Location: ../../search_view.inc.php");
     } else {
         require_once '../../search_view.inc.php';
