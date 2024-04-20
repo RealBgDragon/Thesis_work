@@ -20,11 +20,12 @@ a {
 .items-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    gap: 5px;
+    padding: 20px;
 }
 
 .item {
-    flex: 0 0 calc(25% - 20px); /* 4 items per line on large screens */
+    /* flex: 0 0 calc(25% - 20px); */
     max-width: calc(25% - 20px);
     margin-bottom: 20px;
     background-color: #fff;
@@ -36,8 +37,9 @@ a {
 }
 
 .item img {
-    max-width: 100%;
-    height: 200px; /* Adjusted for responsive images */
+    width: 10vw;
+    max-width: 300px;
+    height: 200px;
     margin-bottom: 10px;
 }
 
