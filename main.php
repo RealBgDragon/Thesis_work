@@ -25,6 +25,8 @@ require_once 'private/products-display/all_products_view.php';
     checkLoginErrors(); ?>
 
     <main>
+        <h1 style="margin-left: 20px">Trending items</h1>
+        <hr>
         <ul class="list-products">
             <?php
             require 'private/products-display/main_product.inc.php';

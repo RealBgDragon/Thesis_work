@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require_once './config_session.inc.php';
 
     // Check if the product is already in the session
-    if (isset ($_SESSION['cart'][$productId])) {
+    if (isset($_SESSION['cart'][$productId])) {
         // If it is, update the quantity
         $_SESSION['cart'][$productId]['qty'] += $qty;
     } else {

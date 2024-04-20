@@ -28,14 +28,6 @@ require_once 'private/product/product_view.inc.php';
         require_once 'private/product/product_get.inc.php';
 
         ?>
-        <div class="comments">
-            <form action="" methood='POST'>
-                <input style='hidden' name='productId' type="text" class="text" value=<?php $_GET['product_id'] ?>>
-                <input name='comment' type="text" class="text">
-                <input type="submit" class="submit" value="submit comment">
-            </form>
-            <?php require_once 'reviews_view.inc.php'; ?>
-        </div>
     </main>
     <?php include 'footer.php'; ?>
 </body>
