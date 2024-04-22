@@ -37,5 +37,11 @@
     background-color: #1b9dd7;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1200px) {
+    .user-info-form form {
+        align-items: center;
+    }
+    .user-info-form label {
+        text-align: center;
+    }
 }

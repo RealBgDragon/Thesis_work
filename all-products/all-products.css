@@ -25,7 +25,6 @@ a {
 }
 
 .item {
-    /* flex: 0 0 calc(25% - 20px); */
     max-width: calc(25% - 20px);
     margin-bottom: 20px;
     background-color: #fff;
@@ -37,8 +36,9 @@ a {
 }
 
 .item img {
+    margin-left: 0;
     width: 10vw;
-    max-width: 300px;
+    max-width: 200px;
     height: 200px;
     margin-bottom: 10px;
 }
@@ -172,11 +172,17 @@ a {
         width: 100%; /* Adjusted for consistency */
         padding: 0 20px;
     }
+    .item img {
+        width: 200px;
+    }
 }
 
 @media screen and (max-width: 600px) {
     .item {
         flex: 0 0 calc(100% - 20px);
         max-width: calc(100% - 20px);
+    }
+    .item img {
+        width: 200px;
     }
 }

@@ -1,5 +1,21 @@
 /* Checkout Page Styles */
 
+.login-success {
+    background-color: green;
+    color: white;
+    text-align: center;
+    width: 100%;
+    height: 20px; /* Adjust the height as needed */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.body-with-success {
+    margin-top: 20px; /* This should match the height of the .login-success div */
+}
+
 main h1 {
     font-size: 36px;
     color: #1188be;

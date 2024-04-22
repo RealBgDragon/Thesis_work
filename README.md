@@ -1,1 +1,1 @@
-If you are unfortunate enough to read this code and you consider yourself a web development expert, please stop here and DO NOT PROCEED ANY FURTHER. You will probably see so many inefficiencies and bad practices that you will want to die.
+If you are unfortunate enough to read this code and you consider yourself a web development expert, please stop here and DO NOT PROCEED ANY FURTHER. You will probably see so many inefficiencies and bad practices that you will want to kys.

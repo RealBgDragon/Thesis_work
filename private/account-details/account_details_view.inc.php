@@ -2,7 +2,7 @@
 
 function checkAccountErrors()
 {
-    if (isset ($_SESSION['errorsAccount'])) {
+    if (isset($_SESSION['errorsAccount'])) {
         $errors = $_SESSION['errorsAccount'];
 
         echo '<br>';
@@ -41,33 +41,12 @@ function outputUserInfo($userData, $admin, $users)
     echo "<label for='newPassword'>New password:</label>";
     echo "<input type='password' id='newPassword' name='newPassword' value=''>";
 
-    //TODO fix
-    /* echo "<div class='modal-body'>";
-    echo    "<ul>";
-    echo        "<li id='capitalLetter'>Contains a capital letter</li>";
-    echo        "<li id='number'>Contains a number</li>";
-    echo        "<li id='letters'>At least 8 letters</li>";
-    echo    "</ul>";
-    echo "</div>"; */
-
     echo "<label for='reNewPassword'>Repeat password:</label>";
     echo "<input type='password' id='reNewPassword' name='reNewPassword' value=''>";
 
     echo "<button id='submit'>Update</button>";
 
     echo "</form>";
-    if ($admin) {
-        echo "<form action='private/account-details/account_details.inc.php' method='POST' class='admin_info'>";
-        echo "<div class='dropdown'>";
-        echo "<label for='productSelect'>Select Account:</label>";
-        echo "<select id='productSelect' name='productSelect'>";
-        foreach ($users as $user) {
-            echo "<option value='{$user['user_id']}'>{$user['name']}</option>";
-        }
-        echo "</select>";
-        echo "</div>";
-
-    }
-    if (isset ($_GET['update']) && $_GET['update'] == 'success')
+    if (isset($_GET['update']) && $_GET['update'] == 'success')
         echo "<p style='color: green'>Update is successful</p>";
 }

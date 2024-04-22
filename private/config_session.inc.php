@@ -6,7 +6,7 @@ ini_set("session.use_strict_mode", 1);
 session_set_cookie_params([
     'lifetime' => 1800,
     'path' => '/',
-    'secure' => true,
+    'secure' => false, //change to false for presentation purposes
     'httponly' => true,
 ]);
 

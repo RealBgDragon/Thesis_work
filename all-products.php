@@ -37,7 +37,6 @@ require_once 'private/products-display/all_products_view.php';
             <label for="brand-filter">Brand:</label>
             <select id="brand-filter" name="brand-filter" onchange="filterProducts()">
                 <option value="">All Brands</option>
-                <?php /* brandsOptions(); */ ?> <!-- FIX IT -->
             </select>
 
             <label for="stock-filter">In Stock:</label>

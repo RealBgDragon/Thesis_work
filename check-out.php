@@ -27,6 +27,9 @@ require_once 'private/check-out/check_out_view.inc.php';
             header('Location: login.php?error=Please create an account for checkout!');
             die();
         }
+        if (isset($_GET['check-out']) && $_GET['check-out'] == 'success') {
+            echo "<div class='login-success'>Checkout successful!</div>";
+        }
         ?>
 
         <h2>Shipping Information</h2>

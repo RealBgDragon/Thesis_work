@@ -4,6 +4,7 @@ function renderSearchResults($results)
 {
     if (!empty($results)) {
         echo '<main>';
+        echo '<div class="search">';
         echo '<h2>Search Results</h2>';
         foreach ($results as $product) {
             echo '<div class="search-results">';
@@ -22,6 +23,7 @@ function renderSearchResults($results)
 
             echo '</div>';
         }
+        echo '</div>';
         echo '</main>';
     }
 }
