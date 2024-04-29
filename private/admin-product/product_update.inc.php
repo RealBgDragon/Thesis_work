@@ -47,12 +47,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $errors['imageError'] = 'File size or type not supported';
                 $newImagePath = 'error';
             } else {
-                $uploadDirectory = "../../../website_images/";
+                $uploadDirectory = "../../website_images/";
                 $fileName = uniqid() . "-" . basename($_FILES['imageFile']['name']);
                 $uploadPath = $uploadDirectory . $fileName;
 
                 move_uploaded_file($_FILES['imageFile']['tmp_name'], $uploadPath);
-                $newImagePath = "../../../website_images/" . $fileName;
+                $newImagePath = "../../website_images/" . $fileName;
             }
         } else {
             $newImagePath = $old_image_path;
