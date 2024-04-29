@@ -39,7 +39,6 @@ require_once 'private/config_session.inc.php';
             This privacy policy applies to all information collected through our website , and/or any related services,
             sales, marketing or events (we refer to them collectively in this privacy policy as the "Services").
         </p>
-
     </main>
     <?php include 'footer.php'; ?>
 </body>
