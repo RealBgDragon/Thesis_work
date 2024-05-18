@@ -1,0 +1,71 @@
+table {
+    width: 100%;
+    border-collapse: separate; /* Changed from collapse to separate */
+    border-spacing: 0; /* Added to prevent spacing between cells */
+    margin-bottom: 20px;
+    border-radius: 10px; /* Adjust the value to set the desired roundness */
+    overflow: hidden; /* Ensure rounded corners are visible */
+}
+
+table,
+th,
+td {
+    border: 1px solid #ddd;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.info-button {
+    background-color: #1b9dd7;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.info-button:hover {
+    background-color: #1588b3;
+}
+
+.complete-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.complete-button:hover {
+    background-color: #218838;
+}
+
+form {
+    padding: 0;
+    margin: 0;
+    display: inline;
+}

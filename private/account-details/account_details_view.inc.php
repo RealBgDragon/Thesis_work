@@ -45,7 +45,9 @@ function outputUserInfo($userData, $admin, $users)
     echo "<input type='password' id='reNewPassword' name='reNewPassword' value=''>";
 
     echo "<button id='submit'>Update</button>";
-
+    if ($_SESSION['account_type'] == 'admin') {
+        echo "<a href='check-out-manager.php'>Check out manager</a>";
+    }
     echo "</form>";
     if (isset($_GET['update']) && $_GET['update'] == 'success')
         echo "<p style='color: green'>Update is successful</p>";

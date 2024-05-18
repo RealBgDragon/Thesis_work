@@ -27,6 +27,10 @@ require_once 'private/account-details/account_details_view.inc.php';
 
             require_once 'private/account-details/account_details_get.inc.php';
             checkAccountErrors();
+            if (isset($_GET['error'])) {
+                $errorMessage = htmlspecialchars($_GET['error']);
+                echo "<div style='color: red; text-align: center;'>" . $errorMessage . "</div>";
+            }
             ?>
         </div>
     </main>

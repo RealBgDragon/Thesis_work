@@ -1,7 +1,7 @@
 // Cache DOM elements
 const formElements = {
-    password: document.getElementById("newPassword"),
-    rePassword: document.getElementById("reNewPassword"),
+    password: document.getElementById("password"),
+    rePassword: document.getElementById("repassword"),
     passwordError: document.getElementById("passwordError"),
     submit: document.getElementById("submit"),
     requirements: {

@@ -27,6 +27,20 @@
     transition: background-color 0.3s;
 }
 
+.user-info-form a {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #20c7c0;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
 #created_at input[readonly] {
     background-color: #f3f3f3;
     color: #666;
@@ -34,6 +48,10 @@
 }
 
 .user-info-form button:hover {
+    background-color: #1b9dd7;
+}
+
+.user-info-form a:hover {
     background-color: #1b9dd7;
 }
 

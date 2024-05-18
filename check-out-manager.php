@@ -1,7 +1,6 @@
 <?php
 require_once 'private/config_session.inc.php';
-require_once 'private/login-mvc/login_view.inc.php';
-require_once 'private/products-display/all_products_view.php';
+require_once 'private/check-out-data/check_out_data_view.inc.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,31 +9,27 @@ require_once 'private/products-display/all_products_view.php';
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
+    <title>Cart</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <!-- For the cart -->
     <link rel="icon" type="image/x-icon" href="global-images/icon.png" />
     <link rel="stylesheet" href="global.css" />
-    <link rel="stylesheet" href="main/main.css" />
+    <link rel="stylesheet" href="check-out-manager/check-out-manager.css" />
 </head>
 
 <body>
-    <?php include 'header.php';
-    checkLoginErrors(); ?>
-
+    <?php include 'header.php'; ?>
     <main>
-        <h1>Trending items</h1>
-        <hr>
-        <ul class="list-products">
-            <?php
-            require 'private/products-display/main_product.inc.php';
-            ?>
-        </ul>
+
+        <?php
+        if ($_SESSION['account_type'] != 'admin') {
+            header('Location: user.php?error=You dont have premissions to view this page!');
+        }
+        require_once 'private/check-out-data/check_out_data.inc.php';
+        ?>
     </main>
     <?php include 'footer.php'; ?>
-    <script src="main/main.js"></script>
+    <!-- <script src="cart/cart.js"></script> -->
 </body>
 
 </html>
