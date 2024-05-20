@@ -27,12 +27,26 @@ function updateStatus(object $pdo, int $order_id)
     $stmt->execute();
 }
 
-function getAllProducts($pdo)
+function moreData(object $pdo, string $orderId)
 {
-    $allProducts = [];
-    require_once 'private/product/product_model.inc.php';
-    $allProducts = getProductBrands($pdo);
-    $pdo = null;
-    $stmt = null;
-    return $allProducts;
+
+    $sql = "SELECT name, email, address, city, country FROM orders WHERE order_id=:orderId;";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':orderId', $orderId, PDO::PARAM_INT);
+    $stmt->execute();
+    $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $orders;
+
+}
+
+function orderData(object $pdo, string $orderId)
+{
+
+    $sql = "SELECT name, email, address, city, country FROM orders WHERE order_id=:orderId;";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':orderId', $orderId, PDO::PARAM_INT);
+    $stmt->execute();
+    $order = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $order;
+
 }

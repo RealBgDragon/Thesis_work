@@ -26,7 +26,8 @@ function displayOrders($orders)
                         <td><?php echo htmlspecialchars("$order[totalPrice]"); ?></td>
                         <td><?php echo htmlspecialchars("$order[orderDate]"); ?></td>
                         <td>
-                            <button class="info-button">More Info</button>
+                            <a href="more-info.php?orderId=<?php echo htmlspecialchars($order['order_id']) ?>?>"
+                                class="info-button">More Info</a>
                             <form action="private/check-out-data/check_out_data_complete.inc.php" method="POST">
                                 <input type="hidden" name="order_id"
                                     value="<?php echo htmlspecialchars($order['order_id']); ?>">
