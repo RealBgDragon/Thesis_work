@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $uploadPath = $uploadDirectory . $fileName;
 
                 move_uploaded_file($_FILES['imageFile']['tmp_name'], $uploadPath);
-                $newImagePath = "../../website_images/" . $fileName;
+                $newImagePath = "website_images/" . $fileName;
             }
         } else {
             $newImagePath = $old_image_path;

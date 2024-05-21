@@ -6,13 +6,11 @@ function displayUserOrders($orders, $order)
     <h1>Orders List</h1>
     <hr>
     <h1>User info</h1>
-    <p><?php echo $order['name'];
-    echo $order['email'];
-    echo $order['address'];
-    echo $order['city'];
-    echo $order['country'];
-
-    ?></p>
+    <p>Name: <?php echo htmlspecialchars($orders['name']); ?><br>
+        Email: <?php echo htmlspecialchars($orders['email']); ?><br>
+        Address: <?php echo htmlspecialchars($orders['address']); ?><br>
+        City: <?php echo htmlspecialchars($orders['city']); ?><br>
+        Country: <?php echo htmlspecialchars($orders['country']); ?></p>
     <div class="table-container">
         <table>
             <thead>
@@ -23,11 +21,11 @@ function displayUserOrders($orders, $order)
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($orders as $order) { ?>
+                <?php foreach ($order as $orde) { ?>
                     <tr>
-                        <td><?php echo htmlspecialchars("$orders[product_id]"); ?></td>
-                        <td><?php echo htmlspecialchars("$orders[quantity]"); ?></td>
-                        <td><?php echo htmlspecialchars("$orders[price]"); ?></td>
+                        <td><?php echo htmlspecialchars("$orde[product_id]"); ?></td>
+                        <td><?php echo htmlspecialchars("$orde[quantity]"); ?></td>
+                        <td><?php echo htmlspecialchars("$orde[price]"); ?></td>
                     </tr>
                 <?php } ?>
 

@@ -29,20 +29,19 @@ function updateStatus(object $pdo, int $order_id)
 
 function moreData(object $pdo, string $orderId)
 {
-
     $sql = "SELECT name, email, address, city, country FROM orders WHERE order_id=:orderId;";
     $stmt = $pdo->prepare($sql);
-    $stmt->bindValue(':orderId', $orderId, PDO::PARAM_INT);
+    $stmt->bindValue(':orderId', $orderId, PDO::PARAM_INT); // Adjust according to the actual data type
     $stmt->execute();
-    $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    return $orders;
-
+    $order = $stmt->fetch(PDO::FETCH_ASSOC); // Use fetch instead of fetchAll for single row
+    return $order;
 }
+
 
 function orderData(object $pdo, string $orderId)
 {
 
-    $sql = "SELECT name, email, address, city, country FROM orders WHERE order_id=:orderId;";
+    $sql = "SELECT product_id, quantity, price FROM order_details WHERE order_id=:orderId;";
     $stmt = $pdo->prepare($sql);
     $stmt->bindValue(':orderId', $orderId, PDO::PARAM_INT);
     $stmt->execute();

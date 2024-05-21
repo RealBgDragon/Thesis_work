@@ -13,7 +13,7 @@ $orderId = $_GET['orderId'];
 $orderDetails = moreData($pdo, $orderId);
 $order = orderData($pdo, $orderId);
 
-displayUserOrders($orders, $order);
+displayUserOrders($orderDetails, $order);
 
 $pdo = null;
 $stmt = null;
